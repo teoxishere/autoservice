@@ -15,5 +15,15 @@ namespace AutoService.Models
         public double Cc { get; set; }
 
         public virtual ICollection<Version> Versions { get; set; }
+
+        public override string ToString()
+        {
+            var s = Name;
+            if(Power!=0 || Fuel != null || Cc != 0)
+            {
+                s += "( " + Power + "cp" + " " + Fuel + " )";
+            }
+            return s;
+        }
     }
 }
