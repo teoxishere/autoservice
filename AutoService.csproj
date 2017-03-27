@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,10 @@
     <Compile Include="Migrations\201703231507014_Added Price column.Designer.cs">
       <DependentUpon>201703231507014_Added Price column.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703271100425_UserRole.cs" />
+    <Compile Include="Migrations\201703271100425_UserRole.Designer.cs">
+      <DependentUpon>201703271100425_UserRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Body.cs" />
     <Compile Include="Models\Car.cs" />
@@ -113,6 +123,9 @@
     <Compile Include="Models\Version.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703231507014_Added Price column.resx">
       <DependentUpon>201703231507014_Added Price column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703271100425_UserRole.resx">
+      <DependentUpon>201703271100425_UserRole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

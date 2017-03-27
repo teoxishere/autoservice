@@ -15,5 +15,21 @@ namespace AutoService.Models
         public double Quantity { get; set; }
         public double Price { get; set; }
         public string Details { get; set; }
+        public override string ToString()
+        {
+            var s = Name;
+            if (Quantity > 0)
+            {
+                s += " " + Quantity;
+            }
+            else
+            {
+                s = " ";
+            }
+            return s;
+
+
     }
+    }
+    
 }

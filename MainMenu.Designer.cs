@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -75,6 +76,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnRefresh);
             this.tabPage1.Controls.Add(this.tbSearch);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.label7);
@@ -98,6 +100,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Piese";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(45, 336);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(103, 23);
+            this.btnRefresh.TabIndex = 18;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // tbSearch
             // 
@@ -301,5 +313,6 @@
         private System.Windows.Forms.ListBox lbResult;
         private System.Windows.Forms.ListBox lbParts;
         private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

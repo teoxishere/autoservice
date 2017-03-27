@@ -18,7 +18,7 @@ namespace AutoService
         private List<Models.Version> _versions;
         private List<Engine> _engines;
         private List<Part> _parts;
-        private List<Int32> _years;
+        private List<int> _years;
 
         private Context db = new Context();
 
@@ -27,7 +27,7 @@ namespace AutoService
         private Models.Version _selectedVersion;
         private Engine _selectedEngine;
         private Part _selectedPart;
-        private int  _selectedYears;
+        private int?  _selectedYears;
         public MainMenu()
         {
             InitializeComponent();
@@ -42,23 +42,24 @@ namespace AutoService
               .Makes
               .OrderBy(m => m.Name)
               .ToList();
-            _makes.Insert(0, new Make
+          /*  _makes.Insert(0, new Make
             {
                 Name = "-",
                 Id = -1
-            });
+            });*/
             cbMake.DataSource = _makes;
-
+            cbMake.Text = "-";
             //Loading Models to CB
             _models = db.Models
                 .OrderBy(m => m.Name)
                 .ToList();
-            _models.Insert(0, new Model
+          /*  _models.Insert(0, new Model
             {
                 Name = "-",
                 Id = -1
-            });
+            });*/
             cbModel.DataSource = _models;
+            cbModel.Text = "-";
 
             //Loading Versions to CB
             _versions = db.Versions
@@ -80,6 +81,11 @@ namespace AutoService
                     .ToList();                    
             cbEngine.DataSource = _engines;
            cbEngine.Text = "-";
+
+            _parts = db.Parts
+                .OrderBy(p => p.Name)
+                .ToList();
+            lbParts.DataSource = _parts;
         }
         
         private void cbMake_SelectedValueChanged(object sender, EventArgs e)
@@ -88,9 +94,10 @@ namespace AutoService
             {
                 _selectedMake = null;
                 _models = null;
-                _versions = null;
+               
                 cbVersion.DataSource = _versions;
                 cbModel.DataSource = _models;
+                
             }
             else
             {
@@ -110,9 +117,12 @@ namespace AutoService
             if (cbModel.SelectedIndex == 0)
             {
                 _versions = null;
-                _selectedVersion = null;
+                _models = null;
+                cbModel.DataSource = _models;
                 cbVersion.DataSource = _versions;
+            
             }
+
             else
             {
                 _selectedModel = cbModel.SelectedValue as Model;
@@ -120,40 +130,99 @@ namespace AutoService
                     .Where(v => v.ModelId == _selectedModel.Id)
                     .OrderBy(v => v.Year)
                     .ToList();
-                _versions.Insert(0, new Models.Version
+              /*  _versions.Insert(0, new Models.Version
                 {
                     Name = "-"
-                });
+                });*/
+
                 cbVersion.DataSource = _versions;
+                cbVersion.Text = "-";
             }
         }
-        /*
+        
        private void cbVersion_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cbVersion.SelectedIndex == 0)
             {
                 _versions = null;
                 _selectedVersion = null;
+           
                 cbVersion.DataSource = _versions;
-                cbYear.DataSource = _versions;
+               
+
             }
             else
             {
-                _selectedVersion = cbVersion.SelectedValue as Models.Version;
-                _versions = db.Versions
-                    .Where(v => v.ModelId == _selectedModel.Id)
-                    .Where(v=>v.Year)
-                    .OrderBy(v => v.Year)
+                _selectedModel = cbModel.SelectedValue as Model;
+                //_selectedVersion = cbVersion.SelectedValue as Models.Version;
+                _years = db.Versions
+                    .Where(ModelVersion=>ModelVersion.Model.Id==_selectedModel.Id)
+                    .Select(v=>v.Year)
                     .ToList();
-                _versions.Insert(0, new Models.Version
-                {
-                    Name = "-"
-                });
-                cbVersion.DataSource = _versions;
+                cbYear.DataSource = _years;
             }
         }
-        */
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UpdateForm();
+         }
+        private void UpdateForm() {
+            /* cbEngine.SelectedIndex = 0;
+             cbMake.SelectedIndex = 0;
+             cbModel.SelectedIndex = 0;
+             cbVersion.SelectedIndex = 0;
+             cbYear.SelectedIndex = 0;
+             */
+            _makes = db
+             .Makes
+             .OrderBy(m => m.Name)
+             .ToList();
+            /*_makes.Insert(0, new Make
+            {
+                Name = "-",
+                Id = -1
+            });*/
+            cbMake.DataSource = _makes;
+            cbMake.Text = "-";
 
+            //Loading Models to CB
+            _models = db.Models
+                .OrderBy(m => m.Name)
+                .ToList();
+           /* _models.Insert(0, new Model
+            {
+                Name = "-",
+                Id = -1
+            });*/
+            cbModel.DataSource = _models;
+            cbModel.Text = "-";
+
+            //Loading Versions to CB
+            _versions = db.Versions
+                .OrderBy(v => v.Name)
+                .ToList();
+            cbVersion.DataSource = _versions;
+            cbVersion.Text = "-";
+
+            //Loading Years to CB
+            _years = db.Versions
+                    .Select(v => v.Year)
+                    .ToList();
+            cbYear.DataSource = _years;
+            cbYear.Text = "-";
+
+            //Loading Engines to CB
+            _engines = db.Engines
+                    .OrderBy(en => en.Name)
+                    .ToList();
+            cbEngine.DataSource = _engines;
+            cbEngine.Text = "-";
+
+            _parts = db.Parts
+                .OrderBy(p => p.Name)
+                .ToList();
+            lbParts.DataSource = _parts;
+        }
     }
 }
