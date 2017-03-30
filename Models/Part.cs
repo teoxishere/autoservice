@@ -9,12 +9,15 @@ namespace AutoService.Models
     public class Part
     {
         public int Id { get; set; }
-        public int CarId { get; set; }
-        public Car Car { get; set; }
+        
         public string Name { get; set; }
+        public string Internal_Code { get; set; }
+        public string BarCode { get; set; }
         public double Quantity { get; set; }
         public double Price { get; set; }
         public string Details { get; set; }
+
+        public virtual ICollection<Car> Cars { get; set; }
         public override string ToString()
         {
             var s = Name;

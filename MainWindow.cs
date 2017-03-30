@@ -13,6 +13,7 @@ namespace AutoService
 {
     public partial class MainWindow : Form
     {
+        /*
         private List<Make> _makes;
         private List<Model> _models;
         private List<Models.Version> _versions;
@@ -22,6 +23,7 @@ namespace AutoService
         private Make _selectedMake;
         private Model _selectedModel;
         private Models.Version _selectedVersion;
+        */
 
         public MainWindow()
         {
@@ -30,7 +32,7 @@ namespace AutoService
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
-        {
+        {/*
             _makes = db
                 .Makes
                 .OrderBy(m => m.Name)
@@ -41,10 +43,11 @@ namespace AutoService
                 Id = -1
             });
             cbMarci.DataSource = _makes;
+            */
         }
 
         private void cbMarci_SelectedValueChanged(object sender, EventArgs e)
-        {
+        {/*
             if (cbMarci.SelectedIndex == 0)
             {
                 _selectedMake = null;
@@ -64,11 +67,11 @@ namespace AutoService
                     Name = "-"
                 });
                 cbModel.DataSource = _models;
-            }
+            }*/
         }
 
         private void cbModel_SelectedValueChanged(object sender, EventArgs e)
-        {
+        {/*
             if (cbModel.SelectedIndex == 0)
             {
                 _versions = null;
@@ -86,7 +89,7 @@ namespace AutoService
                     Name = "-"
                 });
                 cbVersion.DataSource = _versions;
-            }
+            }*/
         }
     }
 }

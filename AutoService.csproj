@@ -87,40 +87,15 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703202047157_Initial.cs" />
-    <Compile Include="Migrations\201703202047157_Initial.Designer.cs">
-      <DependentUpon>201703202047157_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703202048333_AddedUsersTable.cs" />
-    <Compile Include="Migrations\201703202048333_AddedUsersTable.Designer.cs">
-      <DependentUpon>201703202048333_AddedUsersTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703202054281_AddedCcToEngine.cs" />
-    <Compile Include="Migrations\201703202054281_AddedCcToEngine.Designer.cs">
-      <DependentUpon>201703202054281_AddedCcToEngine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703202127290_AddedVersionName.cs" />
-    <Compile Include="Migrations\201703202127290_AddedVersionName.Designer.cs">
-      <DependentUpon>201703202127290_AddedVersionName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703231507014_Added Price column.cs" />
-    <Compile Include="Migrations\201703231507014_Added Price column.Designer.cs">
-      <DependentUpon>201703231507014_Added Price column.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703271100425_UserRole.cs" />
-    <Compile Include="Migrations\201703271100425_UserRole.Designer.cs">
-      <DependentUpon>201703271100425_UserRole.cs</DependentUpon>
+    <Compile Include="Migrations\201703301214392_1st.cs" />
+    <Compile Include="Migrations\201703301214392_1st.Designer.cs">
+      <DependentUpon>201703301214392_1st.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Body.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Context.cs" />
-    <Compile Include="Models\Engine.cs" />
-    <Compile Include="Models\Make.cs" />
-    <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Part.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Version.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LoginForm.resx">
@@ -132,23 +107,8 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703202047157_Initial.resx">
-      <DependentUpon>201703202047157_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703202048333_AddedUsersTable.resx">
-      <DependentUpon>201703202048333_AddedUsersTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703202054281_AddedCcToEngine.resx">
-      <DependentUpon>201703202054281_AddedCcToEngine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703202127290_AddedVersionName.resx">
-      <DependentUpon>201703202127290_AddedVersionName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703231507014_Added Price column.resx">
-      <DependentUpon>201703231507014_Added Price column.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703271100425_UserRole.resx">
-      <DependentUpon>201703271100425_UserRole.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703301214392_1st.resx">
+      <DependentUpon>201703301214392_1st.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

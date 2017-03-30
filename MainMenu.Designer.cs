@@ -50,8 +50,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.carPanel = new System.Windows.Forms.TabPage();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.carPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -67,6 +86,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.carPanel);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -271,6 +291,173 @@
             this.tabPage3.Text = "Rapoarte";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // carPanel
+            // 
+            this.carPanel.Controls.Add(this.comboBox4);
+            this.carPanel.Controls.Add(this.comboBox3);
+            this.carPanel.Controls.Add(this.comboBox2);
+            this.carPanel.Controls.Add(this.comboBox1);
+            this.carPanel.Controls.Add(this.label16);
+            this.carPanel.Controls.Add(this.textBox8);
+            this.carPanel.Controls.Add(this.textBox5);
+            this.carPanel.Controls.Add(this.textBox4);
+            this.carPanel.Controls.Add(this.textBox3);
+            this.carPanel.Controls.Add(this.textBox1);
+            this.carPanel.Controls.Add(this.label15);
+            this.carPanel.Controls.Add(this.label14);
+            this.carPanel.Controls.Add(this.label13);
+            this.carPanel.Controls.Add(this.label12);
+            this.carPanel.Controls.Add(this.label11);
+            this.carPanel.Controls.Add(this.label10);
+            this.carPanel.Controls.Add(this.label9);
+            this.carPanel.Location = new System.Drawing.Point(4, 22);
+            this.carPanel.Name = "carPanel";
+            this.carPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.carPanel.Size = new System.Drawing.Size(948, 449);
+            this.carPanel.TabIndex = 3;
+            this.carPanel.Text = "Masini";
+            this.carPanel.UseVisualStyleBackColor = true;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(8, 183);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(131, 20);
+            this.textBox8.TabIndex = 14;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(210, 135);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(126, 20);
+            this.textBox5.TabIndex = 11;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(6, 35);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(133, 20);
+            this.textBox4.TabIndex = 10;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(568, 216);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(8, 20);
+            this.textBox3.TabIndex = 9;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(8, 86);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(131, 20);
+            this.textBox1.TabIndex = 7;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(207, 119);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Putere";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(207, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Combustibil";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(207, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(88, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Capacitate Motor";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(5, 167);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 13);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Cod OEM";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 119);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(20, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "An";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 70);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Model";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 19);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Marca";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(207, 167);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(51, 13);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Caroserie";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(8, 134);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(131, 21);
+            this.comboBox1.TabIndex = 16;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(210, 35);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(126, 21);
+            this.comboBox2.TabIndex = 17;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(210, 86);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(126, 21);
+            this.comboBox3.TabIndex = 18;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(210, 183);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(126, 21);
+            this.comboBox4.TabIndex = 19;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,6 +472,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.carPanel.ResumeLayout(false);
+            this.carPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,5 +503,23 @@
         private System.Windows.Forms.ListBox lbParts;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.TabPage carPanel;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label16;
     }
 }
