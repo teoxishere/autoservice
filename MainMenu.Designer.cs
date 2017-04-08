@@ -49,15 +49,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.partCbYear = new System.Windows.Forms.ComboBox();
+            this.partCbModel = new System.Windows.Forms.ComboBox();
+            this.partCbMake = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.partTbDetails = new System.Windows.Forms.TextBox();
+            this.partTbOem = new System.Windows.Forms.TextBox();
+            this.partTbPrice = new System.Windows.Forms.TextBox();
+            this.partTbQty = new System.Windows.Forms.TextBox();
+            this.partTbName = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -297,15 +297,15 @@
             // 
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.comboBox4);
-            this.tabPage2.Controls.Add(this.comboBox2);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.partCbYear);
+            this.tabPage2.Controls.Add(this.partCbModel);
+            this.tabPage2.Controls.Add(this.partCbMake);
             this.tabPage2.Controls.Add(this.label25);
-            this.tabPage2.Controls.Add(this.textBox6);
-            this.tabPage2.Controls.Add(this.textBox5);
-            this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.partTbDetails);
+            this.tabPage2.Controls.Add(this.partTbOem);
+            this.tabPage2.Controls.Add(this.partTbPrice);
+            this.tabPage2.Controls.Add(this.partTbQty);
+            this.tabPage2.Controls.Add(this.partTbName);
             this.tabPage2.Controls.Add(this.label24);
             this.tabPage2.Controls.Add(this.label23);
             this.tabPage2.Controls.Add(this.label22);
@@ -321,29 +321,29 @@
             this.tabPage2.Text = "Piese";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // comboBox4
+            // partCbYear
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(276, 200);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 16;
+            this.partCbYear.FormattingEnabled = true;
+            this.partCbYear.Location = new System.Drawing.Point(276, 200);
+            this.partCbYear.Name = "partCbYear";
+            this.partCbYear.Size = new System.Drawing.Size(121, 21);
+            this.partCbYear.TabIndex = 16;
             // 
-            // comboBox2
+            // partCbModel
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(276, 151);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 14;
+            this.partCbModel.FormattingEnabled = true;
+            this.partCbModel.Location = new System.Drawing.Point(276, 151);
+            this.partCbModel.Name = "partCbModel";
+            this.partCbModel.Size = new System.Drawing.Size(121, 21);
+            this.partCbModel.TabIndex = 14;
             // 
-            // comboBox1
+            // partCbMake
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(276, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 13;
+            this.partCbMake.FormattingEnabled = true;
+            this.partCbMake.Location = new System.Drawing.Point(276, 105);
+            this.partCbMake.Name = "partCbMake";
+            this.partCbMake.Size = new System.Drawing.Size(121, 21);
+            this.partCbMake.TabIndex = 13;
             // 
             // label25
             // 
@@ -354,40 +354,40 @@
             this.label25.TabIndex = 12;
             this.label25.Text = "An Masina";
             // 
-            // textBox6
+            // partTbDetails
             // 
-            this.textBox6.Location = new System.Drawing.Point(276, 53);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(140, 20);
-            this.textBox6.TabIndex = 11;
+            this.partTbDetails.Location = new System.Drawing.Point(276, 53);
+            this.partTbDetails.Name = "partTbDetails";
+            this.partTbDetails.Size = new System.Drawing.Size(140, 20);
+            this.partTbDetails.TabIndex = 11;
             // 
-            // textBox5
+            // partTbOem
             // 
-            this.textBox5.Location = new System.Drawing.Point(23, 200);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(129, 20);
-            this.textBox5.TabIndex = 10;
+            this.partTbOem.Location = new System.Drawing.Point(23, 200);
+            this.partTbOem.Name = "partTbOem";
+            this.partTbOem.Size = new System.Drawing.Size(129, 20);
+            this.partTbOem.TabIndex = 10;
             // 
-            // textBox4
+            // partTbPrice
             // 
-            this.textBox4.Location = new System.Drawing.Point(23, 151);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(129, 20);
-            this.textBox4.TabIndex = 9;
+            this.partTbPrice.Location = new System.Drawing.Point(23, 151);
+            this.partTbPrice.Name = "partTbPrice";
+            this.partTbPrice.Size = new System.Drawing.Size(129, 20);
+            this.partTbPrice.TabIndex = 9;
             // 
-            // textBox2
+            // partTbQty
             // 
-            this.textBox2.Location = new System.Drawing.Point(23, 106);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(129, 20);
-            this.textBox2.TabIndex = 8;
+            this.partTbQty.Location = new System.Drawing.Point(23, 106);
+            this.partTbQty.Name = "partTbQty";
+            this.partTbQty.Size = new System.Drawing.Size(129, 20);
+            this.partTbQty.TabIndex = 8;
             // 
-            // textBox1
+            // partTbName
             // 
-            this.textBox1.Location = new System.Drawing.Point(23, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(129, 20);
-            this.textBox1.TabIndex = 7;
+            this.partTbName.Location = new System.Drawing.Point(23, 53);
+            this.partTbName.Name = "partTbName";
+            this.partTbName.Size = new System.Drawing.Size(129, 20);
+            this.partTbName.TabIndex = 7;
             // 
             // label24
             // 
@@ -750,15 +750,15 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox partCbYear;
+        private System.Windows.Forms.ComboBox partCbModel;
+        private System.Windows.Forms.ComboBox partCbMake;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox partTbDetails;
+        private System.Windows.Forms.TextBox partTbOem;
+        private System.Windows.Forms.TextBox partTbPrice;
+        private System.Windows.Forms.TextBox partTbQty;
+        private System.Windows.Forms.TextBox partTbName;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
     }
