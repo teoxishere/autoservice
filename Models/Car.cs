@@ -11,13 +11,14 @@ namespace AutoService.Models
         public int Id { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
-        public string Engine { get; set; }
+       // public string Engine { get; set; }
         public string Fuel { get; set; }
         public string Body { get; set; }
-        public string Oem_Code { get; set; }
-        public DateTime Year { get; set; }
+        public string Internal_Code { get; set; }
+        public int Year { get; set; }
         public Double Power { get; set; }
         public Double Capacity { get; set; }
+        public Double Price { get; set; }
 
         public virtual ICollection<Part> Parts { get; set; }
     }

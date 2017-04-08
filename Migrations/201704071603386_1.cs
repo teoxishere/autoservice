@@ -3,7 +3,7 @@ namespace AutoService.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _1st : DbMigration
+    public partial class _1 : DbMigration
     {
         public override void Up()
         {
@@ -14,13 +14,13 @@ namespace AutoService.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Make = c.String(unicode: false),
                         Model = c.String(unicode: false),
-                        Engine = c.String(unicode: false),
                         Fuel = c.String(unicode: false),
                         Body = c.String(unicode: false),
-                        Oem_Code = c.String(unicode: false),
-                        Year = c.DateTime(nullable: false, precision: 0),
+                        Internal_Code = c.String(unicode: false),
+                        Year = c.Int(nullable: false),
                         Power = c.Double(nullable: false),
                         Capacity = c.Double(nullable: false),
+                        Price = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -30,7 +30,7 @@ namespace AutoService.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(unicode: false),
-                        Internal_Code = c.String(unicode: false),
+                        Oem_Code = c.String(unicode: false),
                         BarCode = c.String(unicode: false),
                         Quantity = c.Double(nullable: false),
                         Price = c.Double(nullable: false),

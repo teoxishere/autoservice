@@ -87,9 +87,9 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703301214392_1st.cs" />
-    <Compile Include="Migrations\201703301214392_1st.Designer.cs">
-      <DependentUpon>201703301214392_1st.cs</DependentUpon>
+    <Compile Include="Migrations\201704071603386_1.cs" />
+    <Compile Include="Migrations\201704071603386_1.Designer.cs">
+      <DependentUpon>201704071603386_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -107,8 +107,8 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703301214392_1st.resx">
-      <DependentUpon>201703301214392_1st.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704071603386_1.resx">
+      <DependentUpon>201704071603386_1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -131,7 +131,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,7 +11,7 @@ namespace AutoService.Models
         public int Id { get; set; }
         
         public string Name { get; set; }
-        public string Internal_Code { get; set; }
+        public string Oem_Code { get; set; }
         public string BarCode { get; set; }
         public double Quantity { get; set; }
         public double Price { get; set; }

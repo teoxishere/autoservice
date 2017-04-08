@@ -19,6 +19,11 @@ namespace AutoService
         private List<Engine> _engines;
         private List<Part> _parts;
         private List<int> _years;*/
+        private List<string> FuelType;
+        private List<string> BodyType;
+        private List<Double> EngineCapacity;
+        private List<int> Years;
+
 
         private Context db = new Context();
 
@@ -39,138 +44,51 @@ namespace AutoService
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            //Loading Makes to CB
-            /*
-            _makes = db
-              .Makes
-              .OrderBy(m => m.Name)
-              .ToList();
-           _makes.Insert(0, new Make
+            //Custom body types to combobox
+            BodyType = new List<string>();
+            BodyType.Add("Berlina");
+            BodyType.Add("Break");
+            BodyType.Add("SUV");
+            BodyType.Add("Hatchback");
+            BodyType.Add("Cabrio");
+            carCbBody.DataSource = BodyType;
+
+            //Fuel types to ComboBox
+            FuelType = new List<string>();
+            FuelType.Add("Diesel");
+            FuelType.Add("Benzina");
+            FuelType.Add("GPL");
+            carCbFuel.DataSource = FuelType;
+
+            //Engine Capacity ComboBox;
+            EngineCapacity = new List<Double>();
+            for(double i = 0.8; i< 4.0; i += 0.1)
             {
-                Name = "-",
-                Id = -1
-            });
-            cbMake.DataSource = _makes;
-            cbMake.Text = "-";
-            //Loading Models to CB
-            _models = db.Models
-                .OrderBy(m => m.Name)
-                .ToList();
-            _models.Insert(0, new Model
+                EngineCapacity.Add(Math.Round(i,3));
+            }
+            carCbCapacity.DataSource = EngineCapacity;
+
+            //Years ComboBox
+            Years = new List<int>();
+            for(int i = 1990; i < 2017; i++)
             {
-                Name = "-",
-                Id = -1
-            });
-            cbModel.DataSource = _models;
-            cbModel.Text = "-";
-
-            //Loading Versions to CB
-            _versions = db.Versions
-                .OrderBy(v => v.Name)
-                .ToList();
-            cbVersion.DataSource = _versions;
-            cbVersion.Text = "-";
-
-            //Loading Years to CB
-            _years = db.Versions
-                    .Select(v => v.Year)
-                    .ToList();
-            cbYear.DataSource = _years;
-            cbYear.Text = "-";
-
-            //Loading Engines to CB
-            _engines = db.Engines
-                    .OrderBy(en => en.Name)
-                    .ToList();                    
-            cbEngine.DataSource = _engines;
-           cbEngine.Text = "-";
-
-            _parts = db.Parts
-                .OrderBy(p => p.Name)
-                .ToList();
-            lbParts.DataSource = _parts;
-            */
+                Years.Add(i);
+            }
+            carCbYear.DataSource = Years;
         }
 
         private void cbMake_SelectedValueChanged(object sender, EventArgs e)
         {
-            /*
-            if (cbMake.SelectedIndex == 0)
-            {
-                _selectedMake = null;
-                _models = null;
-               
-                cbVersion.DataSource = _versions;
-                cbModel.DataSource = _models;
-                
-            }
-            else
-            {
-                _selectedMake = cbMake.SelectedValue as Make;
-                _models = db.Models.Where(m => m.MakeId == _selectedMake.Id)
-                    .OrderBy(m => m.Name)
-                    .ToList();
-                _models.Insert(0, new Model
-                {
-                    Name = "-"
-                });
-                cbModel.DataSource = _models;
-            } */
-
+           
         }
         private void cbModel_SelectedValueChanged(object sender, EventArgs e)
         {
-            /*
-            if (cbModel.SelectedIndex == 0)
-            {
-                _versions = null;
-                _models = null;
-                cbModel.DataSource = _models;
-                cbVersion.DataSource = _versions;
             
-            }
-
-            else
-            {
-                _selectedModel = cbModel.SelectedValue as Model;
-                _versions = db.Versions
-                    .Where(v => v.ModelId == _selectedModel.Id)
-                    .OrderBy(v => v.Year)
-                    .ToList();
-              /*  _versions.Insert(0, new Models.Version
-                {
-                    Name = "-"
-                });
-
-                cbVersion.DataSource = _versions;
-                cbVersion.Text = "-";
-            } */
-
         }
 
         private void cbVersion_SelectedValueChanged(object sender, EventArgs e)
         {
-            /*
-            if (cbVersion.SelectedIndex == 0)
-            {
-                _versions = null;
-                _selectedVersion = null;
            
-                cbVersion.DataSource = _versions;
-               
-
-            }
-            else
-            {
-                _selectedModel = cbModel.SelectedValue as Model;
-                //_selectedVersion = cbVersion.SelectedValue as Models.Version;
-                _years = db.Versions
-                    .Where(ModelVersion=>ModelVersion.Model.Id==_selectedModel.Id)
-                    .Select(v=>v.Year)
-                    .ToList();
-                cbYear.DataSource = _years;
-            }
-            */
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -179,68 +97,42 @@ namespace AutoService
         }
         private void UpdateForm()
         {
-            /* cbEngine.SelectedIndex = 0;
-             cbMake.SelectedIndex = 0;
-             cbModel.SelectedIndex = 0;
-             cbVersion.SelectedIndex = 0;
-             cbYear.SelectedIndex = 0;
-             
-            _makes = db
-             .Makes
-             .OrderBy(m => m.Name)
-             .ToList();
-            /*_makes.Insert(0, new Make
-            {
-                Name = "-",
-                Id = -1
-            });
-            cbMake.DataSource = _makes;
-            cbMake.Text = "-";
-
-            //Loading Models to CB
-            _models = db.Models
-                .OrderBy(m => m.Name)
-                .ToList();
-           /* _models.Insert(0, new Model
-            {
-                Name = "-",
-                Id = -1
-            });
-            cbModel.DataSource = _models;
-            cbModel.Text = "-";
-
-            //Loading Versions to CB
-            _versions = db.Versions
-                .OrderBy(v => v.Name)
-                .ToList();
-            cbVersion.DataSource = _versions;
-            cbVersion.Text = "-";
-
-            //Loading Years to CB
-            _years = db.Versions
-                    .Select(v => v.Year)
-                    .ToList();
-            cbYear.DataSource = _years;
-            cbYear.Text = "-";
-
-            //Loading Engines to CB
-            _engines = db.Engines
-                    .OrderBy(en => en.Name)
-                    .ToList();
-            cbEngine.DataSource = _engines;
-            cbEngine.Text = "-";
-
-            _parts = db.Parts
-                .OrderBy(p => p.Name)
-                .ToList();
-            lbParts.DataSource = _parts;
-        }*/
+           
         }
 
-        private void label14_Click(object sender, EventArgs e)
+        private void carBtnAdd_Click(object sender, EventArgs e)
         {
+            //Matching Parameters
+            Car _carToBe = new Models.Car();
+            _carToBe.Body = carCbBody.Text;
+            _carToBe.Capacity = Math.Round(Convert.ToDouble(carCbCapacity.Text),3);
+            _carToBe.Fuel = carCbFuel.Text;
+            _carToBe.Make = carTbMake.Text;
+            _carToBe.Model = carTbModel.Text;
+            _carToBe.Internal_Code = carTbOem.Text;
+            _carToBe.Year = Convert.ToInt16(carCbYear.Text);
+            _carToBe.Power =Math.Round(Convert.ToDouble(carTbPower.Text),1);
+            _carToBe.Price = Math.Round(Convert.ToDouble(carTbPret.Text),3);
+
+            //Add car to DataBase
+            db.Cars.Add(_carToBe);
+            db.SaveChanges();
+
+            //Clear GUI
+            carTbPret.Text = "";
+            carTbMake.Text = "";
+            carTbModel.Text = "";
+            carTbOem.Text = "";
+            carTbPower.Text = "";
+            carCbBody.SelectedIndex = 0;
+            carCbCapacity.SelectedIndex = 0;
+            carCbFuel.SelectedIndex = 0;
+            carCbYear.SelectedIndex = 0;
+
 
         }
+
+      
     }
     
 }
