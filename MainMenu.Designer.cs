@@ -49,6 +49,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.partCbYear = new System.Windows.Forms.ComboBox();
             this.partCbModel = new System.Windows.Forms.ComboBox();
             this.partCbMake = new System.Windows.Forms.ComboBox();
@@ -78,7 +80,6 @@
             this.carTbOem = new System.Windows.Forms.TextBox();
             this.carTbPower = new System.Windows.Forms.TextBox();
             this.carTbMake = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.carTbModel = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -87,12 +88,20 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label30 = new System.Windows.Forms.Label();
+            this.dataListView1 = new BrightIdeasSoftware.DataListView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.carPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -115,6 +124,7 @@
             this.tabControl1.Size = new System.Drawing.Size(956, 475);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -295,6 +305,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label28);
+            this.tabPage2.Controls.Add(this.label27);
+            this.tabPage2.Controls.Add(this.label26);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.partCbYear);
@@ -321,6 +334,25 @@
             this.tabPage2.Text = "Piese";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(138, 265);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 23);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Vinde";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 265);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Adauga";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // partCbYear
             // 
             this.partCbYear.FormattingEnabled = true;
@@ -336,6 +368,7 @@
             this.partCbModel.Name = "partCbModel";
             this.partCbModel.Size = new System.Drawing.Size(121, 21);
             this.partCbModel.TabIndex = 14;
+            this.partCbModel.SelectedIndexChanged += new System.EventHandler(this.partCbModel_SelectedIndexChanged);
             // 
             // partCbMake
             // 
@@ -344,6 +377,7 @@
             this.partCbMake.Name = "partCbMake";
             this.partCbMake.Size = new System.Drawing.Size(121, 21);
             this.partCbMake.TabIndex = 13;
+            this.partCbMake.SelectedIndexChanged += new System.EventHandler(this.partCbMake_SelectedIndexChanged);
             // 
             // label25
             // 
@@ -454,6 +488,11 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dataListView1);
+            this.tabPage3.Controls.Add(this.dateTimePicker2);
+            this.tabPage3.Controls.Add(this.label30);
+            this.tabPage3.Controls.Add(this.dateTimePicker1);
+            this.tabPage3.Controls.Add(this.label29);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -475,7 +514,6 @@
             this.carPanel.Controls.Add(this.carTbOem);
             this.carPanel.Controls.Add(this.carTbPower);
             this.carPanel.Controls.Add(this.carTbMake);
-            this.carPanel.Controls.Add(this.textBox3);
             this.carPanel.Controls.Add(this.carTbModel);
             this.carPanel.Controls.Add(this.label15);
             this.carPanel.Controls.Add(this.label14);
@@ -580,13 +618,6 @@
             this.carTbMake.Size = new System.Drawing.Size(133, 20);
             this.carTbMake.TabIndex = 10;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(568, 216);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(8, 20);
-            this.textBox3.TabIndex = 9;
-            // 
             // carTbModel
             // 
             this.carTbModel.Location = new System.Drawing.Point(8, 86);
@@ -657,23 +688,95 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Marca";
             // 
-            // button1
+            // label26
             // 
-            this.button1.Location = new System.Drawing.Point(23, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Adauga";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label26.AutoSize = true;
+            this.label26.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label26.ForeColor = System.Drawing.Color.Crimson;
+            this.label26.Location = new System.Drawing.Point(403, 108);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(12, 13);
+            this.label26.TabIndex = 19;
+            this.label26.Text = "x";
+            this.label26.Click += new System.EventHandler(this.label26_Click);
             // 
-            // button2
+            // label27
             // 
-            this.button2.Location = new System.Drawing.Point(138, 265);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Vinde";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label27.AutoSize = true;
+            this.label27.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label27.ForeColor = System.Drawing.Color.Crimson;
+            this.label27.Location = new System.Drawing.Point(403, 154);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(12, 13);
+            this.label27.TabIndex = 20;
+            this.label27.Text = "x";
+            this.label27.Click += new System.EventHandler(this.label27_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label28.ForeColor = System.Drawing.Color.Crimson;
+            this.label28.Location = new System.Drawing.Point(403, 203);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(12, 13);
+            this.label28.TabIndex = 21;
+            this.label28.Text = "x";
+            this.label28.Click += new System.EventHandler(this.label28_Click);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(8, 12);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(56, 13);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "Data start:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(70, 9);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(187, 20);
+            this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(752, 10);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(187, 20);
+            this.dateTimePicker2.TabIndex = 3;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(690, 13);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(63, 13);
+            this.label30.TabIndex = 2;
+            this.label30.Text = "Data sfarsit:";
+            this.label30.Click += new System.EventHandler(this.label30_Click);
+            // 
+            // dataListView1
+            // 
+            this.dataListView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dataListView1.DataSource = null;
+            this.dataListView1.GridLines = true;
+            this.dataListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.dataListView1.Location = new System.Drawing.Point(11, 35);
+            this.dataListView1.MultiSelect = false;
+            this.dataListView1.Name = "dataListView1";
+            this.dataListView1.ShowGroups = false;
+            this.dataListView1.ShowSortIndicators = false;
+            this.dataListView1.Size = new System.Drawing.Size(928, 407);
+            this.dataListView1.SortGroupItemsByPrimaryColumn = false;
+            this.dataListView1.TabIndex = 4;
+            this.dataListView1.UseCompatibleStateImageBehavior = false;
+            this.dataListView1.View = System.Windows.Forms.View.Details;
             // 
             // MainMenu
             // 
@@ -691,8 +794,11 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.carPanel.ResumeLayout(false);
             this.carPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -726,7 +832,6 @@
         private System.Windows.Forms.TextBox carTbOem;
         private System.Windows.Forms.TextBox carTbPower;
         private System.Windows.Forms.TextBox carTbMake;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox carTbModel;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -761,5 +866,13 @@
         private System.Windows.Forms.TextBox partTbName;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label30;
+        private BrightIdeasSoftware.DataListView dataListView1;
     }
 }

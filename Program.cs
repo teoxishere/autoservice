@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +18,15 @@ namespace AutoService
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("ro-RO");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("ro-RO");
+            try
+            {
+                Application.Run(new MainMenu());
+            } catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Eroare fatala", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

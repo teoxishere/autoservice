@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace AutoService
 {
-    public partial class MainWindow : Form
+    public partial class Teste : Form
     {
         /*
         private List<Make> _makes;
@@ -25,7 +25,7 @@ namespace AutoService
         private Models.Version _selectedVersion;
         */
 
-        public MainWindow()
+        public Teste()
         {
             InitializeComponent();
 

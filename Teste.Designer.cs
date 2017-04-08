@@ -1,6 +1,6 @@
 ﻿namespace AutoService
 {
-    partial class MainWindow
+    partial class Teste
     {
         /// <summary>
         /// Required designer variable.
