@@ -25,9 +25,17 @@ namespace AutoService
         private List<Double> EngineCapacity;
         private List<int> Years;
 
+        //Piese Components
         private List<int> _pieseYears = new List<int>();
         private List<string> _pieseModels = new List<string>();
         private List<string> _pieseMakes = new List<string>();
+
+        //SearchTab Components
+        private List<string> _searchMakes = new List<string>();
+        private List<string> _searchModels = new List<string>();
+        private List<int> _searchYears = new List<int>();
+        private List<double> _searchEngine = new List<double>();
+        private List<string> _searchParts = new List<string>();
 
         private Context db = new Context();
 
@@ -60,8 +68,7 @@ namespace AutoService
             //Fuel types to ComboBox
             FuelType = new List<string>();
             FuelType.Add("Diesel");
-            FuelType.Add("Benzina");
-            FuelType.Add("GPL");
+            FuelType.Add("Benzina-GPL");
             carCbFuel.DataSource = FuelType;
 
             //Engine Capacity ComboBox;
@@ -79,21 +86,81 @@ namespace AutoService
                 Years.Add(i);
             }
             carCbYear.DataSource = Years;
+            _searchMakes = db.Cars
+                   .Select(c => c.Make)
+                   .Distinct()
+                   .OrderBy(m => m)
+                   .ToList();
+
+            //Loading Search Tab
+
+            searchCbMake.SelectedIndexChanged -= searchCbMake_SelectedIndexChanged;
+            searchCbMake.DataSource = _searchMakes;
+            searchCbMake.SelectedIndex = -1;
+            searchCbMake.SelectedIndexChanged += searchCbMake_SelectedIndexChanged;
+            _searchParts = db.Parts
+                    //.Where(p=>p.Name)
+                    .Select(p => p.Name)
+                    .OrderBy(n => n)
+                    .ToList();
+            lbParts.DataSource = _searchParts;
+
+            
         }
 
-        private void cbMake_SelectedValueChanged(object sender, EventArgs e)
+       
+        private void searchCbMake_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (searchCbMake.SelectedIndex > -1 && !string.IsNullOrEmpty(searchCbMake.SelectedValue as string))
+            {
+                // populate models
+                var selectedMake = searchCbMake.SelectedValue as string;
+                _searchModels = db
+                    .Cars
+                    .Where(c => c.Make.Equals(selectedMake))
+                    .Select(c => c.Model)
+                    .Distinct()
+                    .OrderBy(m => m)
+                    .ToList();
 
+                searchCbModel.SelectedIndexChanged -= searchCbModel_SelectedIndexChanged;
+                searchCbModel.DataSource = _searchModels;
+                searchCbModel.SelectedIndex = -1;
+                searchCbModel.SelectedIndexChanged += searchCbModel_SelectedIndexChanged;
+
+                _searchYears = db
+                    .Cars
+                    .Where(c => c.Make.Equals(selectedMake))
+                    .Select(c => c.Year)
+                    .Distinct()
+                    .OrderBy(y => y)
+                    .ToList();
+                searchCbYear.DataSource = _searchYears;
+                searchCbYear.SelectedIndex = -1;
+            }
         }
-        private void cbModel_SelectedValueChanged(object sender, EventArgs e)
+        private void searchCbModel_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (searchCbModel.SelectedIndex > -1 && !string.IsNullOrEmpty(searchCbModel.SelectedValue as string))
+            {
 
+                var selectedModel = searchCbModel.SelectedValue as string;
+                var selectedMake = searchCbMake.SelectedValue as string;
+
+                _searchYears = db
+                    .Cars
+                    .Where(c => c.Make.Equals(selectedMake) && c.Model.Equals(selectedModel))
+                    .Select(c => c.Year)
+                    .Distinct()
+                    .OrderBy(y => y)
+                    .ToList();
+
+                searchCbYear.DataSource = _searchYears;
+                searchCbYear.SelectedIndex = -1;
+            }
         }
 
-        private void cbVersion_SelectedValueChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -146,6 +213,7 @@ namespace AutoService
             carCbYear.SelectedIndex = 0;
         }
 
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedIndex == 1)
@@ -170,13 +238,26 @@ namespace AutoService
                 dateTimePicker2.Value = DateTime.Now;
                 dateTimePicker1.Value = DateTime.Now.AddMonths(-1);
 
-                dateTimePicker2.MaxDate = DateTime.Now;
+               // dateTimePicker2.MaxDate = DateTime.Now;
                 dateTimePicker1.MaxDate = DateTime.Now;
                 dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
 
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }else if(tabControl1.SelectedIndex==0){
+                //Search Screen
+                _searchMakes = db.Cars
+                    .Select(c => c.Make)
+                    .Distinct()
+                    .OrderBy(m=>m)
+                    .ToList();
+               searchCbMake.SelectedIndexChanged -= searchCbMake_SelectedIndexChanged;
+               searchCbMake.DataSource = _searchMakes;
+               searchCbMake.SelectedIndex = -1;
+               searchCbMake.SelectedIndexChanged += searchCbMake_SelectedIndexChanged;
+
             }
+      
         }
 
         private void partCbMake_SelectedIndexChanged(object sender, EventArgs e)
@@ -235,53 +316,66 @@ namespace AutoService
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // get the car(s) with respect to the filters (3)
-            var carsQuery = db.Cars.AsQueryable();
             if (partCbMake.SelectedValue != null)
             {
-                var selectedMake = partCbMake.SelectedValue.ToString();
-                carsQuery = carsQuery.Where(c => c.Make.Equals(selectedMake));
-            }
-            if (partCbModel.SelectedValue != null)
-            {
-                var selectedModel = partCbModel.SelectedValue.ToString();
-                carsQuery = carsQuery.Where(c => c.Model.Equals(selectedModel));
-            }
-            if (partCbYear.SelectedValue != null)
-            {
-                var yearAsInt = int.Parse(partCbYear.SelectedValue.ToString());
-                carsQuery = carsQuery.Where(c => c.Year == yearAsInt);
-            }
-            var allReturnedCars = carsQuery.Distinct()
-                .OrderBy(c => c.Make)
-                .ThenBy(c => c.Model)
-                .ThenBy(c => c.Year)
-                .ThenBy(c => c.Internal_Code)
-                .ToList();
+                // get the car(s) with respect to the filters (3)
+                var carsQuery = db.Cars.AsQueryable();
+                if (partCbMake.SelectedValue != null)
+                {
+                    var selectedMake = partCbMake.SelectedValue.ToString();
+                    carsQuery = carsQuery.Where(c => c.Make.Equals(selectedMake));
+                }
+                if (partCbModel.SelectedValue != null)
+                {
+                    var selectedModel = partCbModel.SelectedValue.ToString();
+                    carsQuery = carsQuery.Where(c => c.Model.Equals(selectedModel));
+                }
+                if (partCbYear.SelectedValue != null)
+                {
+                    var yearAsInt = int.Parse(partCbYear.SelectedValue.ToString());
+                    carsQuery = carsQuery.Where(c => c.Year == yearAsInt);
+                }
+                var allReturnedCars = carsQuery.Distinct()
+                    .OrderBy(c => c.Make)
+                    .ThenBy(c => c.Model)
+                    .ThenBy(c => c.Year)
+                    .ThenBy(c => c.Internal_Code)
+                    .ToList();
 
-            var partToBe = new Part
-            {
-                Name = partTbName.Text,
-                Quantity = double.Parse(partTbQty.Text),
-                BarCode = "gen",
-                Details = partTbDetails.Text,
-                Price = double.Parse(partTbPrice.Text),
-                Oem_Code = partTbOem.Text
-            };
-            partToBe.Cars = allReturnedCars;
-            db.Parts.Add(partToBe);
-            db.SaveChanges();
+                var partToBe = new Part
+                {
+                    Name = partTbName.Text,
+                    Quantity = double.Parse(partTbQty.Text),
+                    BarCode = "gen",
+                    Details = partTbDetails.Text,
+                    Price = double.Parse(partTbPrice.Text),
+                    Oem_Code = partTbOem.Text
+                };
+                partToBe.Cars = allReturnedCars;
+                db.Parts.Add(partToBe);
+                db.SaveChanges();
 
-            LoggingService.Log(Enums.ActionsEnum.AddPart, "S-a adaugat piesa " + partToBe.Name + " la masinile: " + 
-                string.Join(",", allReturnedCars.Select(c => c.Make + " " + c.Model + " " + c.Year).ToList())
-                );
-            MessageBox.Show("Piesa adaugata cu succes la " + allReturnedCars.Count + " masini.");
-            PartGUIReset();
+                LoggingService.Log(Enums.ActionsEnum.AddPart, "S-a adaugat piesa " + partToBe.Name + " la masinile: " +
+                    string.Join(",", allReturnedCars.Select(c => c.Make + " " + c.Model + " " + c.Year).ToList())
+                    );
+                MessageBox.Show("Piesa adaugata cu succes la " + allReturnedCars.Count + " masini.");
+                PartGUIReset();
+            }else
+            {
+                MessageBox.Show("Alegeti Marca Masinii!!");
+            }
         }
 
         private void PartGUIReset()
         {
-            // TODO
+            partCbMake.SelectedIndex = -1;
+            partCbModel.SelectedIndex = -1;
+            partCbYear.SelectedIndex = -1;
+            partTbDetails.Text = "";
+            partTbName.Text = "";
+            partTbOem.Text = "";
+            partTbPrice.Text = "";
+            partTbQty.Text = "";
         }
 
         private void label26_Click(object sender, EventArgs e)
@@ -333,6 +427,23 @@ namespace AutoService
             dataListView1.Clear();
             dataListView1.DataSource = logEntries;
         }
+
+        private void searchCbYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedMake = searchCbMake.SelectedValue as string;
+            var selectedModel = searchCbModel.SelectedValue as string;
+
+            _searchEngine = db.Cars
+                            .Where(c => c.Make.Equals(selectedMake) && c.Model.Equals(selectedModel))
+                            .Select(ca => ca.Capacity)
+                            .Distinct()
+                            .OrderBy(ca => ca)
+                            .ToList();
+            searchCbEngine.DataSource = _searchEngine;
+            searchCbEngine.SelectedIndex = -1;
+        }
+
+       
     }
 
 }

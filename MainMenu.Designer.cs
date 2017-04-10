@@ -37,18 +37,19 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lbResult = new System.Windows.Forms.ListBox();
             this.lbParts = new System.Windows.Forms.ListBox();
-            this.cbEngine = new System.Windows.Forms.ComboBox();
-            this.cbYear = new System.Windows.Forms.ComboBox();
-            this.cbVersion = new System.Windows.Forms.ComboBox();
-            this.cbModel = new System.Windows.Forms.ComboBox();
-            this.cbMake = new System.Windows.Forms.ComboBox();
+            this.searchCbEngine = new System.Windows.Forms.ComboBox();
+            this.searchCbYear = new System.Windows.Forms.ComboBox();
+            this.searchCbModel = new System.Windows.Forms.ComboBox();
+            this.searchCbMake = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.partCbYear = new System.Windows.Forms.ComboBox();
@@ -68,6 +69,11 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataListView1 = new BrightIdeasSoftware.DataListView();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label30 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label29 = new System.Windows.Forms.Label();
             this.carPanel = new System.Windows.Forms.TabPage();
             this.carTbPret = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -88,20 +94,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label30 = new System.Windows.Forms.Label();
-            this.dataListView1 = new BrightIdeasSoftware.DataListView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.carPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
+            this.carPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -134,14 +132,12 @@
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.lbResult);
             this.tabPage1.Controls.Add(this.lbParts);
-            this.tabPage1.Controls.Add(this.cbEngine);
-            this.tabPage1.Controls.Add(this.cbYear);
-            this.tabPage1.Controls.Add(this.cbVersion);
-            this.tabPage1.Controls.Add(this.cbModel);
-            this.tabPage1.Controls.Add(this.cbMake);
+            this.tabPage1.Controls.Add(this.searchCbEngine);
+            this.tabPage1.Controls.Add(this.searchCbYear);
+            this.tabPage1.Controls.Add(this.searchCbModel);
+            this.tabPage1.Controls.Add(this.searchCbMake);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
@@ -150,7 +146,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(948, 449);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Piese";
+            this.tabPage1.Text = "Cautare";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnRefresh
@@ -168,7 +164,7 @@
             this.tbSearch.Location = new System.Drawing.Point(120, 35);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(346, 20);
-            this.tbSearch.TabIndex = 17;
+            this.tbSearch.TabIndex = 1;
             // 
             // label8
             // 
@@ -206,52 +202,46 @@
             this.lbParts.Size = new System.Drawing.Size(158, 251);
             this.lbParts.TabIndex = 13;
             // 
-            // cbEngine
+            // searchCbEngine
             // 
-            this.cbEngine.FormattingEnabled = true;
-            this.cbEngine.Location = new System.Drawing.Point(136, 227);
-            this.cbEngine.Name = "cbEngine";
-            this.cbEngine.Size = new System.Drawing.Size(146, 21);
-            this.cbEngine.TabIndex = 12;
+            this.searchCbEngine.FormattingEnabled = true;
+            this.searchCbEngine.Location = new System.Drawing.Point(136, 196);
+            this.searchCbEngine.Name = "searchCbEngine";
+            this.searchCbEngine.Size = new System.Drawing.Size(146, 21);
+            this.searchCbEngine.TabIndex = 5;
+   
             // 
-            // cbYear
+            // searchCbYear
             // 
-            this.cbYear.FormattingEnabled = true;
-            this.cbYear.Location = new System.Drawing.Point(136, 193);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(146, 21);
-            this.cbYear.TabIndex = 10;
+            this.searchCbYear.FormattingEnabled = true;
+            this.searchCbYear.Location = new System.Drawing.Point(136, 159);
+            this.searchCbYear.Name = "searchCbYear";
+            this.searchCbYear.Size = new System.Drawing.Size(146, 21);
+            this.searchCbYear.TabIndex = 4;
+            this.searchCbYear.SelectedIndexChanged += new System.EventHandler(this.searchCbYear_SelectedIndexChanged);
             // 
-            // cbVersion
+            // searchCbModel
             // 
-            this.cbVersion.FormattingEnabled = true;
-            this.cbVersion.Location = new System.Drawing.Point(136, 154);
-            this.cbVersion.Name = "cbVersion";
-            this.cbVersion.Size = new System.Drawing.Size(146, 21);
-            this.cbVersion.TabIndex = 9;
+            this.searchCbModel.FormattingEnabled = true;
+            this.searchCbModel.Location = new System.Drawing.Point(136, 117);
+            this.searchCbModel.Name = "searchCbModel";
+            this.searchCbModel.Size = new System.Drawing.Size(146, 21);
+            this.searchCbModel.TabIndex = 3;
+            this.searchCbModel.SelectedValueChanged += new System.EventHandler(this.searchCbModel_SelectedIndexChanged);
             // 
-            // cbModel
+            // searchCbMake
             // 
-            this.cbModel.FormattingEnabled = true;
-            this.cbModel.Location = new System.Drawing.Point(136, 117);
-            this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(146, 21);
-            this.cbModel.TabIndex = 8;
-            this.cbModel.SelectedValueChanged += new System.EventHandler(this.cbModel_SelectedValueChanged);
-            // 
-            // cbMake
-            // 
-            this.cbMake.FormattingEnabled = true;
-            this.cbMake.Location = new System.Drawing.Point(136, 79);
-            this.cbMake.Name = "cbMake";
-            this.cbMake.Size = new System.Drawing.Size(146, 21);
-            this.cbMake.TabIndex = 7;
-            this.cbMake.SelectedIndexChanged += new System.EventHandler(this.cbMake_SelectedValueChanged);
+            this.searchCbMake.FormattingEnabled = true;
+            this.searchCbMake.Location = new System.Drawing.Point(136, 79);
+            this.searchCbMake.Name = "searchCbMake";
+            this.searchCbMake.Size = new System.Drawing.Size(146, 21);
+            this.searchCbMake.TabIndex = 2;
+            this.searchCbMake.SelectedIndexChanged += new System.EventHandler(this.searchCbMake_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(42, 235);
+            this.label6.Location = new System.Drawing.Point(42, 196);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 5;
@@ -260,20 +250,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 201);
+            this.label5.Location = new System.Drawing.Point(42, 159);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "An fabricatie";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 162);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Versiune";
             // 
             // label3
             // 
@@ -333,6 +314,42 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Piese";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label28.ForeColor = System.Drawing.Color.Crimson;
+            this.label28.Location = new System.Drawing.Point(403, 203);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(12, 13);
+            this.label28.TabIndex = 21;
+            this.label28.Text = "x";
+            this.label28.Click += new System.EventHandler(this.label28_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label27.ForeColor = System.Drawing.Color.Crimson;
+            this.label27.Location = new System.Drawing.Point(403, 154);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(12, 13);
+            this.label27.TabIndex = 20;
+            this.label27.Text = "x";
+            this.label27.Click += new System.EventHandler(this.label27_Click);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label26.ForeColor = System.Drawing.Color.Crimson;
+            this.label26.Location = new System.Drawing.Point(403, 108);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(12, 13);
+            this.label26.TabIndex = 19;
+            this.label26.Text = "x";
+            this.label26.Click += new System.EventHandler(this.label26_Click);
             // 
             // button2
             // 
@@ -500,6 +517,60 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Rapoarte";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataListView1
+            // 
+            this.dataListView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dataListView1.DataSource = null;
+            this.dataListView1.GridLines = true;
+            this.dataListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.dataListView1.Location = new System.Drawing.Point(11, 35);
+            this.dataListView1.MultiSelect = false;
+            this.dataListView1.Name = "dataListView1";
+            this.dataListView1.ShowGroups = false;
+            this.dataListView1.ShowSortIndicators = false;
+            this.dataListView1.Size = new System.Drawing.Size(928, 407);
+            this.dataListView1.SortGroupItemsByPrimaryColumn = false;
+            this.dataListView1.TabIndex = 4;
+            this.dataListView1.UseCompatibleStateImageBehavior = false;
+            this.dataListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(752, 10);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(187, 20);
+            this.dateTimePicker2.TabIndex = 3;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(690, 13);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(63, 13);
+            this.label30.TabIndex = 2;
+            this.label30.Text = "Data sfarsit:";
+            this.label30.Click += new System.EventHandler(this.label30_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(70, 9);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(187, 20);
+            this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(8, 12);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(56, 13);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "Data start:";
             // 
             // carPanel
             // 
@@ -688,96 +759,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Marca";
             // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label26.ForeColor = System.Drawing.Color.Crimson;
-            this.label26.Location = new System.Drawing.Point(403, 108);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(12, 13);
-            this.label26.TabIndex = 19;
-            this.label26.Text = "x";
-            this.label26.Click += new System.EventHandler(this.label26_Click);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label27.ForeColor = System.Drawing.Color.Crimson;
-            this.label27.Location = new System.Drawing.Point(403, 154);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(12, 13);
-            this.label27.TabIndex = 20;
-            this.label27.Text = "x";
-            this.label27.Click += new System.EventHandler(this.label27_Click);
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label28.ForeColor = System.Drawing.Color.Crimson;
-            this.label28.Location = new System.Drawing.Point(403, 203);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(12, 13);
-            this.label28.TabIndex = 21;
-            this.label28.Text = "x";
-            this.label28.Click += new System.EventHandler(this.label28_Click);
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(8, 12);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(56, 13);
-            this.label29.TabIndex = 0;
-            this.label29.Text = "Data start:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(70, 9);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(187, 20);
-            this.dateTimePicker1.TabIndex = 1;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(752, 10);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(187, 20);
-            this.dateTimePicker2.TabIndex = 3;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(690, 13);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(63, 13);
-            this.label30.TabIndex = 2;
-            this.label30.Text = "Data sfarsit:";
-            this.label30.Click += new System.EventHandler(this.label30_Click);
-            // 
-            // dataListView1
-            // 
-            this.dataListView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dataListView1.DataSource = null;
-            this.dataListView1.GridLines = true;
-            this.dataListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.dataListView1.Location = new System.Drawing.Point(11, 35);
-            this.dataListView1.MultiSelect = false;
-            this.dataListView1.Name = "dataListView1";
-            this.dataListView1.ShowGroups = false;
-            this.dataListView1.ShowSortIndicators = false;
-            this.dataListView1.Size = new System.Drawing.Size(928, 407);
-            this.dataListView1.SortGroupItemsByPrimaryColumn = false;
-            this.dataListView1.TabIndex = 4;
-            this.dataListView1.UseCompatibleStateImageBehavior = false;
-            this.dataListView1.View = System.Windows.Forms.View.Details;
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,9 +777,9 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
             this.carPanel.ResumeLayout(false);
             this.carPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -813,15 +794,13 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbEngine;
-        private System.Windows.Forms.ComboBox cbYear;
-        private System.Windows.Forms.ComboBox cbVersion;
-        private System.Windows.Forms.ComboBox cbModel;
-        private System.Windows.Forms.ComboBox cbMake;
+        private System.Windows.Forms.ComboBox searchCbEngine;
+        private System.Windows.Forms.ComboBox searchCbYear;
+        private System.Windows.Forms.ComboBox searchCbModel;
+        private System.Windows.Forms.ComboBox searchCbMake;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox lbResult;
