@@ -165,6 +165,7 @@
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(346, 20);
             this.tbSearch.TabIndex = 1;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // label8
             // 
@@ -201,6 +202,7 @@
             this.lbParts.Name = "lbParts";
             this.lbParts.Size = new System.Drawing.Size(158, 251);
             this.lbParts.TabIndex = 13;
+            this.lbParts.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbParts_MouseClick);
             // 
             // searchCbEngine
             // 
@@ -209,7 +211,7 @@
             this.searchCbEngine.Name = "searchCbEngine";
             this.searchCbEngine.Size = new System.Drawing.Size(146, 21);
             this.searchCbEngine.TabIndex = 5;
-   
+            this.searchCbEngine.SelectedIndexChanged += new System.EventHandler(this.searchCbEngine_SelectedIndexChanged);
             // 
             // searchCbYear
             // 

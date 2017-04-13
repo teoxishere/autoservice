@@ -1,0 +1,19 @@
+-Filter list from CB's and textbox
+-Put in string result :make,model,year
+-Click Frame for results
+-Facturi Model
+
+
+///////////////
+On Logs
+//////////////
+
+Value of components: buy/sell
+Frame with costs at end of certain Period
+
+/////////////
+On Cars & Parts
+/////////////
+
+Image Layout for parts & cars on pannel
+Link them somewhat to the db

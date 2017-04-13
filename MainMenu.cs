@@ -137,6 +137,7 @@ namespace AutoService
                     .ToList();
                 searchCbYear.DataSource = _searchYears;
                 searchCbYear.SelectedIndex = -1;
+                ReCheck();
             }
         }
         private void searchCbModel_SelectedIndexChanged(object sender, EventArgs e)
@@ -311,6 +312,7 @@ namespace AutoService
 
                 partCbYear.DataSource = _pieseYears;
                 partCbYear.SelectedIndex = -1;
+                ReCheck();
             }
         }
 
@@ -441,9 +443,86 @@ namespace AutoService
                             .ToList();
             searchCbEngine.DataSource = _searchEngine;
             searchCbEngine.SelectedIndex = -1;
+          //  ReCheck();
+        }
+        //SearchBar with respect 4 filters!!!
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            ReCheck();
+        }
+        private void ReCheck()
+        {
+            var searchString = tbSearch.Text;
+            var partQuery = db.Cars.AsQueryable();
+            /*      if (partCbMake.SelectedValue != null)
+                  {
+                      var selectedMake = partCbMake.SelectedValue.ToString();
+                      carsQuery = carsQuery.Where(c => c.Make.Equals(selectedMake));
+                  }
+                  */
+            if (searchCbMake.SelectedValue != null)
+            {
+                var make = searchCbMake.SelectedValue.ToString();
+                partQuery = partQuery.Where(c => c.Make.Equals(make));
+            }
+            if (searchCbModel.SelectedValue != null)
+            {
+                var model = searchCbModel.SelectedValue.ToString();
+                partQuery = partQuery.Where(c => c.Model.Equals(model));
+            }
+            if (searchCbYear.SelectedValue != null)
+            {
+                var year = searchCbYear.SelectedValue.ToString();
+                partQuery = partQuery.Where(c => c.Year.Equals(year));
+            }
+            if (searchCbEngine.SelectedValue != null)
+            {
+                var cc = searchCbEngine.SelectedValue.ToString();
+                partQuery = partQuery.Where(c => c.Capacity.Equals(cc));
+            }
+
+            var carList = partQuery
+                    .Distinct()
+                    .OrderBy(c => c.Id)
+                    .ToList();
+
+            var returnedParts = partQuery
+                    .Join(db.Parts,
+                        qq => qq.Id,
+                        pa => pa.Id,
+                        (qq, pa) => new { qq, pa })
+                        .Where(a => a.pa.Name.StartsWith(searchString))
+                        .Select(a => a.pa.Name)
+                        .Distinct()
+                        .ToList();
+
+
+
+            lbParts.DataSource = returnedParts;
+
         }
 
-       
+        private void searchCbEngine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          //  ReCheck();
+        }
+
+        private void lbParts_MouseClick(object sender, MouseEventArgs e)
+        {
+            var _listPart = lbParts.SelectedItem.ToString();
+            var _listCars = db.Cars
+                .Join(db.Parts,
+                    c => c.Id,
+                    p => p.Id,
+                    (c, p) => new { c, p })
+                .Where(i=>i.p.Name.Equals(_listPart))
+                .Select(i => new { i.c.Make, i.c.Model, i.c.Year, i.c.Power })
+             //   .Select(g=>g)
+             //   .Distinct()
+                .ToList();
+            lbResult.DataSource = _listCars;
+        }
+    }
     }
 
-}
+
