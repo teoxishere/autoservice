@@ -99,7 +99,21 @@
     <Compile Include="Migrations\201704081544575_AddedLogEntryTable.Designer.cs">
       <DependentUpon>201704081544575_AddedLogEntryTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704172013194_addedPrice.cs" />
+    <Compile Include="Migrations\201704172013194_addedPrice.Designer.cs">
+      <DependentUpon>201704172013194_addedPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704221310072_AddedInStockDP.cs" />
+    <Compile Include="Migrations\201704221310072_AddedInStockDP.Designer.cs">
+      <DependentUpon>201704221310072_AddedInStockDP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\LogEntry.cs" />
+    <Compile Include="PartInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartInfoForm.Designer.cs">
+      <DependentUpon>PartInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\LoggingService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Teste.cs">
@@ -131,6 +145,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704081544575_AddedLogEntryTable.resx">
       <DependentUpon>201704081544575_AddedLogEntryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704172013194_addedPrice.resx">
+      <DependentUpon>201704172013194_addedPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704221310072_AddedInStockDP.resx">
+      <DependentUpon>201704221310072_AddedInStockDP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartInfoForm.resx">
+      <DependentUpon>PartInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Teste.resx">
       <DependentUpon>Teste.cs</DependentUpon>
@@ -166,6 +189,8 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ValueObjects\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,10 +6,11 @@ namespace AutoService.Services
 {
     public class LoggingService
     {
-        public static void Log(ActionsEnum action, string description = null)
+        public static void Log(ActionsEnum action,double prix, string description = null)
         {
             var logEntry = new LogEntry {
                 Action = action,
+                Price=prix,
                 Date = DateTime.Now,
                 Description = description,
                 Username = UserService.LoggedInUser == null ? "unkown" : UserService.LoggedInUser.Username

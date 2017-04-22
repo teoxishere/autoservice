@@ -14,12 +14,7 @@ namespace AutoService
 {
     public partial class MainMenu : Form
     {
-        /*private List<Make> _makes;
-        private List<Model> _models;
-        private List<Models.Version> _versions;
-        private List<Engine> _engines;
-        private List<Part> _parts;
-        private List<int> _years;*/
+        //Car Tab Pre-defined choices
         private List<string> FuelType;
         private List<string> BodyType;
         private List<Double> EngineCapacity;
@@ -36,6 +31,12 @@ namespace AutoService
         private List<int> _searchYears = new List<int>();
         private List<double> _searchEngine = new List<double>();
         private List<string> _searchParts = new List<string>();
+        private List<Car> resultCars = new List<Car>();
+        public List<Part> resultParts = new List<Part>();
+
+        //Objects Sent to other frames
+        private Part _selectedPart = new Part();
+        private Car _selectedCar = new Car();
 
         private Context db = new Context();
 
@@ -98,17 +99,11 @@ namespace AutoService
             searchCbMake.DataSource = _searchMakes;
             searchCbMake.SelectedIndex = -1;
             searchCbMake.SelectedIndexChanged += searchCbMake_SelectedIndexChanged;
-            _searchParts = db.Parts
-                    //.Where(p=>p.Name)
-                    .Select(p => p.Name)
-                    .OrderBy(n => n)
-                    .ToList();
-            lbParts.DataSource = _searchParts;
 
-            
+            ReCheck(tbSearch.Text);         
         }
 
-       
+
         private void searchCbMake_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (searchCbMake.SelectedIndex > -1 && !string.IsNullOrEmpty(searchCbMake.SelectedValue as string))
@@ -137,7 +132,7 @@ namespace AutoService
                     .ToList();
                 searchCbYear.DataSource = _searchYears;
                 searchCbYear.SelectedIndex = -1;
-                ReCheck();
+                ReCheck(tbSearch.Text);
             }
         }
         private void searchCbModel_SelectedIndexChanged(object sender, EventArgs e)
@@ -161,7 +156,7 @@ namespace AutoService
             }
         }
 
-       
+
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -172,7 +167,7 @@ namespace AutoService
         {
 
         }
-
+        // Add Car Button --Logg here!
         private void carBtnAdd_Click(object sender, EventArgs e)
         {
             //Matching Parameters
@@ -195,7 +190,7 @@ namespace AutoService
 
             ClearGUI();
 
-            LoggingService.Log(Enums.ActionsEnum.AddCar, "S-a adaugat masina " + _carToBe.Make + " " + _carToBe.Model + " " + _carToBe.Year);
+            LoggingService.Log(Enums.ActionsEnum.AdaugareMasina,_carToBe.Price ,"S-a adaugat masina " + _carToBe.Make + " " + _carToBe.Model + " " + _carToBe.Year);
 
             MessageBox.Show("Masina adaugata cu succes.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -217,6 +212,7 @@ namespace AutoService
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
             if (tabControl1.SelectedIndex == 1)
             {
                 // Piese screen
@@ -239,26 +235,26 @@ namespace AutoService
                 dateTimePicker2.Value = DateTime.Now;
                 dateTimePicker1.Value = DateTime.Now.AddMonths(-1);
 
-               // dateTimePicker2.MaxDate = DateTime.Now;
+                // dateTimePicker2.MaxDate = DateTime.Now;
                 dateTimePicker1.MaxDate = DateTime.Now;
                 dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
 
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }else if(tabControl1.SelectedIndex==0){
+            } else if (tabControl1.SelectedIndex == 0) {
                 //Search Screen
                 _searchMakes = db.Cars
                     .Select(c => c.Make)
                     .Distinct()
-                    .OrderBy(m=>m)
+                    .OrderBy(m => m)
                     .ToList();
-               searchCbMake.SelectedIndexChanged -= searchCbMake_SelectedIndexChanged;
-               searchCbMake.DataSource = _searchMakes;
-               searchCbMake.SelectedIndex = -1;
-               searchCbMake.SelectedIndexChanged += searchCbMake_SelectedIndexChanged;
-
+                searchCbMake.SelectedIndexChanged -= searchCbMake_SelectedIndexChanged;
+                searchCbMake.DataSource = _searchMakes;
+                searchCbMake.SelectedIndex = -1;
+                searchCbMake.SelectedIndexChanged += searchCbMake_SelectedIndexChanged;
+                ReCheck(tbSearch.Text);
             }
-      
+
         }
 
         private void partCbMake_SelectedIndexChanged(object sender, EventArgs e)
@@ -311,22 +307,26 @@ namespace AutoService
                     .ToList();
 
                 partCbYear.DataSource = _pieseYears;
+                lbParts.DataSource = resultParts;
                 partCbYear.SelectedIndex = -1;
-                ReCheck();
+                ReCheck(tbSearch.Text);
             }
         }
-
+        //Add Part Button
         private void button1_Click(object sender, EventArgs e)
         {
-            if (partCbMake.SelectedValue != null)
+            AddOrSellPart(true);
+        }
+
+        private void AddOrSellPart(bool inStock)
+        {
+            if (partCbMake.SelectedValue != null && !string.IsNullOrWhiteSpace(partTbName.Text) && !string.IsNullOrWhiteSpace(partTbPrice.Text) && !string.IsNullOrWhiteSpace(partTbOem.Text))
             {
-                // get the car(s) with respect to the filters (3)
+                //      get the car(s) with respect to the filters (3)
                 var carsQuery = db.Cars.AsQueryable();
-                if (partCbMake.SelectedValue != null)
-                {
-                    var selectedMake = partCbMake.SelectedValue.ToString();
-                    carsQuery = carsQuery.Where(c => c.Make.Equals(selectedMake));
-                }
+                var selectedMake = partCbMake.SelectedValue.ToString();
+                carsQuery = carsQuery.Where(c => c.Make.Equals(selectedMake));
+
                 if (partCbModel.SelectedValue != null)
                 {
                     var selectedModel = partCbModel.SelectedValue.ToString();
@@ -351,20 +351,30 @@ namespace AutoService
                     BarCode = "gen",
                     Details = partTbDetails.Text,
                     Price = double.Parse(partTbPrice.Text),
-                    Oem_Code = partTbOem.Text
+                    Oem_Code = partTbOem.Text,
+                    InStock = inStock
                 };
                 partToBe.Cars = allReturnedCars;
                 db.Parts.Add(partToBe);
                 db.SaveChanges();
 
-                LoggingService.Log(Enums.ActionsEnum.AddPart, "S-a adaugat piesa " + partToBe.Name + " la masinile: " +
-                    string.Join(",", allReturnedCars.Select(c => c.Make + " " + c.Model + " " + c.Year).ToList())
-                    );
-                MessageBox.Show("Piesa adaugata cu succes la " + allReturnedCars.Count + " masini.");
+                if (inStock)
+                {
+                    LoggingService.Log(Enums.ActionsEnum.AdaugarePiesa, partToBe.Price, "S-a adaugat piesa " + partToBe.Name + " la masinile: " +
+                                      string.Join(",", allReturnedCars.Select(c => c.Make + " " + c.Model + " " + c.Year).ToList())
+                                      );
+                    MessageBox.Show("Piesa adaugata cu succes la " + allReturnedCars.Count + " masini.");
+                }
+                else
+                {
+                    LoggingService.Log(Enums.ActionsEnum.VanzarePiesa, partToBe.Price, "S-a vandut piesa " + partToBe.Name);
+                    MessageBox.Show("Piesa vanduta cu succes !" + allReturnedCars.Count + " masini.");
+                }
                 PartGUIReset();
-            }else
+            }
+            else
             {
-                MessageBox.Show("Alegeti Marca Masinii!!");
+                MessageBox.Show("Toate campurile cu * trebuie completate!");
             }
         }
 
@@ -443,84 +453,100 @@ namespace AutoService
                             .ToList();
             searchCbEngine.DataSource = _searchEngine;
             searchCbEngine.SelectedIndex = -1;
-          //  ReCheck();
+            ReCheck(tbSearch.Text);
         }
         //SearchBar with respect 4 filters!!!
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            ReCheck();
+            ReCheck(tbSearch.Text);
         }
-        private void ReCheck()
-        {
-            var searchString = tbSearch.Text;
-            var partQuery = db.Cars.AsQueryable();
-            /*      if (partCbMake.SelectedValue != null)
-                  {
-                      var selectedMake = partCbMake.SelectedValue.ToString();
-                      carsQuery = carsQuery.Where(c => c.Make.Equals(selectedMake));
-                  }
-                  */
+        private void ReCheck(string searchString)
+        {     
+            string make = null, model = null;
+            double engine = double.MinValue;
+            bool engineSelected = false;
+            int year = int.MinValue;
+            bool yearSelected = false;
+
             if (searchCbMake.SelectedValue != null)
             {
-                var make = searchCbMake.SelectedValue.ToString();
-                partQuery = partQuery.Where(c => c.Make.Equals(make));
+                make = searchCbMake.SelectedValue.ToString();
             }
-            if (searchCbModel.SelectedValue != null)
+            if(searchCbModel.SelectedValue != null)
             {
-                var model = searchCbModel.SelectedValue.ToString();
-                partQuery = partQuery.Where(c => c.Model.Equals(model));
+                model = searchCbModel.SelectedValue.ToString();
             }
-            if (searchCbYear.SelectedValue != null)
+            if(searchCbYear.SelectedValue != null)
             {
-                var year = searchCbYear.SelectedValue.ToString();
-                partQuery = partQuery.Where(c => c.Year.Equals(year));
+                yearSelected =  int.TryParse(searchCbYear.SelectedValue.ToString(), out year);
             }
-            if (searchCbEngine.SelectedValue != null)
+            if(searchCbEngine.SelectedValue != null)
             {
-                var cc = searchCbEngine.SelectedValue.ToString();
-                partQuery = partQuery.Where(c => c.Capacity.Equals(cc));
+                engineSelected = double.TryParse(searchCbEngine.SelectedValue.ToString(), out engine);
             }
 
-            var carList = partQuery
-                    .Distinct()
-                    .OrderBy(c => c.Id)
-                    .ToList();
+            var partQuery = db.Cars.Include("Parts")
+                .Where(x => make == null || (make != null && x.Make.Equals(make)))
+                .Where(x => model == null || (model != null && x.Model.Equals(model)))
+                .Where(x => !yearSelected || (yearSelected && x.Year.Equals(year)))
+                .Where(x => !engineSelected || (engineSelected && x.Capacity.Equals(engine)))
+                .SelectMany(x => x.Parts).Where(x => x.Name.StartsWith(searchString)).ToList();
 
-            var returnedParts = partQuery
-                    .Join(db.Parts,
-                        qq => qq.Id,
-                        pa => pa.Id,
-                        (qq, pa) => new { qq, pa })
-                        .Where(a => a.pa.Name.StartsWith(searchString))
-                        .Select(a => a.pa.Name)
-                        .Distinct()
-                        .ToList();
-
-
-
-            lbParts.DataSource = returnedParts;
+            lbParts.DataSource = partQuery.Where(x => x.InStock == true).Select(x => x).Distinct().ToList();
+            PopulateCarListByParts();
 
         }
 
         private void searchCbEngine_SelectedIndexChanged(object sender, EventArgs e)
         {
-          //  ReCheck();
+            ReCheck(tbSearch.Text);
         }
-
+        //Mouse Click on Part List
         private void lbParts_MouseClick(object sender, MouseEventArgs e)
         {
-            var _listPart = lbParts.SelectedItem.ToString();
-            var _listCars = db.Cars
-                .Join(db.Parts,
-                    c => c.Id,
-                    p => p.Id,
-                    (c, p) => new { c, p })
-                .Where(i=>i.p.Name.Equals(_listPart))
-                .Select(i => new { i.c.Make, i.c.Model, i.c.Year, i.c.Power })
-             //   .Select(g=>g)
-             //   .Distinct()
-                .ToList();
-            lbResult.DataSource = _listCars;
+            PopulateCarListByParts();
+        }
+
+        private void PopulateCarListByParts()
+        {
+            if(lbParts.SelectedValue != null)
+            {
+                var _listPart = lbParts.SelectedValue.ToString();
+                resultCars = db.Parts.Include("Cars").Where(x => x.Name.Equals(_listPart)).SelectMany(x => x.Cars.ToList()).ToList();
+                lbResult.DataSource = resultCars;
+            }
+            else
+            {
+                lbResult.DataSource = null;
+            }
+          
+        }
+
+
+        //To Implement --------------------------&&&&&&&&&&&&&&
+        private void lbResult_MouseClick(object sender, MouseEventArgs e)
+        {
+            _selectedCar = (Car)lbResult.SelectedValue;
+            var sp = lbParts.SelectedValue.ToString();
+            var _selectedPart = _selectedCar.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
+           // _selectedPart = (Part)lbParts.SelectedItem;
+            new PartInfoForm(_selectedCar, _selectedPart).Show();
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                MessageBox.Show("A crapat sa moara mama!");
+                Dispose();
+            }
+        }
+        //SELL PART BUTTON HERE !!
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddOrSellPart(false);
         }
     }
     }

@@ -17,20 +17,13 @@ namespace AutoService.Models
         public double Price { get; set; }
         public string Details { get; set; }
 
+        public bool InStock { get; set; }
+
         public virtual ICollection<Car> Cars { get; set; }
         public override string ToString()
         {
             var s = Name;
-            if (Quantity > 0)
-            {
-                s += " " + Quantity;
-            }
-            else
-            {
-                s = " ";
-            }
             return s;
-
 
     }
     }
