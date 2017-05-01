@@ -8,8 +8,15 @@ namespace AutoService.Models
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class Context : DbContext
     {
+#if DEBUG
+        public const string ConnectionStringName = "Context";
+#endif
+#if !DEBUG
+        public const string ConnectionStringName = "ContextProd";
+#endif
+
         public Context()
-            : base("name=Context")
+            : base("name=" + ConnectionStringName)
         {
         }
 

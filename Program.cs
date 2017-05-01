@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AutoService.Migrations;
+using AutoService.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -16,6 +19,18 @@ namespace AutoService
         [STAThread]
         static void Main()
         {
+#if !DEBUG
+            try
+            {
+                var configuration = new Configuration();
+                var migrator = new DbMigrator(configuration);
+                migrator.Update();
+            } catch (Exception)
+            {
+                MessageBox.Show("Eroare fatala. Contactati suport.");
+                return;
+            }
+#endif
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Thread.CurrentThread.CurrentCulture = new CultureInfo("ro-RO");
