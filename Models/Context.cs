@@ -19,5 +19,7 @@ namespace AutoService.Models
         public virtual DbSet<Part> Parts { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<LogEntry> LogEntries { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<CartDetail> CartDetails { get; set; }
     }
 }

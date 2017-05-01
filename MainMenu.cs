@@ -40,7 +40,7 @@ namespace AutoService
         private Part _selectedPart = new Part();
         private Car _selectedCar = new Car();
 
-        private Context db = new Context();
+        public Context db = new Context();
 
         /*
         private Make _selectedMake;
@@ -525,7 +525,7 @@ namespace AutoService
         {
             ReCheck(tbSearch.Text);
         }
-        private void ReCheck(string searchString)
+        public void ReCheck(string searchString)
         {
             string make = null, model = null;
             double engine = double.MinValue;
@@ -595,7 +595,7 @@ namespace AutoService
             var sp = lbParts.SelectedValue.ToString();
             var _selectedPart = _selectedCar.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
             // _selectedPart = (Part)lbParts.SelectedItem;
-            new PartInfoForm(_selectedCar, _selectedPart).Show();
+            new PartInfoForm(_selectedCar, _selectedPart, db).Show();
 
             try
             {
@@ -674,6 +674,12 @@ namespace AutoService
                     }
                 }
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var cart = new CartForm(this);
+            cart.ShowDialog(this);
         }
     }
 }
