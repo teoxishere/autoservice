@@ -47,6 +47,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -94,17 +99,19 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataListView2 = new BrightIdeasSoftware.DataListView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
             this.carPanel.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -121,6 +128,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.carPanel);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -131,6 +139,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label35);
             this.tabPage1.Controls.Add(this.btnRefresh);
             this.tabPage1.Controls.Add(this.tbSearch);
             this.tabPage1.Controls.Add(this.label8);
@@ -327,6 +336,61 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Piese";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.Crimson;
+            this.label34.Location = new System.Drawing.Point(256, 104);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(14, 17);
+            this.label34.TabIndex = 26;
+            this.label34.Text = "*";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.Crimson;
+            this.label33.Location = new System.Drawing.Point(8, 199);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(14, 17);
+            this.label33.TabIndex = 25;
+            this.label33.Text = "*";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.Crimson;
+            this.label32.Location = new System.Drawing.Point(8, 150);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(14, 17);
+            this.label32.TabIndex = 24;
+            this.label32.Text = "*";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.Crimson;
+            this.label31.Location = new System.Drawing.Point(8, 104);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(14, 17);
+            this.label31.TabIndex = 23;
+            this.label31.Text = "*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Crimson;
+            this.label4.Location = new System.Drawing.Point(8, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(14, 17);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "*";
             // 
             // label28
             // 
@@ -773,60 +837,67 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Marca";
             // 
-            // label4
+            // label35
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Crimson;
-            this.label4.Location = new System.Drawing.Point(8, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(14, 17);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "*";
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(870, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(70, 13);
+            this.label35.TabIndex = 19;
+            this.label35.Text = "Not logged in";
             // 
-            // label31
+            // tabPage4
             // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.Color.Crimson;
-            this.label31.Location = new System.Drawing.Point(8, 104);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(14, 17);
-            this.label31.TabIndex = 23;
-            this.label31.Text = "*";
+            this.tabPage4.Controls.Add(this.button4);
+            this.tabPage4.Controls.Add(this.button3);
+            this.tabPage4.Controls.Add(this.dataListView2);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(948, 449);
+            this.tabPage4.TabIndex = 4;
+            this.tabPage4.Text = "Utilizatori";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label32
+            // dataListView2
             // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.Color.Crimson;
-            this.label32.Location = new System.Drawing.Point(8, 150);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(14, 17);
-            this.label32.TabIndex = 24;
-            this.label32.Text = "*";
+            this.dataListView2.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
+            this.dataListView2.CellEditEnterChangesRows = true;
+            this.dataListView2.CellEditTabChangesRows = true;
+            this.dataListView2.DataSource = null;
+            this.dataListView2.FullRowSelect = true;
+            this.dataListView2.GridLines = true;
+            this.dataListView2.HasCollapsibleGroups = false;
+            this.dataListView2.Location = new System.Drawing.Point(7, 7);
+            this.dataListView2.MultiSelect = false;
+            this.dataListView2.Name = "dataListView2";
+            this.dataListView2.ShowGroups = false;
+            this.dataListView2.Size = new System.Drawing.Size(933, 400);
+            this.dataListView2.TabIndex = 0;
+            this.dataListView2.UseCompatibleStateImageBehavior = false;
+            this.dataListView2.View = System.Windows.Forms.View.Details;
+            this.dataListView2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataListView2_KeyDown);
+            this.dataListView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataListView2_KeyPress);
             // 
-            // label33
+            // button3
             // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.Crimson;
-            this.label33.Location = new System.Drawing.Point(8, 199);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(14, 17);
-            this.label33.TabIndex = 25;
-            this.label33.Text = "*";
+            this.button3.Location = new System.Drawing.Point(7, 414);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(103, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Add";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label34
+            // button4
             // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.Crimson;
-            this.label34.Location = new System.Drawing.Point(256, 104);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(14, 17);
-            this.label34.TabIndex = 26;
-            this.label34.Text = "*";
+            this.button4.Location = new System.Drawing.Point(116, 414);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(103, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Save";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // MainMenu
             // 
@@ -838,6 +909,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
             this.Text = "MainMenu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -849,6 +921,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
             this.carPanel.ResumeLayout(false);
             this.carPanel.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -927,5 +1001,10 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TabPage tabPage4;
+        private BrightIdeasSoftware.DataListView dataListView2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
     }
 }

@@ -34,6 +34,8 @@ namespace AutoService
         private List<Car> resultCars = new List<Car>();
         public List<Part> resultParts = new List<Part>();
 
+        private List<User> _allUsers = new List<User>();
+
         //Objects Sent to other frames
         private Part _selectedPart = new Part();
         private Car _selectedCar = new Car();
@@ -57,6 +59,58 @@ namespace AutoService
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            var tbr = new List<TabPage>();
+            // Iterate over all tabs
+            for (var i = 0; i< tabControl1.TabCount; i++)
+            {
+                var tabPage = tabControl1.TabPages[i];
+                switch (i)
+                {
+                    case 0:
+                        // Cautare
+
+                        break;
+
+                    case 1:
+                        if (UserService.LoggedInUser.Role == Enums.RolesEnum.Guest)
+                        {
+                            tbr.Add(tabPage);
+                        }
+                        break;
+
+                    case 2:
+                       if (UserService.LoggedInUser.Role != Enums.RolesEnum.Admin &&
+                            UserService.LoggedInUser.Role != Enums.RolesEnum.SuperAdmin)
+                        {
+                            tbr.Add(tabPage);
+                        }
+                        break;
+
+                    case 3:
+                        if (UserService.LoggedInUser.Role == Enums.RolesEnum.Guest)
+                        {
+                            tbr.Add(tabPage);
+                        }
+                        break;
+
+                    case 4:
+                        if (UserService.LoggedInUser.Role != Enums.RolesEnum.SuperAdmin)
+                        {
+                            tbr.Add(tabPage);
+                        }
+                        break;
+                }
+                
+            }
+
+            foreach (var todel in tbr)
+            {
+                tabControl1.TabPages.Remove(todel);
+            }
+
+
+            // Show the user
+            label35.Text = UserService.LoggedInUser.Username;
             //Custom body types to combobox
             BodyType = new List<string>();
             BodyType.Add("Berlina");
@@ -100,7 +154,7 @@ namespace AutoService
             searchCbMake.SelectedIndex = -1;
             searchCbMake.SelectedIndexChanged += searchCbMake_SelectedIndexChanged;
 
-            ReCheck(tbSearch.Text);         
+            ReCheck(tbSearch.Text);
         }
 
 
@@ -190,7 +244,7 @@ namespace AutoService
 
             ClearGUI();
 
-            LoggingService.Log(Enums.ActionsEnum.AdaugareMasina,_carToBe.Price ,"S-a adaugat masina " + _carToBe.Make + " " + _carToBe.Model + " " + _carToBe.Year);
+            LoggingService.Log(Enums.ActionsEnum.AdaugareMasina, _carToBe.Price, "S-a adaugat masina " + _carToBe.Make + " " + _carToBe.Model + " " + _carToBe.Year);
 
             MessageBox.Show("Masina adaugata cu succes.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -212,8 +266,8 @@ namespace AutoService
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-            if (tabControl1.SelectedIndex == 1)
+
+            if (tabControl1.SelectedTab.Text.ToLower() == "piese")
             {
                 // Piese screen
 
@@ -228,7 +282,8 @@ namespace AutoService
                 partCbMake.DataSource = _pieseMakes;
                 partCbMake.SelectedIndex = -1;
                 partCbMake.SelectedIndexChanged += partCbMake_SelectedIndexChanged;
-            } else if (tabControl1.SelectedIndex == 2)
+            }
+            else if (tabControl1.SelectedTab.Text.ToLower() == "rapoarte")
             {
                 // Rapoarte
                 dateTimePicker2.ValueChanged -= dateTimePicker2_ValueChanged;
@@ -241,7 +296,9 @@ namespace AutoService
 
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            } else if (tabControl1.SelectedIndex == 0) {
+            }
+            else if (tabControl1.SelectedTab.Text.ToLower() == "cautare")
+            {
                 //Search Screen
                 _searchMakes = db.Cars
                     .Select(c => c.Make)
@@ -253,6 +310,14 @@ namespace AutoService
                 searchCbMake.SelectedIndex = -1;
                 searchCbMake.SelectedIndexChanged += searchCbMake_SelectedIndexChanged;
                 ReCheck(tbSearch.Text);
+            } else if (tabControl1.SelectedTab.Text.ToLower() == "utilizatori")
+            {
+                // Users grid
+                _allUsers = db.Users.OrderBy(u => u.Username).ToList();
+                dataListView2.DataSource = _allUsers;
+
+                dataListView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                dataListView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
         }
@@ -461,7 +526,7 @@ namespace AutoService
             ReCheck(tbSearch.Text);
         }
         private void ReCheck(string searchString)
-        {     
+        {
             string make = null, model = null;
             double engine = double.MinValue;
             bool engineSelected = false;
@@ -472,15 +537,15 @@ namespace AutoService
             {
                 make = searchCbMake.SelectedValue.ToString();
             }
-            if(searchCbModel.SelectedValue != null)
+            if (searchCbModel.SelectedValue != null)
             {
                 model = searchCbModel.SelectedValue.ToString();
             }
-            if(searchCbYear.SelectedValue != null)
+            if (searchCbYear.SelectedValue != null)
             {
-                yearSelected =  int.TryParse(searchCbYear.SelectedValue.ToString(), out year);
+                yearSelected = int.TryParse(searchCbYear.SelectedValue.ToString(), out year);
             }
-            if(searchCbEngine.SelectedValue != null)
+            if (searchCbEngine.SelectedValue != null)
             {
                 engineSelected = double.TryParse(searchCbEngine.SelectedValue.ToString(), out engine);
             }
@@ -509,7 +574,7 @@ namespace AutoService
 
         private void PopulateCarListByParts()
         {
-            if(lbParts.SelectedValue != null)
+            if (lbParts.SelectedValue != null)
             {
                 var _listPart = lbParts.SelectedValue.ToString();
                 resultCars = db.Parts.Include("Cars").Where(x => x.Name.Equals(_listPart)).SelectMany(x => x.Cars.ToList()).ToList();
@@ -519,7 +584,7 @@ namespace AutoService
             {
                 lbResult.DataSource = null;
             }
-          
+
         }
 
 
@@ -529,7 +594,7 @@ namespace AutoService
             _selectedCar = (Car)lbResult.SelectedValue;
             var sp = lbParts.SelectedValue.ToString();
             var _selectedPart = _selectedCar.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
-           // _selectedPart = (Part)lbParts.SelectedItem;
+            // _selectedPart = (Part)lbParts.SelectedItem;
             new PartInfoForm(_selectedCar, _selectedPart).Show();
 
             try
@@ -548,7 +613,69 @@ namespace AutoService
         {
             AddOrSellPart(false);
         }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var newUser = new User {
+                Role = Enums.RolesEnum.Guest
+            };
+            db.Users.Add(newUser);
+            _allUsers.Add(newUser);
+            dataListView2.DataSource = _allUsers;
+        }
+
+        private void dataListView2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                db.SaveChanges();
+                dataListView2.DataSource = _allUsers;
+                MessageBox.Show("Salvat.");
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Utilizatorul este invalid.");
+            }
+        }
+
+        private void dataListView2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Delete)
+            {
+                var selectedRow = dataListView2.SelectedItem;
+                if (selectedRow != null && selectedRow.RowObject != null)
+                {
+                    var user = selectedRow.RowObject as User;
+                    if (user != null)
+                    {
+                        if (user.Role == Enums.RolesEnum.SuperAdmin)
+                        {
+                            var areThereAnySaWithoutMe = db.Users
+                                .Where(u => u.Id != user.Id && u.Role == Enums.RolesEnum.SuperAdmin)
+                                .Any();
+                            if (!areThereAnySaWithoutMe)
+                            {
+                                MessageBox.Show("Trebuie sa lasati minim un SuperAdmin in sistem.");
+                                return;
+                            }
+                        }
+                        _allUsers.Remove(user);
+                        db.Users.Remove(user);
+                        dataListView2.DataSource = _allUsers;
+                    }
+                }
+            }
+        }
     }
-    }
+}
 
 

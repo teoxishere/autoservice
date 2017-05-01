@@ -16,7 +16,6 @@ namespace AutoService.Migrations
         protected override void Seed(AutoService.Models.Context context)
         {
             context.Users.AddOrUpdate(u => u.Username, new User {
-                IsAdmin = true,
                 Role = Enums.RolesEnum.SuperAdmin,
                 Username = "admin",
                 Password = "admin"

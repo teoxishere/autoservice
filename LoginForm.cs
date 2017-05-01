@@ -1,4 +1,5 @@
 ﻿using AutoService.Models;
+using AutoService.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,27 +27,32 @@ namespace AutoService
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            _users = db.Users
-                    .OrderBy(us => us.Username)
-                    .ToList();
-            string userName = tbUser.Text;
-            string userPw = tbPassword.Text;
-            foreach(Models.User u in _users)
+            if (string.IsNullOrEmpty(tbUser.Text))
             {
-                
-                if(string.Compare(u.Username.ToLower(),userName.ToLower())==0 && string.Compare(u.Password,userPw)==0)
-                {
-                    this.Hide();
-                    new MainMenu().Show();
-                   // this.Close();
-                    break;
-                }
-                else
-                {
-                    MessageBox.Show("Wrhong username or password!");
-                }
-               
+                MessageBox.Show("Introduceti utilizatorul!");
+                return;
             }
+            if (string.IsNullOrEmpty(tbPassword.Text))
+            {
+                MessageBox.Show("Introduceti parola!");
+                return;
+            }
+            var theUserWithThatUsername = db.Users.FirstOrDefault(u => u.Username.ToLower().Equals(tbUser.Text.ToLower()));
+            if (theUserWithThatUsername == null)
+            {
+                MessageBox.Show("Utilizatorul nu exista!");
+                return;
+            }
+            if (!tbPassword.Text.Equals(theUserWithThatUsername.Password))
+            {
+                MessageBox.Show("Parola este incorecta!");
+                return;
+            }
+            theUserWithThatUsername.Password = null;
+            UserService.LoggedInUser = theUserWithThatUsername;
+            var mw = new MainMenu();
+            mw.Show();
+            this.Hide();
         }
     }
 }

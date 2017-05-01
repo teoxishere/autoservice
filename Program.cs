@@ -22,7 +22,7 @@ namespace AutoService
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("ro-RO");
             try
             {
-                Application.Run(new MainMenu());
+                Application.Run(new LoginForm());
             } catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Eroare fatala", MessageBoxButtons.OK, MessageBoxIcon.Error);
