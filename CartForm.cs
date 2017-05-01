@@ -75,8 +75,13 @@ namespace AutoService
             var dbCart = mm.db.Carts.Find(CartService.Cart.Id);
             dbCart.IsSold = true;
             mm.db.SaveChanges();
+
+            // Trigger PDF gen
+            PdfService.GeneratePdf(CartService.Cart);
+
             CartService.Cart = new Cart();
             dataListView1.DataSource = new List<object>();
+
             this.Close();
             MessageBox.Show("Vandute.");
             mm.ReCheck("");
