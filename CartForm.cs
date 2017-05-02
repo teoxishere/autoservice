@@ -70,6 +70,10 @@ namespace AutoService
                 if (part != null)
                 {
                     part.Quantity -= cartItem.Quantity;
+                    if (part.Quantity==0)
+                    {
+                        part.InStock = false;
+                    }
                 }
             }
             var dbCart = mm.db.Carts.Find(CartService.Cart.Id);

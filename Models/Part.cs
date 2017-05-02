@@ -22,7 +22,7 @@ namespace AutoService.Models
         public virtual ICollection<Car> Cars { get; set; }
         public override string ToString()
         {
-            var s = Name;
+            var s = Name+"   cod: "+Oem_Code;
             return s;
 
     }

@@ -27,6 +27,11 @@ namespace AutoService
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            CheckAndLogin();
+        }
+
+        private void CheckAndLogin()
+        {
             if (string.IsNullOrEmpty(tbUser.Text))
             {
                 MessageBox.Show("Introduceti utilizatorul!");
@@ -53,6 +58,22 @@ namespace AutoService
             var mw = new MainMenu();
             mw.Show();
             this.Hide();
+        }
+
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+             CheckAndLogin();
+            }
+        }
+
+        private void tbPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                CheckAndLogin();
+            }
         }
     }
 }

@@ -49,6 +49,7 @@
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(139, 20);
             this.tbPassword.TabIndex = 1;
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
             // 
             // btnLogin
             // 
@@ -90,6 +91,7 @@
             this.Controls.Add(this.tbUser);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
