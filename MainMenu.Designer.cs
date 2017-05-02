@@ -59,7 +59,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.partCbYear = new System.Windows.Forms.ComboBox();
+            this.partCbInternalCode = new System.Windows.Forms.ComboBox();
             this.partCbModel = new System.Windows.Forms.ComboBox();
             this.partCbMake = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -105,6 +105,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataListView2 = new BrightIdeasSoftware.DataListView();
+            this.label36 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -324,6 +325,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label36);
             this.tabPage2.Controls.Add(this.label34);
             this.tabPage2.Controls.Add(this.label33);
             this.tabPage2.Controls.Add(this.label32);
@@ -334,7 +336,7 @@
             this.tabPage2.Controls.Add(this.label26);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.partCbYear);
+            this.tabPage2.Controls.Add(this.partCbInternalCode);
             this.tabPage2.Controls.Add(this.partCbModel);
             this.tabPage2.Controls.Add(this.partCbMake);
             this.tabPage2.Controls.Add(this.label25);
@@ -469,13 +471,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // partCbYear
+            // partCbInternalCode
             // 
-            this.partCbYear.FormattingEnabled = true;
-            this.partCbYear.Location = new System.Drawing.Point(276, 200);
-            this.partCbYear.Name = "partCbYear";
-            this.partCbYear.Size = new System.Drawing.Size(121, 21);
-            this.partCbYear.TabIndex = 16;
+            this.partCbInternalCode.FormattingEnabled = true;
+            this.partCbInternalCode.Location = new System.Drawing.Point(276, 200);
+            this.partCbInternalCode.Name = "partCbInternalCode";
+            this.partCbInternalCode.Size = new System.Drawing.Size(121, 21);
+            this.partCbInternalCode.TabIndex = 16;
             // 
             // partCbModel
             // 
@@ -500,9 +502,9 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(272, 184);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(57, 13);
+            this.label25.Size = new System.Drawing.Size(93, 13);
             this.label25.TabIndex = 12;
-            this.label25.Text = "An Masina";
+            this.label25.Text = "Cod Intern Masina";
             // 
             // partTbDetails
             // 
@@ -911,6 +913,17 @@
             this.dataListView2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataListView2_KeyDown);
             this.dataListView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataListView2_KeyPress);
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.Crimson;
+            this.label36.Location = new System.Drawing.Point(256, 197);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(14, 17);
+            this.label36.TabIndex = 27;
+            this.label36.Text = "*";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -989,7 +1002,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox partCbYear;
+        private System.Windows.Forms.ComboBox partCbInternalCode;
         private System.Windows.Forms.ComboBox partCbModel;
         private System.Windows.Forms.ComboBox partCbMake;
         private System.Windows.Forms.Label label25;
@@ -1019,5 +1032,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label36;
     }
 }

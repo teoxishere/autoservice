@@ -70,16 +70,21 @@ namespace AutoService
                 if (part != null)
                 {
                     part.Quantity -= cartItem.Quantity;
+                    LoggingService.Log(Enums.ActionsEnum.VanzarePiesa, part.Price * cartItem.Quantity, "S-a vandut piesa- " + part.Name + " nr bucati vandute- " + cartItem.Quantity + " pret/buc" + part.Price);
+
                     if (part.Quantity==0)
                     {
                         part.InStock = false;
                     }
                 }
+                
             }
             var dbCart = mm.db.Carts.Find(CartService.Cart.Id);
             dbCart.IsSold = true;
             mm.db.SaveChanges();
 
+            
+           
             // Trigger PDF gen
             PdfService.GeneratePdf(CartService.Cart);
 

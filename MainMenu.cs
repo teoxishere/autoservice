@@ -21,7 +21,7 @@ namespace AutoService
         private List<int> Years;
 
         //Piese Components
-        private List<int> _pieseYears = new List<int>();
+        private List<string> _pieseInternalCodes = new List<string>();
         private List<string> _pieseModels = new List<string>();
         private List<string> _pieseMakes = new List<string>();
 
@@ -342,15 +342,15 @@ namespace AutoService
                 partCbModel.SelectedIndex = -1;
                 partCbModel.SelectedIndexChanged += partCbModel_SelectedIndexChanged;
 
-                _pieseYears = db
+                _pieseInternalCodes = db
                     .Cars
                     .Where(c => c.Make.Equals(selectedMake))
-                    .Select(c => c.Year)
+                    .Select(c => c.Internal_Code)
                     .Distinct()
                     .OrderBy(y => y)
                     .ToList();
-                partCbYear.DataSource = _pieseYears;
-                partCbYear.SelectedIndex = -1;
+                partCbInternalCode.DataSource = _pieseInternalCodes;
+                partCbInternalCode.SelectedIndex = -1;
             }
         }
 
@@ -363,17 +363,17 @@ namespace AutoService
                 var selectedModel = partCbModel.SelectedValue as string;
                 var selectedMake = partCbMake.SelectedValue as string;
 
-                _pieseYears = db
+                _pieseInternalCodes = db
                     .Cars
                     .Where(c => c.Make.Equals(selectedMake) && c.Model.Equals(selectedModel))
-                    .Select(c => c.Year)
+                    .Select(c => c.Internal_Code)
                     .Distinct()
                     .OrderBy(y => y)
                     .ToList();
 
-                partCbYear.DataSource = _pieseYears;
+                partCbInternalCode.DataSource = _pieseInternalCodes;
                 lbParts.DataSource = resultParts;
-                partCbYear.SelectedIndex = -1;
+                partCbInternalCode.SelectedIndex = -1;
                 ReCheck(tbSearch.Text);
             }
         }
@@ -385,7 +385,7 @@ namespace AutoService
 
         private void AddOrSellPart(bool inStock)
         {
-            if (partCbMake.SelectedValue != null && !string.IsNullOrWhiteSpace(partTbName.Text) && !string.IsNullOrWhiteSpace(partTbPrice.Text) && !string.IsNullOrWhiteSpace(partTbOem.Text))
+            if (partCbMake.SelectedValue != null && partCbInternalCode.SelectedValue!=null && !string.IsNullOrWhiteSpace(partTbName.Text) && !string.IsNullOrWhiteSpace(partTbPrice.Text) && !string.IsNullOrWhiteSpace(partTbOem.Text))
             {
                 //      get the car(s) with respect to the filters (3)
                 var carsQuery = db.Cars.AsQueryable();
@@ -397,9 +397,9 @@ namespace AutoService
                     var selectedModel = partCbModel.SelectedValue.ToString();
                     carsQuery = carsQuery.Where(c => c.Model.Equals(selectedModel));
                 }
-                if (partCbYear.SelectedValue != null)
+                if (partCbInternalCode.SelectedValue != null)
                 {
-                    var yearAsInt = int.Parse(partCbYear.SelectedValue.ToString());
+                    var yearAsInt = int.Parse(partCbInternalCode.SelectedValue.ToString());
                     carsQuery = carsQuery.Where(c => c.Year == yearAsInt);
                 }
                 var allReturnedCars = carsQuery.Distinct()
@@ -419,8 +419,27 @@ namespace AutoService
                     Oem_Code = partTbOem.Text,
                     InStock = inStock
                 };
-                partToBe.Cars = allReturnedCars;
-                db.Parts.Add(partToBe);
+                //Check if the part is already in stock. If it is, add qty
+                var isThePartInStock = db.Parts
+                    .Where(p => p.Name.Equals(partToBe.Name))
+                    .Where(p => p.Price == partToBe.Price)
+                    .Where(p => p.Oem_Code.Equals(partToBe.Oem_Code))
+                    .FirstOrDefault();
+                if (isThePartInStock!=null)
+                {
+                    partToBe.Quantity += db.Parts
+                        .Where(p => p.Name.Equals(partToBe.Name))
+                        .Where(p => p.Price == partToBe.Price)
+                        .Where(p => p.Oem_Code.Equals(partToBe.Oem_Code))
+                        .Select(p => p.Quantity)
+                        .FirstOrDefault();
+                    isThePartInStock.Quantity = partToBe.Quantity;                    
+                }
+                else
+                {
+                    partToBe.Cars = allReturnedCars;
+                    db.Parts.Add(partToBe);
+                }
                 db.SaveChanges();
 
                 if (inStock)
@@ -447,7 +466,7 @@ namespace AutoService
         {
             partCbMake.SelectedIndex = -1;
             partCbModel.SelectedIndex = -1;
-            partCbYear.SelectedIndex = -1;
+            partCbInternalCode.SelectedIndex = -1;
             partTbDetails.Text = "";
             partTbName.Text = "";
             partTbOem.Text = "";
@@ -471,7 +490,7 @@ namespace AutoService
 
         private void label28_Click(object sender, EventArgs e)
         {
-            partCbYear.SelectedIndex = -1;
+            partCbInternalCode.SelectedIndex = -1;
         }
 
         private void label30_Click(object sender, EventArgs e)
