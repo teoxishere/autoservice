@@ -267,7 +267,7 @@ namespace AutoService
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (tabControl1.SelectedTab.Text.ToLower() == "piese")
+            if (tabControl1.SelectedTab.Text.ToLower() == "adaugare piese")
             {
                 // Piese screen
 
@@ -318,6 +318,20 @@ namespace AutoService
 
                 dataListView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }else if (tabControl1.SelectedTab.Text.ToLower() == "balanta")
+            {
+                var totalAchizitii = db.LogEntries.Where(l => l.Action==Enums.ActionsEnum.AdaugarePiesa)
+                   .Where(l => l.Action==Enums.ActionsEnum.AdaugareMasina)
+                   .ToList()
+                   // .Select(l => l.Price)
+                    .Sum();
+                var totalVanzari = db.LogEntries.Where(l => l.Action == Enums.ActionsEnum.VanzarePiesa)
+                  //  .Select(l => l.Price)
+                  .ToList()
+                    .Sum();
+
+                label38.Text = string.ToString(totalAchizitii);
+                label40.Text = string.ToString(totalVanzari);
             }
 
         }
@@ -447,8 +461,14 @@ namespace AutoService
                     LoggingService.Log(Enums.ActionsEnum.AdaugarePiesa, partToBe.Price, "S-a adaugat piesa " + partToBe.Name + " la masinile: " +
                                       string.Join(",", allReturnedCars.Select(c => c.Make + " " + c.Model + " " + c.Year).ToList())
                                       );
-                    MessageBox.Show("Piesa adaugata cu succes la " + allReturnedCars.Count + " masini.");
-                }
+                    if (isThePartInStock != null) { 
+                        MessageBox.Show("Piesa exista deja, stoc ul a fost marit.");
+                    }else
+                    {
+                        MessageBox.Show("Piesa adaugata cu succes la " + allReturnedCars.Count + " masini.");
+                    }
+                    }
+
                 else
                 {
                     LoggingService.Log(Enums.ActionsEnum.VanzarePiesa, partToBe.Price, "S-a vandut piesa " + partToBe.Name);
@@ -700,7 +720,18 @@ namespace AutoService
             var cart = new CartForm(this);
             cart.ShowDialog(this);
         }
-    }
+
+        
+        private void BallanceCheck()
+        {
+            var ballanceCars = db.Cars.AsQueryable();
+
+               
+
+        }
+
+       
+    }   
 }
 
 
