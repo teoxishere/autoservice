@@ -321,17 +321,17 @@ namespace AutoService
             }else if (tabControl1.SelectedTab.Text.ToLower() == "balanta")
             {
                 var totalAchizitii = db.LogEntries.Where(l => l.Action==Enums.ActionsEnum.AdaugarePiesa)
-                   .Where(l => l.Action==Enums.ActionsEnum.AdaugareMasina)
-                   .ToList()
-                   // .Select(l => l.Price)
+                    .Where(l => l.Action==Enums.ActionsEnum.AdaugareMasina)
+                    .ToList()
+                    .Select(l => l.Price)
                     .Sum();
                 var totalVanzari = db.LogEntries.Where(l => l.Action == Enums.ActionsEnum.VanzarePiesa)
-                  //  .Select(l => l.Price)
-                  .ToList()
+                    .Select(l => l.Price)
+                    .ToList()
                     .Sum();
 
-                label38.Text = string.ToString(totalAchizitii);
-                label40.Text = string.ToString(totalVanzari);
+                label38.Text = totalAchizitii.ToString();
+                label40.Text = totalVanzari.ToString();
             }
 
         }
@@ -413,8 +413,8 @@ namespace AutoService
                 }
                 if (partCbInternalCode.SelectedValue != null)
                 {
-                    var yearAsInt = int.Parse(partCbInternalCode.SelectedValue.ToString());
-                    carsQuery = carsQuery.Where(c => c.Year == yearAsInt);
+                    var selectedCode =partCbInternalCode.SelectedValue.ToString();
+                    carsQuery = carsQuery.Where(c => c.Internal_Code.Equals(selectedCode));
                 }
                 var allReturnedCars = carsQuery.Distinct()
                     .OrderBy(c => c.Make)
