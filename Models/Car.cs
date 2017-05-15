@@ -20,6 +20,8 @@ namespace AutoService.Models
         public Double Capacity { get; set; }
         public Double Price { get; set; }
 
+        public byte[] Content { get; set; }
+
         public virtual ICollection<Part> Parts { get; set; }
 
         public override string ToString()

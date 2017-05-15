@@ -141,6 +141,10 @@
     <Compile Include="Migrations\201705011311408_AddedIsSoldToCart.Designer.cs">
       <DependentUpon>201705011311408_AddedIsSoldToCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705142102536_AddedImagesOnCarTable.cs" />
+    <Compile Include="Migrations\201705142102536_AddedImagesOnCarTable.Designer.cs">
+      <DependentUpon>201705142102536_AddedImagesOnCarTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
     <Compile Include="Models\LogEntry.cs" />
@@ -151,6 +155,7 @@
       <DependentUpon>PartInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\CartService.cs" />
+    <Compile Include="Services\ImageServices.cs" />
     <Compile Include="Services\LoggingService.cs" />
     <Compile Include="Services\PdfService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -204,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705011311408_AddedIsSoldToCart.resx">
       <DependentUpon>201705011311408_AddedIsSoldToCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705142102536_AddedImagesOnCarTable.resx">
+      <DependentUpon>201705142102536_AddedImagesOnCarTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartInfoForm.resx">
       <DependentUpon>PartInfoForm.cs</DependentUpon>

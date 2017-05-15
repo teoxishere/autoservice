@@ -83,6 +83,8 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label29 = new System.Windows.Forms.Label();
             this.carPanel = new System.Windows.Forms.TabPage();
+            this.btnImage = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.carTbPret = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.carBtnAdd = new System.Windows.Forms.Button();
@@ -111,15 +113,24 @@
             this.label39 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.ballanceCbMakes = new System.Windows.Forms.ComboBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
             this.carPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -693,6 +704,8 @@
             // 
             // carPanel
             // 
+            this.carPanel.Controls.Add(this.btnImage);
+            this.carPanel.Controls.Add(this.pictureBox1);
             this.carPanel.Controls.Add(this.carTbPret);
             this.carPanel.Controls.Add(this.label17);
             this.carPanel.Controls.Add(this.carBtnAdd);
@@ -719,6 +732,25 @@
             this.carPanel.TabIndex = 3;
             this.carPanel.Text = "Adaugare Masini";
             this.carPanel.UseVisualStyleBackColor = true;
+            // 
+            // btnImage
+            // 
+            this.btnImage.Location = new System.Drawing.Point(398, 70);
+            this.btnImage.Name = "btnImage";
+            this.btnImage.Size = new System.Drawing.Size(111, 23);
+            this.btnImage.TabIndex = 24;
+            this.btnImage.Text = "Adaugare Imagine";
+            this.btnImage.UseVisualStyleBackColor = true;
+            this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Salmon;
+            this.pictureBox1.Location = new System.Drawing.Point(542, 35);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(386, 247);
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
             // 
             // carTbPret
             // 
@@ -933,6 +965,13 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.pictureBox2);
+            this.tabPage5.Controls.Add(this.label45);
+            this.tabPage5.Controls.Add(this.label44);
+            this.tabPage5.Controls.Add(this.label43);
+            this.tabPage5.Controls.Add(this.label42);
+            this.tabPage5.Controls.Add(this.ballanceCbMakes);
+            this.tabPage5.Controls.Add(this.label41);
             this.tabPage5.Controls.Add(this.label40);
             this.tabPage5.Controls.Add(this.label39);
             this.tabPage5.Controls.Add(this.label38);
@@ -981,6 +1020,68 @@
             this.label37.TabIndex = 0;
             this.label37.Text = "Total Achizitii:";
             // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(26, 229);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(82, 13);
+            this.label41.TabIndex = 4;
+            this.label41.Text = "Balanta/Masina";
+            // 
+            // ballanceCbMakes
+            // 
+            this.ballanceCbMakes.FormattingEnabled = true;
+            this.ballanceCbMakes.Location = new System.Drawing.Point(170, 229);
+            this.ballanceCbMakes.Name = "ballanceCbMakes";
+            this.ballanceCbMakes.Size = new System.Drawing.Size(132, 21);
+            this.ballanceCbMakes.TabIndex = 5;
+            this.ballanceCbMakes.SelectedIndexChanged += new System.EventHandler(this.ballanceCbMakes_SelectedIndexChanged);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(26, 263);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(77, 13);
+            this.label42.TabIndex = 6;
+            this.label42.Text = "Suma incasata";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(26, 295);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(86, 13);
+            this.label43.TabIndex = 7;
+            this.label43.Text = "Suma de incasat";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(167, 295);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(41, 13);
+            this.label44.TabIndex = 8;
+            this.label44.Text = "label44";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(167, 263);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(41, 13);
+            this.label45.TabIndex = 9;
+            this.label45.Text = "label45";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(398, 172);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(462, 255);
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1003,10 +1104,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
             this.carPanel.ResumeLayout(false);
             this.carPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1097,5 +1200,14 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button btnImage;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.ComboBox ballanceCbMakes;
+        private System.Windows.Forms.Label label41;
     }
 }

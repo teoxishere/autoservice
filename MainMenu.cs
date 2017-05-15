@@ -61,7 +61,7 @@ namespace AutoService
         {
             var tbr = new List<TabPage>();
             // Iterate over all tabs
-            for (var i = 0; i< tabControl1.TabCount; i++)
+            for (var i = 0; i < tabControl1.TabCount; i++)
             {
                 var tabPage = tabControl1.TabPages[i];
                 switch (i)
@@ -79,8 +79,8 @@ namespace AutoService
                         break;
 
                     case 2:
-                       if (UserService.LoggedInUser.Role != Enums.RolesEnum.Admin &&
-                            UserService.LoggedInUser.Role != Enums.RolesEnum.SuperAdmin)
+                        if (UserService.LoggedInUser.Role != Enums.RolesEnum.Admin &&
+                             UserService.LoggedInUser.Role != Enums.RolesEnum.SuperAdmin)
                         {
                             tbr.Add(tabPage);
                         }
@@ -100,7 +100,7 @@ namespace AutoService
                         }
                         break;
                 }
-                
+
             }
 
             foreach (var todel in tbr)
@@ -235,7 +235,9 @@ namespace AutoService
                 Internal_Code = carTbOem.Text,
                 Year = Convert.ToInt16(carCbYear.Text),
                 Power = Math.Round(Convert.ToDouble(carTbPower.Text), 1),
-                Price = Math.Round(Convert.ToDouble(carTbPret.Text), 3)
+                Price = Math.Round(Convert.ToDouble(carTbPret.Text), 3),
+                Content = ImageServices.imageToByteArray(pictureBox1.Image)
+                
             };
 
             //Add car to DataBase
@@ -310,7 +312,8 @@ namespace AutoService
                 searchCbMake.SelectedIndex = -1;
                 searchCbMake.SelectedIndexChanged += searchCbMake_SelectedIndexChanged;
                 ReCheck(tbSearch.Text);
-            } else if (tabControl1.SelectedTab.Text.ToLower() == "utilizatori")
+            }
+            else if (tabControl1.SelectedTab.Text.ToLower() == "utilizatori")
             {
                 // Users grid
                 _allUsers = db.Users.OrderBy(u => u.Username).ToList();
@@ -318,10 +321,17 @@ namespace AutoService
 
                 dataListView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            }else if (tabControl1.SelectedTab.Text.ToLower() == "balanta")
+            }
+            else if (tabControl1.SelectedTab.Text.ToLower() == "balanta")
             {
-                var totalAchizitii = db.LogEntries.Where(l => l.Action==Enums.ActionsEnum.AdaugarePiesa)
-                    .Where(l => l.Action==Enums.ActionsEnum.AdaugareMasina)
+                var selectedCar = db
+                   .Cars
+                   .Select(c => c.Internal_Code)
+                   .ToList();
+                ballanceCbMakes.DataSource = selectedCar;
+
+                var totalAchizitii = db.LogEntries.Where(l => l.Action == Enums.ActionsEnum.AdaugarePiesa)
+                    .Where(l => l.Action == Enums.ActionsEnum.AdaugareMasina)
                     .ToList()
                     .Select(l => l.Price)
                     .Sum();
@@ -332,6 +342,11 @@ namespace AutoService
 
                 label38.Text = totalAchizitii.ToString();
                 label40.Text = totalVanzari.ToString();
+            }
+            else if (tabControl1.SelectedTab.Text.ToLower() == "adaugare masini")
+            {
+                pictureBox1.Image = Image.FromFile("../Pics/auditt.jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             }
 
         }
@@ -399,7 +414,7 @@ namespace AutoService
 
         private void AddOrSellPart(bool inStock)
         {
-            if (partCbMake.SelectedValue != null && partCbInternalCode.SelectedValue!=null && !string.IsNullOrWhiteSpace(partTbName.Text) && !string.IsNullOrWhiteSpace(partTbPrice.Text) && !string.IsNullOrWhiteSpace(partTbOem.Text))
+            if (partCbMake.SelectedValue != null && partCbInternalCode.SelectedValue != null && !string.IsNullOrWhiteSpace(partTbName.Text) && !string.IsNullOrWhiteSpace(partTbPrice.Text) && !string.IsNullOrWhiteSpace(partTbOem.Text))
             {
                 //      get the car(s) with respect to the filters (3)
                 var carsQuery = db.Cars.AsQueryable();
@@ -413,7 +428,7 @@ namespace AutoService
                 }
                 if (partCbInternalCode.SelectedValue != null)
                 {
-                    var selectedCode =partCbInternalCode.SelectedValue.ToString();
+                    var selectedCode = partCbInternalCode.SelectedValue.ToString();
                     carsQuery = carsQuery.Where(c => c.Internal_Code.Equals(selectedCode));
                 }
                 var allReturnedCars = carsQuery.Distinct()
@@ -432,6 +447,7 @@ namespace AutoService
                     Price = double.Parse(partTbPrice.Text),
                     Oem_Code = partTbOem.Text,
                     InStock = inStock
+
                 };
                 //Check if the part is already in stock. If it is, add qty
                 var isThePartInStock = db.Parts
@@ -439,7 +455,7 @@ namespace AutoService
                     .Where(p => p.Price == partToBe.Price)
                     .Where(p => p.Oem_Code.Equals(partToBe.Oem_Code))
                     .FirstOrDefault();
-                if (isThePartInStock!=null)
+                if (isThePartInStock != null)
                 {
                     partToBe.Quantity += db.Parts
                         .Where(p => p.Name.Equals(partToBe.Name))
@@ -447,7 +463,7 @@ namespace AutoService
                         .Where(p => p.Oem_Code.Equals(partToBe.Oem_Code))
                         .Select(p => p.Quantity)
                         .FirstOrDefault();
-                    isThePartInStock.Quantity = partToBe.Quantity;                    
+                    isThePartInStock.Quantity = partToBe.Quantity;
                 }
                 else
                 {
@@ -461,13 +477,15 @@ namespace AutoService
                     LoggingService.Log(Enums.ActionsEnum.AdaugarePiesa, partToBe.Price, "S-a adaugat piesa " + partToBe.Name + " la masinile: " +
                                       string.Join(",", allReturnedCars.Select(c => c.Make + " " + c.Model + " " + c.Year).ToList())
                                       );
-                    if (isThePartInStock != null) { 
+                    if (isThePartInStock != null)
+                    {
                         MessageBox.Show("Piesa exista deja, stoc ul a fost marit.");
-                    }else
+                    }
+                    else
                     {
                         MessageBox.Show("Piesa adaugata cu succes la " + allReturnedCars.Count + " masini.");
                     }
-                    }
+                }
 
                 else
                 {
@@ -660,7 +678,8 @@ namespace AutoService
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var newUser = new User {
+            var newUser = new User
+            {
                 Role = Enums.RolesEnum.Guest
             };
             db.Users.Add(newUser);
@@ -670,7 +689,7 @@ namespace AutoService
 
         private void dataListView2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -680,7 +699,8 @@ namespace AutoService
                 db.SaveChanges();
                 dataListView2.DataSource = _allUsers;
                 MessageBox.Show("Salvat.");
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Utilizatorul este invalid.");
             }
@@ -721,17 +741,111 @@ namespace AutoService
             cart.ShowDialog(this);
         }
 
-        
+
         private void BallanceCheck()
         {
-            var ballanceCars = db.Cars.AsQueryable();
+            
 
-               
+
 
         }
 
-       
-    }   
+        private void btnImage_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Open Image";
+            dialog.Filter = " jpg files (*.jpg)|*.jpg";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(dialog.FileName);
+                // pictureBox1.ImageLocation =dialog.FileName; 
+                pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+
+            }
+
+
+        }
+
+        private void ballanceCbMakes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            // populate makes
+
+
+            // ballanceCbMakes.DataSource = selectedCar;
+            var cbValue = ballanceCbMakes.SelectedValue as String;
+
+            var pic = db.Cars
+                        .Where(c => c.Internal_Code.Equals(cbValue))
+                        .Select(c => c.Content)
+                        .FirstOrDefault();
+            if (pic != null)
+            {
+                pictureBox2.Image = ImageServices.byteArrayToImage(pic);
+            }
+
+            /*  var partsSold = db.Cars
+                           .Include("Parts")
+                           .Where(c => c.Internal_Code.Equals(cbValue))
+                           .SelectMany(c => c.Parts)
+                           .Where(p => p.InStock == false)
+                           .Select(p=>p.Price)
+                           .ToList()
+                           .Sum();
+              var noOfSoldParts = db.Cars
+                           .Include("Parts")
+                           .Where(c => c.Internal_Code.Equals(cbValue))
+                           .SelectMany(c => c.Parts)
+                           .Where(p => p.InStock == false)
+                           .Select(p => p.Quantity)
+                           .FirstOrDefault();
+
+          var partsInStock = db.Cars
+                           .Include("Parts")
+                           .Where(c => c.Internal_Code.Equals(cbValue))
+                           .SelectMany(c => c.Parts)
+                           .Where(p => p.InStock == true)
+                           .Select(p => p.Price)
+                           .ToList()
+                           .Sum();
+
+          var noOfPartsInStock = db.Cars
+                           .Include("Parts")
+                           .Where(c => c.Internal_Code.Equals(cbValue))
+                           .SelectMany(c => c.Parts)
+                           .Where(p => p.InStock == true)
+                           .Select(p => p.Quantity)
+                           .FirstOrDefault();
+
+          */
+            //Value of Car
+            var carPrice = db.Cars
+                            .Where(c => c.Internal_Code.Equals(cbValue))
+                            .Select(c => c.Price)
+                            .FirstOrDefault();
+
+            //Value of parts on the Car
+            var partsSold = db.Cars
+                           .Include("Parts")
+                           .Where(c => c.Internal_Code.Equals(cbValue))
+                           .SelectMany(c => c.Parts)
+                           .Where(p => p.InStock == false)
+                           .ToList();
+
+            var cartSold = db.CartDetails
+                            .Include("partsSold")
+                            .Where(c => c.Id == c.PartId)
+                            .Select(c => c.PriceOfPart * c.Quantity)
+                            .ToList()
+                            .Sum();
+
+            label45.Text =cartSold.ToString();
+            label44.Text =carPrice.ToString();
+            
+            
+        }
+    }
 }
 
 
