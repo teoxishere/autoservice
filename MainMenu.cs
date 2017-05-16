@@ -324,11 +324,7 @@ namespace AutoService
             }
             else if (tabControl1.SelectedTab.Text.ToLower() == "balanta")
             {
-                var selectedCar = db
-                   .Cars
-                   .Select(c => c.Internal_Code)
-                   .ToList();
-                ballanceCbMakes.DataSource = selectedCar;
+               
 
                 var totalAchizitii = db.LogEntries.Where(l => l.Action == Enums.ActionsEnum.AdaugarePiesa)
                     .Where(l => l.Action == Enums.ActionsEnum.AdaugareMasina)
@@ -340,8 +336,6 @@ namespace AutoService
                     .ToList()
                     .Sum();
 
-                label38.Text = totalAchizitii.ToString();
-                label40.Text = totalVanzari.ToString();
             }
             else if (tabControl1.SelectedTab.Text.ToLower() == "adaugare masini")
             {
@@ -740,19 +734,8 @@ namespace AutoService
             var cart = new CartForm(this);
             cart.ShowDialog(this);
         }
-
-
-        private void BallanceCheck()
-        {
-            
-
-
-
-        }
-
         private void btnImage_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Open Image";
             dialog.Filter = " jpg files (*.jpg)|*.jpg";
@@ -761,89 +744,15 @@ namespace AutoService
                 pictureBox1.Image = Image.FromFile(dialog.FileName);
                 // pictureBox1.ImageLocation =dialog.FileName; 
                 pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-
             }
-
-
         }
 
-        private void ballanceCbMakes_SelectedIndexChanged(object sender, EventArgs e)
+        private void lbParts_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
-            // populate makes
-
-
-            // ballanceCbMakes.DataSource = selectedCar;
-            var cbValue = ballanceCbMakes.SelectedValue as String;
-
-            var pic = db.Cars
-                        .Where(c => c.Internal_Code.Equals(cbValue))
-                        .Select(c => c.Content)
-                        .FirstOrDefault();
-            if (pic != null)
-            {
-                pictureBox2.Image = ImageServices.byteArrayToImage(pic);
-            }
-
-            /*  var partsSold = db.Cars
-                           .Include("Parts")
-                           .Where(c => c.Internal_Code.Equals(cbValue))
-                           .SelectMany(c => c.Parts)
-                           .Where(p => p.InStock == false)
-                           .Select(p=>p.Price)
-                           .ToList()
-                           .Sum();
-              var noOfSoldParts = db.Cars
-                           .Include("Parts")
-                           .Where(c => c.Internal_Code.Equals(cbValue))
-                           .SelectMany(c => c.Parts)
-                           .Where(p => p.InStock == false)
-                           .Select(p => p.Quantity)
-                           .FirstOrDefault();
-
-          var partsInStock = db.Cars
-                           .Include("Parts")
-                           .Where(c => c.Internal_Code.Equals(cbValue))
-                           .SelectMany(c => c.Parts)
-                           .Where(p => p.InStock == true)
-                           .Select(p => p.Price)
-                           .ToList()
-                           .Sum();
-
-          var noOfPartsInStock = db.Cars
-                           .Include("Parts")
-                           .Where(c => c.Internal_Code.Equals(cbValue))
-                           .SelectMany(c => c.Parts)
-                           .Where(p => p.InStock == true)
-                           .Select(p => p.Quantity)
-                           .FirstOrDefault();
-
-          */
-            //Value of Car
-            var carPrice = db.Cars
-                            .Where(c => c.Internal_Code.Equals(cbValue))
-                            .Select(c => c.Price)
-                            .FirstOrDefault();
-
-            //Value of parts on the Car
-            var partsSold = db.Cars
-                           .Include("Parts")
-                           .Where(c => c.Internal_Code.Equals(cbValue))
-                           .SelectMany(c => c.Parts)
-                           .Where(p => p.InStock == false)
-                           .ToList();
-
-            var cartSold = db.CartDetails
-                            .Include("partsSold")
-                            .Where(c => c.Id == c.PartId)
-                            .Select(c => c.PriceOfPart * c.Quantity)
-                            .ToList()
-                            .Sum();
-
-            label45.Text =cartSold.ToString();
-            label44.Text =carPrice.ToString();
-            
-            
+            var sp = lbParts.SelectedValue.ToString();
+            var _selectedPart = db.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
+           
+            new PartEdit(_selectedPart, db).Show();
         }
     }
 }

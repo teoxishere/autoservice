@@ -109,17 +109,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataListView2 = new BrightIdeasSoftware.DataListView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.ballanceCbMakes = new System.Windows.Forms.ComboBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -129,8 +118,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).BeginInit();
-            this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -258,6 +245,7 @@
             this.lbParts.Size = new System.Drawing.Size(158, 251);
             this.lbParts.TabIndex = 13;
             this.lbParts.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbParts_MouseClick);
+            this.lbParts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbParts_MouseDoubleClick);
             // 
             // searchCbEngine
             // 
@@ -965,17 +953,6 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.pictureBox2);
-            this.tabPage5.Controls.Add(this.label45);
-            this.tabPage5.Controls.Add(this.label44);
-            this.tabPage5.Controls.Add(this.label43);
-            this.tabPage5.Controls.Add(this.label42);
-            this.tabPage5.Controls.Add(this.ballanceCbMakes);
-            this.tabPage5.Controls.Add(this.label41);
-            this.tabPage5.Controls.Add(this.label40);
-            this.tabPage5.Controls.Add(this.label39);
-            this.tabPage5.Controls.Add(this.label38);
-            this.tabPage5.Controls.Add(this.label37);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -983,104 +960,6 @@
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Balanta";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(167, 76);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(41, 13);
-            this.label40.TabIndex = 3;
-            this.label40.Text = "label40";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(26, 76);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(69, 13);
-            this.label39.TabIndex = 2;
-            this.label39.Text = "Total Vanzari";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(167, 45);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(41, 13);
-            this.label38.TabIndex = 1;
-            this.label38.Text = "label38";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(26, 45);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(72, 13);
-            this.label37.TabIndex = 0;
-            this.label37.Text = "Total Achizitii:";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(26, 229);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(82, 13);
-            this.label41.TabIndex = 4;
-            this.label41.Text = "Balanta/Masina";
-            // 
-            // ballanceCbMakes
-            // 
-            this.ballanceCbMakes.FormattingEnabled = true;
-            this.ballanceCbMakes.Location = new System.Drawing.Point(170, 229);
-            this.ballanceCbMakes.Name = "ballanceCbMakes";
-            this.ballanceCbMakes.Size = new System.Drawing.Size(132, 21);
-            this.ballanceCbMakes.TabIndex = 5;
-            this.ballanceCbMakes.SelectedIndexChanged += new System.EventHandler(this.ballanceCbMakes_SelectedIndexChanged);
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(26, 263);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(77, 13);
-            this.label42.TabIndex = 6;
-            this.label42.Text = "Suma incasata";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(26, 295);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(86, 13);
-            this.label43.TabIndex = 7;
-            this.label43.Text = "Suma de incasat";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(167, 295);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(41, 13);
-            this.label44.TabIndex = 8;
-            this.label44.Text = "label44";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(167, 263);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(41, 13);
-            this.label45.TabIndex = 9;
-            this.label45.Text = "label45";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(398, 172);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(462, 255);
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
             // 
             // MainMenu
             // 
@@ -1107,9 +986,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).EndInit();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1196,18 +1072,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Button btnImage;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.ComboBox ballanceCbMakes;
-        private System.Windows.Forms.Label label41;
     }
 }
