@@ -214,8 +214,7 @@ namespace AutoService
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            UpdateForm();
-            //ClearGUI();
+            ReCheck(tbSearch.Text);
         }
         private void UpdateForm()
         {
@@ -606,9 +605,9 @@ namespace AutoService
                 .Where(x => model == null || (model != null && x.Model.Equals(model)))
                 .Where(x => !yearSelected || (yearSelected && x.Year.Equals(year)))
                 .Where(x => !engineSelected || (engineSelected && x.Capacity.Equals(engine)))
-                .SelectMany(x => x.Parts).Where(x => x.Name.StartsWith(searchString)).ToList();
+                .SelectMany(x => x.Parts).Where(x => x.Name.StartsWith(searchString) || x.Oem_Code.StartsWith(searchString)).ToList();
 
-            lbParts.DataSource = partQuery.Where(x => x.InStock == true).Select(x => x).Distinct().ToList();
+            lbParts.DataSource = partQuery.Where(x => x.InStock == true && x.Quantity>0).Select(x => x).Distinct().ToList();
             PopulateCarListByParts();
 
         }
@@ -751,7 +750,6 @@ namespace AutoService
         {
             var sp = lbParts.SelectedValue.ToString();
             var _selectedPart = db.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
-           
             new PartEdit(_selectedPart, db).Show();
         }
     }

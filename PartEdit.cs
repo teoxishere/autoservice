@@ -15,6 +15,7 @@ namespace AutoService
     {
         private Part _selectedPart;
         private Context db;
+        
         public PartEdit()
         {
             InitializeComponent();
@@ -24,7 +25,6 @@ namespace AutoService
            
             InitializeComponent();
             this.db = db;
-           
             this._selectedPart = _selectedPart;
             label6.Text = _selectedPart.Name;
             textBox5.Text = _selectedPart.Details;
@@ -36,25 +36,34 @@ namespace AutoService
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
-            var partToEdit = db.Parts
-                                .Where(p => p.Name.Equals(_selectedPart.Name) || p.Oem_Code.Equals(_selectedPart.Oem_Code))
-                                .FirstOrDefault();
+            bool parsePrice=false, parseQty=false;
+            var price = double.MinValue;
+            var qty = int.MinValue;
+            if (textBox3.Text != null && double.TryParse(textBox3.Text, out price) && textBox4.Text != null && int.TryParse(textBox4.Text, out qty)) {
+                var partToEdit = db.Parts
+                                    .Where(p => p.Name.Equals(_selectedPart.Name) || p.Oem_Code.Equals(_selectedPart.Oem_Code))
+                                    .FirstOrDefault();
 
-            // partToEdit.Price = double.TryParse(textBox3.Text, out price);
-            if (textBox3.Text!=null)
+                // partToEdit.Price = double.TryParse(textBox3.Text, out price);
+                    
+                    partToEdit.Price = double.Parse(textBox3.Text);
+                if (int.Parse(textBox4.Text) > 0)
+                {
+                    partToEdit.Quantity = int.Parse(textBox4.Text);
+                    partToEdit.InStock = true;
+                }else
+                {
+                    partToEdit.Quantity = 0;
+                    partToEdit.InStock = false;
+                }
+                    partToEdit.Details = textBox5.Text;
+                    db.SaveChanges();
+                    MessageBox.Show("Editarea a avut succes!");
+                    this.Close();
+            }else
             {
-                partToEdit.Price =double.Parse(textBox3.Text);
+                MessageBox.Show("Valori incorecte in campurile Pret si Cantitate!");
             }
-            if (textBox4.Text != null)
-            {
-                partToEdit.Quantity = int.Parse(textBox4.Text);
-            }
-            partToEdit.Details = textBox5.Text;
-
-            db.SaveChanges();
-            MessageBox.Show("Editarea a avut succes!");
-            this.Close();
         }
     }
 }
