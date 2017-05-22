@@ -51,7 +51,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label36 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -109,6 +108,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataListView2 = new BrightIdeasSoftware.DataListView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.partCbColor = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -130,16 +134,18 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.carPanel);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(956, 475);
+            this.tabControl1.Size = new System.Drawing.Size(956, 452);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -163,10 +169,10 @@
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(948, 449);
+            this.tabPage1.Size = new System.Drawing.Size(948, 423);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cautare";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -331,9 +337,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label33);
+            this.tabPage2.Controls.Add(this.partCbColor);
+            this.tabPage2.Controls.Add(this.label37);
             this.tabPage2.Controls.Add(this.label36);
             this.tabPage2.Controls.Add(this.label34);
-            this.tabPage2.Controls.Add(this.label33);
             this.tabPage2.Controls.Add(this.label32);
             this.tabPage2.Controls.Add(this.label31);
             this.tabPage2.Controls.Add(this.label4);
@@ -358,10 +366,10 @@
             this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Controls.Add(this.label19);
             this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(948, 449);
+            this.tabPage2.Size = new System.Drawing.Size(948, 423);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Adaugare Piese";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -387,17 +395,6 @@
             this.label34.Size = new System.Drawing.Size(14, 17);
             this.label34.TabIndex = 26;
             this.label34.Text = "*";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.Crimson;
-            this.label33.Location = new System.Drawing.Point(8, 199);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(14, 17);
-            this.label33.TabIndex = 25;
-            this.label33.Text = "*";
             // 
             // label32
             // 
@@ -628,10 +625,10 @@
             this.tabPage3.Controls.Add(this.label30);
             this.tabPage3.Controls.Add(this.dateTimePicker1);
             this.tabPage3.Controls.Add(this.label29);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(948, 449);
+            this.tabPage3.Size = new System.Drawing.Size(948, 423);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Rapoarte";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -692,6 +689,8 @@
             // 
             // carPanel
             // 
+            this.carPanel.Controls.Add(this.label39);
+            this.carPanel.Controls.Add(this.label38);
             this.carPanel.Controls.Add(this.btnImage);
             this.carPanel.Controls.Add(this.pictureBox1);
             this.carPanel.Controls.Add(this.carTbPret);
@@ -713,17 +712,17 @@
             this.carPanel.Controls.Add(this.label11);
             this.carPanel.Controls.Add(this.label10);
             this.carPanel.Controls.Add(this.label9);
-            this.carPanel.Location = new System.Drawing.Point(4, 22);
+            this.carPanel.Location = new System.Drawing.Point(4, 25);
             this.carPanel.Name = "carPanel";
             this.carPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.carPanel.Size = new System.Drawing.Size(948, 449);
+            this.carPanel.Size = new System.Drawing.Size(948, 423);
             this.carPanel.TabIndex = 3;
             this.carPanel.Text = "Adaugare Masini";
             this.carPanel.UseVisualStyleBackColor = true;
             // 
             // btnImage
             // 
-            this.btnImage.Location = new System.Drawing.Point(398, 70);
+            this.btnImage.Location = new System.Drawing.Point(542, 299);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(111, 23);
             this.btnImage.TabIndex = 24;
@@ -840,9 +839,9 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(207, 119);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 13);
+            this.label15.Size = new System.Drawing.Size(59, 13);
             this.label15.TabIndex = 6;
-            this.label15.Text = "Putere";
+            this.label15.Text = "Putere       ";
             // 
             // label14
             // 
@@ -903,10 +902,10 @@
             this.tabPage4.Controls.Add(this.button4);
             this.tabPage4.Controls.Add(this.button3);
             this.tabPage4.Controls.Add(this.dataListView2);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(948, 449);
+            this.tabPage4.Size = new System.Drawing.Size(948, 423);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Utilizatori";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -953,13 +952,56 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(948, 449);
+            this.tabPage5.Size = new System.Drawing.Size(948, 423);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Balanta";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(111, 137);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(21, 13);
+            this.label37.TabIndex = 28;
+            this.label37.Text = "Lei";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(488, 19);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(21, 13);
+            this.label38.TabIndex = 29;
+            this.label38.Text = "Lei";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(315, 119);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(21, 13);
+            this.label39.TabIndex = 30;
+            this.label39.Text = "CP";
+            // 
+            // partCbColor
+            // 
+            this.partCbColor.Location = new System.Drawing.Point(479, 53);
+            this.partCbColor.Name = "partCbColor";
+            this.partCbColor.Size = new System.Drawing.Size(127, 20);
+            this.partCbColor.TabIndex = 32;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(476, 37);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(43, 13);
+            this.label33.TabIndex = 33;
+            this.label33.Text = "Culoare";
             // 
             // MainMenu
             // 
@@ -971,6 +1013,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
             this.Text = "Auto Service v1.10 beta";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.tabControl1.ResumeLayout(false);
@@ -1060,7 +1103,6 @@
         private System.Windows.Forms.Label label30;
         private BrightIdeasSoftware.DataListView dataListView1;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label4;
@@ -1074,5 +1116,10 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button btnImage;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox partCbColor;
     }
 }

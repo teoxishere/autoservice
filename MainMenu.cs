@@ -235,7 +235,7 @@ namespace AutoService
                 Year = Convert.ToInt16(carCbYear.Text),
                 Power = Math.Round(Convert.ToDouble(carTbPower.Text), 1),
                 Price = Math.Round(Convert.ToDouble(carTbPret.Text), 3),
-                Content = ImageServices.imageToByteArray(pictureBox1.Image)
+                Content = ImageServices.imageToByteArray(pictureBox1.Image)           
                 
             };
 
@@ -338,8 +338,9 @@ namespace AutoService
             }
             else if (tabControl1.SelectedTab.Text.ToLower() == "adaugare masini")
             {
-                pictureBox1.Image = Image.FromFile("../Pics/auditt.jpg");
+                pictureBox1.Image = Image.FromFile("../Pics/logo2.jpg");
                 pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+                
             }
 
         }
@@ -407,7 +408,7 @@ namespace AutoService
 
         private void AddOrSellPart(bool inStock)
         {
-            if (partCbMake.SelectedValue != null && partCbInternalCode.SelectedValue != null && !string.IsNullOrWhiteSpace(partTbName.Text) && !string.IsNullOrWhiteSpace(partTbPrice.Text) && !string.IsNullOrWhiteSpace(partTbOem.Text))
+            if (partCbMake.SelectedValue != null && partCbInternalCode.SelectedValue != null && !string.IsNullOrWhiteSpace(partTbName.Text) && !string.IsNullOrWhiteSpace(partTbPrice.Text))
             {
                 //      get the car(s) with respect to the filters (3)
                 var carsQuery = db.Cars.AsQueryable();
@@ -439,7 +440,8 @@ namespace AutoService
                     Details = partTbDetails.Text,
                     Price = double.Parse(partTbPrice.Text),
                     Oem_Code = partTbOem.Text,
-                    InStock = inStock
+                    InStock = inStock,
+                    Color = partCbColor.Text
 
                 };
                 //Check if the part is already in stock. If it is, add qty
@@ -503,6 +505,7 @@ namespace AutoService
             partTbOem.Text = "";
             partTbPrice.Text = "";
             partTbQty.Text = "";
+            partCbColor.Text = "";
         }
 
         private void label26_Click(object sender, EventArgs e)
@@ -607,7 +610,8 @@ namespace AutoService
                 .Where(x => !engineSelected || (engineSelected && x.Capacity.Equals(engine)))
                 .SelectMany(x => x.Parts).Where(x => x.Name.StartsWith(searchString) || x.Oem_Code.StartsWith(searchString)).ToList();
 
-            lbParts.DataSource = partQuery.Where(x => x.InStock == true && x.Quantity>0).Select(x => x).Distinct().ToList();
+            lbParts.DataSource = partQuery.Where(x => x.InStock == true && x.Quantity>0).Select(x => x.Name).Distinct().ToList();
+            
             PopulateCarListByParts();
 
         }

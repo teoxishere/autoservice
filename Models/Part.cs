@@ -16,6 +16,7 @@ namespace AutoService.Models
         public double Quantity { get; set; }
         public double Price { get; set; }
         public string Details { get; set; }
+        public string Color { get; set; }
 
         public bool InStock { get; set; }
 

@@ -145,6 +145,10 @@
     <Compile Include="Migrations\201705142102536_AddedImagesOnCarTable.Designer.cs">
       <DependentUpon>201705142102536_AddedImagesOnCarTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705222112482_coloraddedtopart.cs" />
+    <Compile Include="Migrations\201705222112482_coloraddedtopart.Designer.cs">
+      <DependentUpon>201705222112482_coloraddedtopart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
     <Compile Include="Models\LogEntry.cs" />
@@ -218,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705142102536_AddedImagesOnCarTable.resx">
       <DependentUpon>201705142102536_AddedImagesOnCarTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705222112482_coloraddedtopart.resx">
+      <DependentUpon>201705222112482_coloraddedtopart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartEdit.resx">
       <DependentUpon>PartEdit.cs</DependentUpon>
