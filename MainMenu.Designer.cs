@@ -49,6 +49,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label33 = new System.Windows.Forms.Label();
+            this.partCbColor = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -82,6 +85,9 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label29 = new System.Windows.Forms.Label();
             this.carPanel = new System.Windows.Forms.TabPage();
+            this.dataListView3 = new BrightIdeasSoftware.DataListView();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.btnImage = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.carTbPret = new System.Windows.Forms.TextBox();
@@ -108,27 +114,28 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataListView2 = new BrightIdeasSoftware.DataListView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.partCbColor = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.partBtnImage = new System.Windows.Forms.Button();
+            this.dataListView4 = new BrightIdeasSoftware.DataListView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
             this.carPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView4)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(956, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1370, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -145,7 +152,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(956, 452);
+            this.tabControl1.Size = new System.Drawing.Size(1370, 726);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -172,7 +179,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(948, 423);
+            this.tabPage1.Size = new System.Drawing.Size(1362, 697);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cautare";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -337,6 +344,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataListView4);
+            this.tabPage2.Controls.Add(this.partBtnImage);
+            this.tabPage2.Controls.Add(this.pictureBox2);
             this.tabPage2.Controls.Add(this.label33);
             this.tabPage2.Controls.Add(this.partCbColor);
             this.tabPage2.Controls.Add(this.label37);
@@ -369,10 +379,35 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(948, 423);
+            this.tabPage2.Size = new System.Drawing.Size(1362, 697);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Adaugare Piese";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(476, 37);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(43, 13);
+            this.label33.TabIndex = 33;
+            this.label33.Text = "Culoare";
+            // 
+            // partCbColor
+            // 
+            this.partCbColor.Location = new System.Drawing.Point(479, 53);
+            this.partCbColor.Name = "partCbColor";
+            this.partCbColor.Size = new System.Drawing.Size(127, 20);
+            this.partCbColor.TabIndex = 32;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(111, 137);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(21, 13);
+            this.label37.TabIndex = 28;
+            this.label37.Text = "Lei";
             // 
             // label36
             // 
@@ -628,7 +663,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(948, 423);
+            this.tabPage3.Size = new System.Drawing.Size(1362, 697);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Rapoarte";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -689,6 +724,7 @@
             // 
             // carPanel
             // 
+            this.carPanel.Controls.Add(this.dataListView3);
             this.carPanel.Controls.Add(this.label39);
             this.carPanel.Controls.Add(this.label38);
             this.carPanel.Controls.Add(this.btnImage);
@@ -715,10 +751,46 @@
             this.carPanel.Location = new System.Drawing.Point(4, 25);
             this.carPanel.Name = "carPanel";
             this.carPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.carPanel.Size = new System.Drawing.Size(948, 423);
+            this.carPanel.Size = new System.Drawing.Size(1362, 697);
             this.carPanel.TabIndex = 3;
             this.carPanel.Text = "Adaugare Masini";
             this.carPanel.UseVisualStyleBackColor = true;
+            // 
+            // dataListView3
+            // 
+            this.dataListView3.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.dataListView3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dataListView3.DataSource = null;
+            this.dataListView3.GridLines = true;
+            this.dataListView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.dataListView3.Location = new System.Drawing.Point(11, 392);
+            this.dataListView3.MultiSelect = false;
+            this.dataListView3.Name = "dataListView3";
+            this.dataListView3.ShowGroups = false;
+            this.dataListView3.ShowSortIndicators = false;
+            this.dataListView3.Size = new System.Drawing.Size(1240, 210);
+            this.dataListView3.SortGroupItemsByPrimaryColumn = false;
+            this.dataListView3.TabIndex = 31;
+            this.dataListView3.UseCompatibleStateImageBehavior = false;
+            this.dataListView3.View = System.Windows.Forms.View.Details;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(315, 119);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(21, 13);
+            this.label39.TabIndex = 30;
+            this.label39.Text = "CP";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(488, 19);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(21, 13);
+            this.label38.TabIndex = 29;
+            this.label38.Text = "Lei";
             // 
             // btnImage
             // 
@@ -905,7 +977,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(948, 423);
+            this.tabPage4.Size = new System.Drawing.Size(1362, 697);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Utilizatori";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -955,59 +1027,53 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(948, 423);
+            this.tabPage5.Size = new System.Drawing.Size(1362, 697);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Balanta";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label37
+            // pictureBox2
             // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(111, 137);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(21, 13);
-            this.label37.TabIndex = 28;
-            this.label37.Text = "Lei";
+            this.pictureBox2.BackColor = System.Drawing.Color.Salmon;
+            this.pictureBox2.Location = new System.Drawing.Point(706, 37);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(584, 345);
+            this.pictureBox2.TabIndex = 34;
+            this.pictureBox2.TabStop = false;
             // 
-            // label38
+            // partBtnImage
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(488, 19);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(21, 13);
-            this.label38.TabIndex = 29;
-            this.label38.Text = "Lei";
+            this.partBtnImage.Location = new System.Drawing.Point(577, 289);
+            this.partBtnImage.Name = "partBtnImage";
+            this.partBtnImage.Size = new System.Drawing.Size(111, 23);
+            this.partBtnImage.TabIndex = 35;
+            this.partBtnImage.Text = "Adaugare Imagine";
+            this.partBtnImage.UseVisualStyleBackColor = true;
+            this.partBtnImage.Click += new System.EventHandler(this.partBtnImage_Click);
             // 
-            // label39
+            // dataListView4
             // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(315, 119);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(21, 13);
-            this.label39.TabIndex = 30;
-            this.label39.Text = "CP";
-            // 
-            // partCbColor
-            // 
-            this.partCbColor.Location = new System.Drawing.Point(479, 53);
-            this.partCbColor.Name = "partCbColor";
-            this.partCbColor.Size = new System.Drawing.Size(127, 20);
-            this.partCbColor.TabIndex = 32;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(476, 37);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(43, 13);
-            this.label33.TabIndex = 33;
-            this.label33.Text = "Culoare";
+            this.dataListView4.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.dataListView4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dataListView4.DataSource = null;
+            this.dataListView4.GridLines = true;
+            this.dataListView4.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.dataListView4.Location = new System.Drawing.Point(11, 407);
+            this.dataListView4.MultiSelect = false;
+            this.dataListView4.Name = "dataListView4";
+            this.dataListView4.ShowGroups = false;
+            this.dataListView4.ShowSortIndicators = false;
+            this.dataListView4.Size = new System.Drawing.Size(1325, 282);
+            this.dataListView4.SortGroupItemsByPrimaryColumn = false;
+            this.dataListView4.TabIndex = 36;
+            this.dataListView4.UseCompatibleStateImageBehavior = false;
+            this.dataListView4.View = System.Windows.Forms.View.Details;
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 476);
+            this.ClientSize = new System.Drawing.Size(1370, 750);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -1026,9 +1092,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
             this.carPanel.ResumeLayout(false);
             this.carPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1121,5 +1190,9 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox partCbColor;
+        private BrightIdeasSoftware.DataListView dataListView3;
+        private System.Windows.Forms.Button partBtnImage;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private BrightIdeasSoftware.DataListView dataListView4;
     }
 }

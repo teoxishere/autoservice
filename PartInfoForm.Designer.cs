@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.infoTbCar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,16 +44,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Detalii Masina:";
             // 
             // label2
             // 
@@ -65,14 +55,6 @@
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Detalii Piesa:";
-            // 
-            // infoTbCar
-            // 
-            this.infoTbCar.Location = new System.Drawing.Point(94, 17);
-            this.infoTbCar.Name = "infoTbCar";
-            this.infoTbCar.ReadOnly = true;
-            this.infoTbCar.Size = new System.Drawing.Size(399, 20);
-            this.infoTbCar.TabIndex = 2;
             // 
             // label3
             // 
@@ -204,11 +186,22 @@
             this.textBox1.TabIndex = 17;
             this.textBox1.Text = "1";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(577, 195);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 23);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Caseaza";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // PartInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 262);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button1);
@@ -224,9 +217,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.infoTbCar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "PartInfoForm";
             this.Text = "PartInfoForm";
             this.Load += new System.EventHandler(this.PartInfoForm_Load);
@@ -236,10 +227,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox infoTbCar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -255,5 +243,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -127,11 +127,16 @@ namespace AutoService
             carCbFuel.DataSource = FuelType;
 
             //Engine Capacity ComboBox;
-            EngineCapacity = new List<Double>();
-            for (double i = 0.8; i < 4.0; i += 0.1)
-            {
-                EngineCapacity.Add(Math.Round(i, 3));
-            }
+
+            EngineCapacity = db.Cars
+                               .Select(c => c.Capacity)
+                               .ToList();
+            /*     EngineCapacity = new List<Double>();
+                 for (double i = 0.8; i < 4.0; i += 0.1)
+                 {
+                     EngineCapacity.Add(Math.Round(i, 3));
+                 }
+             */
             carCbCapacity.DataSource = EngineCapacity;
 
             //Years ComboBox
@@ -223,31 +228,49 @@ namespace AutoService
         // Add Car Button --Logg here!
         private void carBtnAdd_Click(object sender, EventArgs e)
         {
-            //Matching Parameters
-            var _carToBe = new Car
+
+            if (string.IsNullOrEmpty(carTbMake.Text))
             {
-                Body = carCbBody.Text,
-                Capacity = Math.Round(Convert.ToDouble(carCbCapacity.Text), 3),
-                Fuel = carCbFuel.Text,
-                Make = carTbMake.Text,
-                Model = carTbModel.Text,
-                Internal_Code = carTbOem.Text,
-                Year = Convert.ToInt16(carCbYear.Text),
-                Power = Math.Round(Convert.ToDouble(carTbPower.Text), 1),
-                Price = Math.Round(Convert.ToDouble(carTbPret.Text), 3),
-                Content = ImageServices.imageToByteArray(pictureBox1.Image)           
-                
-            };
+                MessageBox.Show("Introduceti Marca masinii!");
+            } else if (string.IsNullOrEmpty(carTbOem.Text)) {
+                MessageBox.Show("Introduceti codul masinii!");
+            } else if (string.IsNullOrEmpty(carTbPret.Text))
+            {
+                MessageBox.Show("Introduceti pretul!!!");
+            } else if (string.IsNullOrEmpty(carTbPower.Text))
+            {
+                MessageBox.Show("Introduceti puterea masinii!");
+            } else if (string.IsNullOrEmpty(carTbModel.Text))
+            {
+                MessageBox.Show("Introduceti modelul masinii!");
+            }
+            else {
+                //Matching Parameters
+                var _carToBe = new Car
+                {
+                    Body = carCbBody.Text,
+                    Capacity = Math.Round(Convert.ToDouble(carCbCapacity.Text), 3),
+                    Fuel = carCbFuel.Text,
+                    Make = carTbMake.Text,
+                    Model = carTbModel.Text,
+                    Internal_Code = carTbOem.Text,
+                    Year = Convert.ToInt16(carCbYear.Text),
+                    Power = Math.Round(Convert.ToDouble(carTbPower.Text), 1),
+                    Price = Math.Round(Convert.ToDouble(carTbPret.Text), 3),
+                    Content = ImageServices.imageToByteArray(pictureBox1.Image)
 
-            //Add car to DataBase
-            db.Cars.Add(_carToBe);
-            db.SaveChanges();
+                };
 
-            ClearGUI();
+                //Add car to DataBase
+                db.Cars.Add(_carToBe);
+                db.SaveChanges();
+                FillUpMyCarTable();
+                ClearGUI();
 
-            LoggingService.Log(Enums.ActionsEnum.AdaugareMasina, _carToBe.Price, "S-a adaugat masina " + _carToBe.Make + " " + _carToBe.Model + " " + _carToBe.Year);
+                LoggingService.Log(Enums.ActionsEnum.AdaugareMasina, _carToBe.Price, "S-a adaugat masina " + _carToBe.Make + " " + _carToBe.Model + " " + _carToBe.Year);
 
-            MessageBox.Show("Masina adaugata cu succes.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Masina adaugata cu succes.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void ClearGUI()
@@ -271,7 +294,9 @@ namespace AutoService
             if (tabControl1.SelectedTab.Text.ToLower() == "adaugare piese")
             {
                 // Piese screen
-
+                pictureBox1.Image = Image.FromFile("../Pics/logo2.jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+                FillUpMyPartTable();
                 // Get all makes
                 _pieseMakes = db
                     .Cars
@@ -323,7 +348,7 @@ namespace AutoService
             }
             else if (tabControl1.SelectedTab.Text.ToLower() == "balanta")
             {
-               
+
 
                 var totalAchizitii = db.LogEntries.Where(l => l.Action == Enums.ActionsEnum.AdaugarePiesa)
                     .Where(l => l.Action == Enums.ActionsEnum.AdaugareMasina)
@@ -340,7 +365,8 @@ namespace AutoService
             {
                 pictureBox1.Image = Image.FromFile("../Pics/logo2.jpg");
                 pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-                
+                FillUpMyCarTable();
+
             }
 
         }
@@ -404,6 +430,7 @@ namespace AutoService
         private void button1_Click(object sender, EventArgs e)
         {
             AddOrSellPart(true);
+            FillUpMyPartTable();
         }
 
         private void AddOrSellPart(bool inStock)
@@ -552,7 +579,14 @@ namespace AutoService
             var logEntries = db
                 .LogEntries
                 .Where(le => le.Date >= dateTimePicker1.Value && le.Date <= dateTimePicker2.Value)
-                .OrderByDescending(le => le.Date)
+                .Select(l => new
+                {
+                    Actiune = l.Action,
+                    Data = l.Date,
+                    Operatiune = l.Description,
+                    Cost = l.Price
+                })
+                .OrderByDescending(le => le.Data)
                 .ToList();
             dataListView1.Clear();
             dataListView1.DataSource = logEntries;
@@ -610,8 +644,8 @@ namespace AutoService
                 .Where(x => !engineSelected || (engineSelected && x.Capacity.Equals(engine)))
                 .SelectMany(x => x.Parts).Where(x => x.Name.StartsWith(searchString) || x.Oem_Code.StartsWith(searchString)).ToList();
 
-            lbParts.DataSource = partQuery.Where(x => x.InStock == true && x.Quantity>0).Select(x => x.Name).Distinct().ToList();
-            
+            lbParts.DataSource = partQuery.Where(x => x.InStock == true && x.Quantity > 0).Select(x => x.Name).Distinct().ToList();
+
             PopulateCarListByParts();
 
         }
@@ -666,6 +700,7 @@ namespace AutoService
         private void button2_Click(object sender, EventArgs e)
         {
             AddOrSellPart(false);
+            FillUpMyPartTable();
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
@@ -748,6 +783,7 @@ namespace AutoService
                 // pictureBox1.ImageLocation =dialog.FileName; 
                 pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             }
+            FillUpMyCarTable();
         }
 
         private void lbParts_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -756,6 +792,67 @@ namespace AutoService
             var _selectedPart = db.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
             new PartEdit(_selectedPart, db).Show();
         }
+
+
+        private void FillUpMyCarTable()
+        {
+            var allMyCars = db.Cars.Include("Parts")
+                            .Select(c => new
+                            {
+                                Marca = c.Make,
+                                Model = c.Model,
+                                Capacitate = c.Capacity,
+                                Putere = c.Power,
+                                Pret = c.Price,
+                                Cod = c.Internal_Code,
+                                An = c.Year,
+                                Parti = c.Parts.Select(p => new {
+                                    PretPiese = p.Price * p.Quantity,
+                                })
+                            })
+                            .ToList();
+            /*                      
+           */
+
+            dataListView3.DataSource = allMyCars;
+
+
+            //resize shit
+            dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void FillUpMyPartTable()
+        {
+            var carList = db.Parts
+                            .Where(p => p.Quantity>0)
+                           .Select(p => new
+                           {
+                               Nume = p.Name,
+                               Cod = p.Oem_Code,
+                               Pret = p.Price,
+                               Cantitate = p.Price,
+                               Detalii = p.Details,
+                               Culoare = p.Color
+                           })
+                           .ToList();
+            dataListView4.DataSource = carList;
+        }
+        private void partBtnImage_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Open Image";
+            dialog.Filter = " jpg files (*.jpg)|*.jpg";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(dialog.FileName);
+                // pictureBox1.ImageLocation =dialog.FileName; 
+                pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            }
+        }
+
+
     }
 }
 

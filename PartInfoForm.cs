@@ -29,8 +29,8 @@ namespace AutoService
             this.db = db;
             this._selectedCar = _selectedCar;
             this._selectedPart = _selectedPart;
-            infoTbCar.Text = _selectedCar.Make + " " + _selectedCar.Model + " an " + _selectedCar.Year + " motor "
-                + _selectedCar.Capacity + " pret: " + _selectedCar.Price;
+        //    infoTbCar.Text = _selectedCar.Make + " " + _selectedCar.Model + " an " + _selectedCar.Year + " motor "
+        //        + _selectedCar.Capacity + " pret: " + _selectedCar.Price;
             infoTbName.Text = _selectedPart.Name;
             infoTbDetails.Text = _selectedPart.Details;
             infoTbPrice.Text = string.Concat(_selectedPart.Price);
@@ -89,6 +89,18 @@ namespace AutoService
             CartService.RefreshCart(db);
             this.Close();
             MessageBox.Show(qty + " x " + _selectedPart.Name + " au fost adaugate in cos.");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var partToRemove = db.Parts
+                                 .Where(p => p.Name.Equals(infoTbName.Text) || p.Oem_Code.Equals(infoTbOEM) || p.Price == double.Parse(infoTbPrice.Text) || p.Quantity == double.Parse(infoTbQty.Text))
+                                 .FirstOrDefault();
+            partToRemove.InStock = false;
+            partToRemove.Quantity = 0;
+            db.SaveChanges();
+            MessageBox.Show("Piesa casata!");
+            this.Close();
         }
     }
 }

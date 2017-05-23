@@ -20,6 +20,8 @@ namespace AutoService.Models
 
         public bool InStock { get; set; }
 
+        public byte[] Content { get; set; }
+
         public virtual ICollection<Car> Cars { get; set; }
         public override string ToString()
         {
