@@ -8,9 +8,11 @@ namespace AutoService.Enums
 {
     public enum ActionsEnum
     {
-        AdaugarePiesa = 0,
-        AdaugareMasina = 1,
-        VanzarePiesa = 2
+        Adaugare_Piesa = 0,
+        Adaugare_Masina = 1,
+        Vanzare_Piesa = 2,
+        Editare_Piesa=3,
+        Casare_Piesa=4
     }
    
 }

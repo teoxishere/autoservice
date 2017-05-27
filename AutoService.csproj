@@ -156,12 +156,6 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
     <Compile Include="Models\LogEntry.cs" />
-    <Compile Include="PartEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PartEdit.Designer.cs">
-      <DependentUpon>PartEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="PartInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,9 +226,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705232015004_addedpictureonparts.resx">
       <DependentUpon>201705232015004_addedpictureonparts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PartEdit.resx">
-      <DependentUpon>PartEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartInfoForm.resx">
       <DependentUpon>PartInfoForm.cs</DependentUpon>

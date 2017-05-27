@@ -267,7 +267,7 @@ namespace AutoService
                 FillUpMyCarTable();
                 ClearGUI();
 
-                LoggingService.Log(Enums.ActionsEnum.AdaugareMasina, _carToBe.Price, "S-a adaugat masina " + _carToBe.Make + " " + _carToBe.Model + " " + _carToBe.Year);
+                LoggingService.Log(Enums.ActionsEnum.Adaugare_Masina, _carToBe.Price, "S-a adaugat masina " + _carToBe.Make + " " + _carToBe.Model + " " + _carToBe.Year);
 
                 MessageBox.Show("Masina adaugata cu succes.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -296,7 +296,7 @@ namespace AutoService
                 // Piese screen
                 pictureBox2.Image = Image.FromFile("../Pics/logo2.jpg");
                 pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-                FillUpMyPartTable();
+               
                 // Get all makes
                 _pieseMakes = db
                     .Cars
@@ -314,14 +314,17 @@ namespace AutoService
                 // Rapoarte
                 dateTimePicker2.ValueChanged -= dateTimePicker2_ValueChanged;
                 dateTimePicker2.Value = DateTime.Now;
-                dateTimePicker1.Value = DateTime.Now.AddMonths(-1);
+                dateTimePicker1.Value = dateTimePicker2.Value.AddMonths(-1);
+                // dateTimePicker1.Value = DateTime.Now.AddMonths(-1);
 
-                // dateTimePicker2.MaxDate = DateTime.Now;
-                dateTimePicker1.MaxDate = DateTime.Now;
+                 dateTimePicker2.MaxDate = DateTime.Now;
+                // dateTimePicker1.MaxDate = DateTime.Now;
+                dateTimePicker1.MaxDate = dateTimePicker2.Value;
                 dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
 
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                GetReports();
             }
             else if (tabControl1.SelectedTab.Text.ToLower() == "cautare")
             {
@@ -346,21 +349,7 @@ namespace AutoService
                 dataListView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
-            else if (tabControl1.SelectedTab.Text.ToLower() == "balanta")
-            {
-
-
-                var totalAchizitii = db.LogEntries.Where(l => l.Action == Enums.ActionsEnum.AdaugarePiesa)
-                    .Where(l => l.Action == Enums.ActionsEnum.AdaugareMasina)
-                    .ToList()
-                    .Select(l => l.Price)
-                    .Sum();
-                var totalVanzari = db.LogEntries.Where(l => l.Action == Enums.ActionsEnum.VanzarePiesa)
-                    .Select(l => l.Price)
-                    .ToList()
-                    .Sum();
-
-            }
+           
             else if (tabControl1.SelectedTab.Text.ToLower() == "adaugare masini")
             {
                 pictureBox1.Image = Image.FromFile("../Pics/logo2.jpg");
@@ -430,7 +419,7 @@ namespace AutoService
         private void button1_Click(object sender, EventArgs e)
         {
             AddOrSellPart(true);
-            FillUpMyPartTable();
+           
         }
 
         private void AddOrSellPart(bool inStock)
@@ -496,7 +485,7 @@ namespace AutoService
 
                 if (inStock)
                 {
-                    LoggingService.Log(Enums.ActionsEnum.AdaugarePiesa, partToBe.Price, "S-a adaugat piesa " + partToBe.Name + " la masinile: " +
+                    LoggingService.Log(Enums.ActionsEnum.Adaugare_Piesa, partToBe.Price, "S-a adaugat piesa " + partToBe.Name + " la masinile: " +
                                       string.Join(",", allReturnedCars.Select(c => c.Make + " " + c.Model + " " + c.Year).ToList())
                                       );
                     if (isThePartInStock != null)
@@ -511,7 +500,7 @@ namespace AutoService
 
                 else
                 {
-                    LoggingService.Log(Enums.ActionsEnum.VanzarePiesa, partToBe.Price, "S-a vandut piesa " + partToBe.Name);
+                    LoggingService.Log(Enums.ActionsEnum.Vanzare_Piesa, partToBe.Price, "S-a vandut piesa " + partToBe.Name);
                     MessageBox.Show("Piesa vanduta cu succes !" + allReturnedCars.Count + " masini.");
                 }
                 PartGUIReset();
@@ -578,7 +567,7 @@ namespace AutoService
         {
             var logEntries = db
                 .LogEntries
-                .Where(le => le.Date >= dateTimePicker1.Value && le.Date <= dateTimePicker2.Value)
+                .Where(le => le.Date > dateTimePicker1.Value && le.Date <= dateTimePicker2.Value)
                 .Select(l => new
                 {
                     Actiune = l.Action,
@@ -588,7 +577,7 @@ namespace AutoService
                 })
                 .OrderByDescending(le => le.Data)
                 .ToList();
-            dataListView1.Clear();
+            //dataListView1.Clear();
             dataListView1.DataSource = logEntries;
         }
 
@@ -679,28 +668,31 @@ namespace AutoService
         //To Implement --------------------------&&&&&&&&&&&&&&
         private void lbResult_MouseClick(object sender, MouseEventArgs e)
         {
-            _selectedCar = (Car)lbResult.SelectedValue;
-            var sp = lbParts.SelectedValue.ToString();
-            var _selectedPart = _selectedCar.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
-            // _selectedPart = (Part)lbParts.SelectedItem;
-            new PartInfoForm(_selectedCar, _selectedPart, db).Show();
-
-            try
+            if (lbResult.SelectedValue != null)
             {
+                _selectedCar = (Car)lbResult.SelectedValue;
+                var sp = lbParts.SelectedValue.ToString();
+                var _selectedPart = _selectedCar.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
+                // _selectedPart = (Part)lbParts.SelectedItem;
+                new PartInfoForm(_selectedCar, _selectedPart, db).Show();
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                MessageBox.Show("A crapat sa moara mama!");
-                Dispose();
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    MessageBox.Show("A crapat sa moara mama!");
+                    Dispose();
+                }
             }
         }
         //SELL PART BUTTON HERE !!
         private void button2_Click(object sender, EventArgs e)
         {
             AddOrSellPart(false);
-            FillUpMyPartTable();
+         
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
@@ -786,12 +778,7 @@ namespace AutoService
             FillUpMyCarTable();
         }
 
-        private void lbParts_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            var sp = lbParts.SelectedValue.ToString();
-            var _selectedPart = db.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
-            new PartEdit(_selectedPart, db).Show();
-        }
+       
 
 
         private void FillUpMyCarTable()
@@ -822,24 +809,7 @@ namespace AutoService
             dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void FillUpMyPartTable()
-        {
-            var carList = db.Parts
-                            .Where(p => p.Quantity>0)
-                           .Select(p => new
-                           {
-                               Nume = p.Name,
-                               Cod = p.Oem_Code,
-                               Pret = p.Price,
-                               Cantitate = p.Price,
-                               Detalii = p.Details,
-                               Culoare = p.Color
-                           })
-                           .ToList();
-            dataListView4.DataSource = carList;
-            dataListView4.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            dataListView4.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
+      
         private void partBtnImage_Click(object sender, EventArgs e)
         {
 
