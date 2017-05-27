@@ -94,7 +94,7 @@ namespace AutoService
         private void button2_Click(object sender, EventArgs e)
         {
             var partToRemove = db.Parts
-                                 .Where(p => p.Name.Equals(infoTbName.Text) || p.Oem_Code.Equals(infoTbOEM) || p.Price == double.Parse(infoTbPrice.Text) || p.Quantity == double.Parse(infoTbQty.Text))
+                                 .Where(p=>p.Id==_selectedPart.Id)
                                  .FirstOrDefault();
             partToRemove.InStock = false;
             partToRemove.Quantity = 0;

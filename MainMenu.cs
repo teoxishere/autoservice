@@ -294,8 +294,8 @@ namespace AutoService
             if (tabControl1.SelectedTab.Text.ToLower() == "adaugare piese")
             {
                 // Piese screen
-                pictureBox1.Image = Image.FromFile("../Pics/logo2.jpg");
-                pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+                pictureBox2.Image = Image.FromFile("../Pics/logo2.jpg");
+                pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
                 FillUpMyPartTable();
                 // Get all makes
                 _pieseMakes = db
@@ -665,7 +665,7 @@ namespace AutoService
             if (lbParts.SelectedValue != null)
             {
                 var _listPart = lbParts.SelectedValue.ToString();
-                resultCars = db.Parts.Include("Cars").Where(x => x.Name.Equals(_listPart)).SelectMany(x => x.Cars.ToList()).ToList();
+                resultCars = db.Parts.Include("Cars").Where(x => x.Name.Equals(_listPart) && x.Quantity>0).SelectMany(x => x.Cars.ToList()).ToList();
                 lbResult.DataSource = resultCars;
             }
             else
@@ -837,6 +837,8 @@ namespace AutoService
                            })
                            .ToList();
             dataListView4.DataSource = carList;
+            dataListView4.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            dataListView4.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
         private void partBtnImage_Click(object sender, EventArgs e)
         {
