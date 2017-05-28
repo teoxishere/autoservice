@@ -14,6 +14,7 @@ namespace AutoService
 {
     public partial class PartInfoForm : Form
     {
+        private MainMenu mm;
         private Car _selectedCar;
         private Part _selectedPart;
         private Context db;
@@ -23,10 +24,11 @@ namespace AutoService
             InitializeComponent();
         }
 
-        public PartInfoForm(Car _selectedCar,Part _selectedPart, Context db)
+        public PartInfoForm(Car _selectedCar,Part _selectedPart, Context db, MainMenu mm)
         {
             InitializeComponent();
             this.db = db;
+            this.mm = mm;
             this._selectedCar = _selectedCar;
             this._selectedPart = _selectedPart;
         //    infoTbCar.Text = _selectedCar.Make + " " + _selectedCar.Model + " an " + _selectedCar.Year + " motor "
@@ -88,6 +90,7 @@ namespace AutoService
             db.SaveChanges();
             CartService.RefreshCart(db);
             this.Close();
+            mm.ReCheck("");
             MessageBox.Show(qty + " x " + _selectedPart.Name + " au fost adaugate in cos.");
         }
 
@@ -105,6 +108,7 @@ namespace AutoService
                 db.SaveChanges();
                 MessageBox.Show("Piesa casata!");
                 this.Close();
+                mm.ReCheck("");
             }
         }
 
@@ -140,6 +144,7 @@ namespace AutoService
                 db.SaveChanges();
                 MessageBox.Show("Piesa Editata cu succes!");
                 this.Close();
+                mm.ReCheck("");
             }else { MessageBox.Show("Ceva nu a mers bine la editarea piesei! Contacteaza suport!"); }
         }
     }

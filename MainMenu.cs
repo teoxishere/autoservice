@@ -324,7 +324,7 @@ namespace AutoService
                 dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
 
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+           //     dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 GetReports();
 
                 var noOfCarsinSystem = db.Cars
@@ -333,7 +333,7 @@ namespace AutoService
                 lbNrTotalMasini.Text = noOfCarsinSystem.ToString();
 
                 var noOfPartsInSystem = db.Parts
-                                         .Where(p => p.Quantity > 0 || p.InStock == true)
+                                         .Where(p =>p.InStock == true)
                                          .Select(p => p.Quantity)
                                          .Count();
                 lbNrTotalPiese.Text = noOfPartsInSystem.ToString();
@@ -341,17 +341,31 @@ namespace AutoService
                 var valueOfCarsInSystem = db.Cars
                                            .Select(c => c.Price)
                                            .Sum();
-                lbValoareMasini.Text = valueOfCarsInSystem.ToString();
+                lbValoareMasini.Text = valueOfCarsInSystem.ToString()+" Lei";
 
                 var valueOfPartsInSystem = db.Parts
-                                            .Where(p => p.Quantity > 0)
+                                            .Where(p => p.InStock==true)
                                             .Select(p => new
                                             {
                                                 value = p.Price * p.Quantity
                                             })
-                                            .ToList();
-                //lblValoarePiese.Text = valueOfPartsInSystem.Sum(x=>Convert.ToInt64(x)).ToString();
-                                            
+                                            .Sum(p=>p.value);
+                lblValoarePiese.Text = valueOfPartsInSystem.ToString() + " Lei";
+
+                var detailsOfCarsInSystem = db.Cars.Include("Parts")
+                                              .Select(c => new
+                                              {
+                                                  Marca = c.Make,
+                                                  Model = c.Model,
+                                                  Cod = c.Internal_Code,
+                                                  Pret = c.Price,
+                                                //  Valoare_Piese = c.Parts.Select(p =>new {valoareMare = p.Price*p.Quantity })//.Sum(p=>p.valoareMare)
+                                              }).ToList();
+                dataListView4.DataSource = detailsOfCarsInSystem;
+                dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+               // dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+
             }
             else if (tabControl1.SelectedTab.Text.ToLower() == "cautare")
             {
@@ -681,7 +695,7 @@ namespace AutoService
             if (lbParts.SelectedValue != null)
             {
                 var _listPart = lbParts.SelectedValue.ToString();
-                resultCars = db.Parts.Include("Cars").Where(x => x.Name.Equals(_listPart) && x.Quantity>0).SelectMany(x => x.Cars.ToList()).ToList();
+                resultCars = db.Parts.Include("Cars").Where(x => x.Name.Equals(_listPart) && x.InStock==true).SelectMany(x => x.Cars.ToList()).ToList();
                 lbResult.DataSource = resultCars;
             }
             else
@@ -701,7 +715,7 @@ namespace AutoService
                 var sp = lbParts.SelectedValue.ToString();
                 var _selectedPart = _selectedCar.Parts.Where(x => x.Name.Equals(sp)).FirstOrDefault();
                 // _selectedPart = (Part)lbParts.SelectedItem;
-                new PartInfoForm(_selectedCar, _selectedPart, db).Show();
+                new PartInfoForm(_selectedCar, _selectedPart, db,this).Show();
 
                 try
                 {
@@ -836,7 +850,7 @@ namespace AutoService
             dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-      
+
         private void partBtnImage_Click(object sender, EventArgs e)
         {
 
@@ -850,6 +864,20 @@ namespace AutoService
                 pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             }
         }
+            private void partBtnImageParts_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Open Image";
+            dialog.Filter = " jpg files (*.jpg)|*.jpg";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox2.Image = Image.FromFile(dialog.FileName);
+                // pictureBox1.ImageLocation =dialog.FileName; 
+                pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            }
+        
+    }
 
      
     }

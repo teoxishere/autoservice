@@ -59,13 +59,24 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.lbNrTotalPiese = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.lblValoarePiese = new System.Windows.Forms.Label();
+            this.lbNrTotalMasini = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.lbValoareMasini = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.dataListView4 = new BrightIdeasSoftware.DataListView();
             this.dataListView1 = new BrightIdeasSoftware.DataListView();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label30 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label29 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.partBtnImage = new System.Windows.Forms.Button();
+            this.partBtnImageParts = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label33 = new System.Windows.Forms.Label();
             this.partCbColor = new System.Windows.Forms.TextBox();
@@ -115,29 +126,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.dataListView4 = new BrightIdeasSoftware.DataListView();
-            this.label40 = new System.Windows.Forms.Label();
-            this.lbValoareMasini = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.lbNrTotalMasini = new System.Windows.Forms.Label();
-            this.lblValoarePiese = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.lbNrTotalPiese = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).BeginInit();
             this.carPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView4)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -154,10 +154,10 @@
             this.tabPage4.Controls.Add(this.button4);
             this.tabPage4.Controls.Add(this.button3);
             this.tabPage4.Controls.Add(this.dataListView2);
-            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Location = new System.Drawing.Point(4, 27);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1362, 694);
+            this.tabPage4.Size = new System.Drawing.Size(1362, 695);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Utilizatori";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -228,10 +228,10 @@
             this.carPanel.Controls.Add(this.label11);
             this.carPanel.Controls.Add(this.label10);
             this.carPanel.Controls.Add(this.label9);
-            this.carPanel.Location = new System.Drawing.Point(4, 28);
+            this.carPanel.Location = new System.Drawing.Point(4, 27);
             this.carPanel.Name = "carPanel";
             this.carPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.carPanel.Size = new System.Drawing.Size(1362, 694);
+            this.carPanel.Size = new System.Drawing.Size(1362, 695);
             this.carPanel.TabIndex = 3;
             this.carPanel.Text = "Adaugare Masini";
             this.carPanel.UseVisualStyleBackColor = true;
@@ -478,6 +478,123 @@
             this.tabPage3.Text = "Rapoarte";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(10, 373);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(158, 17);
+            this.label41.TabIndex = 15;
+            this.label41.Text = "Detalii Masini din sistem";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(968, 52);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(141, 22);
+            this.label48.TabIndex = 14;
+            this.label48.Text = "Valori din sistem";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(969, 147);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(139, 17);
+            this.label47.TabIndex = 13;
+            this.label47.Text = "Numar total de piese";
+            // 
+            // lbNrTotalPiese
+            // 
+            this.lbNrTotalPiese.AutoSize = true;
+            this.lbNrTotalPiese.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNrTotalPiese.Location = new System.Drawing.Point(1152, 147);
+            this.lbNrTotalPiese.Name = "lbNrTotalPiese";
+            this.lbNrTotalPiese.Size = new System.Drawing.Size(145, 17);
+            this.lbNrTotalPiese.TabIndex = 12;
+            this.lbNrTotalPiese.Text = "Numar total de masini";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(969, 176);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(139, 17);
+            this.label45.TabIndex = 11;
+            this.label45.Text = "Valoare Totala piese";
+            // 
+            // lblValoarePiese
+            // 
+            this.lblValoarePiese.AutoSize = true;
+            this.lblValoarePiese.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValoarePiese.Location = new System.Drawing.Point(1152, 176);
+            this.lblValoarePiese.Name = "lblValoarePiese";
+            this.lblValoarePiese.Size = new System.Drawing.Size(16, 17);
+            this.lblValoarePiese.TabIndex = 10;
+            this.lblValoarePiese.Text = "0";
+            // 
+            // lbNrTotalMasini
+            // 
+            this.lbNrTotalMasini.AutoSize = true;
+            this.lbNrTotalMasini.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNrTotalMasini.Location = new System.Drawing.Point(1152, 91);
+            this.lbNrTotalMasini.Name = "lbNrTotalMasini";
+            this.lbNrTotalMasini.Size = new System.Drawing.Size(145, 17);
+            this.lbNrTotalMasini.TabIndex = 9;
+            this.lbNrTotalMasini.Text = "Numar total de masini";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(969, 117);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(145, 17);
+            this.label42.TabIndex = 8;
+            this.label42.Text = "Valoare Totala Masini";
+            // 
+            // lbValoareMasini
+            // 
+            this.lbValoareMasini.AutoSize = true;
+            this.lbValoareMasini.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbValoareMasini.Location = new System.Drawing.Point(1152, 117);
+            this.lbValoareMasini.Name = "lbValoareMasini";
+            this.lbValoareMasini.Size = new System.Drawing.Size(145, 17);
+            this.lbValoareMasini.TabIndex = 7;
+            this.lbValoareMasini.Text = "Numar total de masini";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(969, 91);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(145, 17);
+            this.label40.TabIndex = 6;
+            this.label40.Text = "Numar total de masini";
+            // 
+            // dataListView4
+            // 
+            this.dataListView4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dataListView4.DataSource = null;
+            this.dataListView4.GridLines = true;
+            this.dataListView4.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.dataListView4.Location = new System.Drawing.Point(13, 414);
+            this.dataListView4.MultiSelect = false;
+            this.dataListView4.Name = "dataListView4";
+            this.dataListView4.ShowGroups = false;
+            this.dataListView4.ShowSortIndicators = false;
+            this.dataListView4.Size = new System.Drawing.Size(1064, 223);
+            this.dataListView4.SortGroupItemsByPrimaryColumn = false;
+            this.dataListView4.TabIndex = 5;
+            this.dataListView4.UseCompatibleStateImageBehavior = false;
+            this.dataListView4.View = System.Windows.Forms.View.Details;
+            // 
             // dataListView1
             // 
             this.dataListView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -536,7 +653,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.partBtnImage);
+            this.tabPage2.Controls.Add(this.partBtnImageParts);
             this.tabPage2.Controls.Add(this.pictureBox2);
             this.tabPage2.Controls.Add(this.label33);
             this.tabPage2.Controls.Add(this.partCbColor);
@@ -567,23 +684,23 @@
             this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Controls.Add(this.label19);
             this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Location = new System.Drawing.Point(4, 32);
+            this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1362, 690);
+            this.tabPage2.Size = new System.Drawing.Size(1362, 695);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Adaugare Piese";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // partBtnImage
+            // partBtnImageParts
             // 
-            this.partBtnImage.Location = new System.Drawing.Point(619, 414);
-            this.partBtnImage.Name = "partBtnImage";
-            this.partBtnImage.Size = new System.Drawing.Size(177, 27);
-            this.partBtnImage.TabIndex = 35;
-            this.partBtnImage.Text = "Adaugare Imagine";
-            this.partBtnImage.UseVisualStyleBackColor = true;
-            this.partBtnImage.Click += new System.EventHandler(this.partBtnImage_Click);
+            this.partBtnImageParts.Location = new System.Drawing.Point(619, 414);
+            this.partBtnImageParts.Name = "partBtnImageParts";
+            this.partBtnImageParts.Size = new System.Drawing.Size(177, 27);
+            this.partBtnImageParts.TabIndex = 35;
+            this.partBtnImageParts.Text = "Adaugare Imagine";
+            this.partBtnImageParts.UseVisualStyleBackColor = true;
+            this.partBtnImageParts.Click += new System.EventHandler(this.partBtnImageParts_Click);
             // 
             // pictureBox2
             // 
@@ -882,10 +999,10 @@
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1362, 694);
+            this.tabPage1.Size = new System.Drawing.Size(1362, 695);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cautare";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1080,123 +1197,6 @@
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // dataListView4
-            // 
-            this.dataListView4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dataListView4.DataSource = null;
-            this.dataListView4.GridLines = true;
-            this.dataListView4.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.dataListView4.Location = new System.Drawing.Point(13, 414);
-            this.dataListView4.MultiSelect = false;
-            this.dataListView4.Name = "dataListView4";
-            this.dataListView4.ShowGroups = false;
-            this.dataListView4.ShowSortIndicators = false;
-            this.dataListView4.Size = new System.Drawing.Size(1064, 223);
-            this.dataListView4.SortGroupItemsByPrimaryColumn = false;
-            this.dataListView4.TabIndex = 5;
-            this.dataListView4.UseCompatibleStateImageBehavior = false;
-            this.dataListView4.View = System.Windows.Forms.View.Details;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(969, 91);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(145, 17);
-            this.label40.TabIndex = 6;
-            this.label40.Text = "Numar total de masini";
-            // 
-            // lbValoareMasini
-            // 
-            this.lbValoareMasini.AutoSize = true;
-            this.lbValoareMasini.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbValoareMasini.Location = new System.Drawing.Point(1152, 117);
-            this.lbValoareMasini.Name = "lbValoareMasini";
-            this.lbValoareMasini.Size = new System.Drawing.Size(145, 17);
-            this.lbValoareMasini.TabIndex = 7;
-            this.lbValoareMasini.Text = "Numar total de masini";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(969, 117);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(145, 17);
-            this.label42.TabIndex = 8;
-            this.label42.Text = "Valoare Totala Masini";
-            // 
-            // lbNrTotalMasini
-            // 
-            this.lbNrTotalMasini.AutoSize = true;
-            this.lbNrTotalMasini.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNrTotalMasini.Location = new System.Drawing.Point(1152, 91);
-            this.lbNrTotalMasini.Name = "lbNrTotalMasini";
-            this.lbNrTotalMasini.Size = new System.Drawing.Size(145, 17);
-            this.lbNrTotalMasini.TabIndex = 9;
-            this.lbNrTotalMasini.Text = "Numar total de masini";
-            // 
-            // lblValoarePiese
-            // 
-            this.lblValoarePiese.AutoSize = true;
-            this.lblValoarePiese.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValoarePiese.Location = new System.Drawing.Point(1152, 176);
-            this.lblValoarePiese.Name = "lblValoarePiese";
-            this.lblValoarePiese.Size = new System.Drawing.Size(16, 17);
-            this.lblValoarePiese.TabIndex = 10;
-            this.lblValoarePiese.Text = "0";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(969, 176);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(139, 17);
-            this.label45.TabIndex = 11;
-            this.label45.Text = "Valoare Totala piese";
-            // 
-            // lbNrTotalPiese
-            // 
-            this.lbNrTotalPiese.AutoSize = true;
-            this.lbNrTotalPiese.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNrTotalPiese.Location = new System.Drawing.Point(1152, 147);
-            this.lbNrTotalPiese.Name = "lbNrTotalPiese";
-            this.lbNrTotalPiese.Size = new System.Drawing.Size(145, 17);
-            this.lbNrTotalPiese.TabIndex = 12;
-            this.lbNrTotalPiese.Text = "Numar total de masini";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(969, 147);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(139, 17);
-            this.label47.TabIndex = 13;
-            this.label47.Text = "Numar total de piese";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(968, 52);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(141, 22);
-            this.label48.TabIndex = 14;
-            this.label48.Text = "Valori din sistem";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(10, 373);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(158, 17);
-            this.label41.TabIndex = 15;
-            this.label41.Text = "Detalii Masini din sistem";
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1207,7 +1207,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
-            this.Text = "Auto Service v1.10 beta";
+            this.Text = "Auto Service v1.2 beta";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.Load += new System.EventHandler(this.MainMenu_Load);
@@ -1219,6 +1219,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -1226,7 +1227,6 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1271,7 +1271,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button partBtnImage;
+        private System.Windows.Forms.Button partBtnImageParts;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox partCbColor;
