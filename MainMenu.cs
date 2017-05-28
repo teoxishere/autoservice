@@ -59,6 +59,7 @@ namespace AutoService
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             var tbr = new List<TabPage>();
             // Iterate over all tabs
             for (var i = 0; i < tabControl1.TabCount; i++)
@@ -296,7 +297,7 @@ namespace AutoService
                 // Piese screen
                 pictureBox2.Image = Image.FromFile("../Pics/logo2.jpg");
                 pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-               
+
                 // Get all makes
                 _pieseMakes = db
                     .Cars
@@ -317,7 +318,7 @@ namespace AutoService
                 dateTimePicker1.Value = dateTimePicker2.Value.AddMonths(-1);
                 // dateTimePicker1.Value = DateTime.Now.AddMonths(-1);
 
-                 dateTimePicker2.MaxDate = DateTime.Now;
+                dateTimePicker2.MaxDate = DateTime.Now.AddMinutes(300);
                 // dateTimePicker1.MaxDate = DateTime.Now;
                 dateTimePicker1.MaxDate = dateTimePicker2.Value;
                 dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
@@ -325,6 +326,32 @@ namespace AutoService
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 GetReports();
+
+                var noOfCarsinSystem = db.Cars
+                                        .Select(c => c.Make)
+                                        .Count();
+                lbNrTotalMasini.Text = noOfCarsinSystem.ToString();
+
+                var noOfPartsInSystem = db.Parts
+                                         .Where(p => p.Quantity > 0 || p.InStock == true)
+                                         .Select(p => p.Quantity)
+                                         .Count();
+                lbNrTotalPiese.Text = noOfPartsInSystem.ToString();
+
+                var valueOfCarsInSystem = db.Cars
+                                           .Select(c => c.Price)
+                                           .Sum();
+                lbValoareMasini.Text = valueOfCarsInSystem.ToString();
+
+                var valueOfPartsInSystem = db.Parts
+                                            .Where(p => p.Quantity > 0)
+                                            .Select(p => new
+                                            {
+                                                value = p.Price * p.Quantity
+                                            })
+                                            .ToList();
+                //lblValoarePiese.Text = valueOfPartsInSystem.Sum(x=>Convert.ToInt64(x)).ToString();
+                                            
             }
             else if (tabControl1.SelectedTab.Text.ToLower() == "cautare")
             {
@@ -824,7 +851,7 @@ namespace AutoService
             }
         }
 
-
+     
     }
 }
 
