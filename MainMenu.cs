@@ -359,7 +359,7 @@ namespace AutoService
                                                   Model = c.Model,
                                                   Cod = c.Internal_Code,
                                                   Pret = c.Price,
-                                                //  Valoare_Piese = c.Parts.Select(p =>new {valoareMare = p.Price*p.Quantity })//.Sum(p=>p.valoareMare)
+                                                 // Valoare_Piese = c.Parts.Select(p =>new { value = p.Price * p.Quantity }).Sum(z=>z.value)
                                               }).ToList();
                 dataListView4.DataSource = detailsOfCarsInSystem;
                 dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -672,7 +672,7 @@ namespace AutoService
                 .Where(x => model == null || (model != null && x.Model.Equals(model)))
                 .Where(x => !yearSelected || (yearSelected && x.Year.Equals(year)))
                 .Where(x => !engineSelected || (engineSelected && x.Capacity.Equals(engine)))
-                .SelectMany(x => x.Parts).Where(x => x.Name.StartsWith(searchString) || x.Oem_Code.StartsWith(searchString)).ToList();
+                .SelectMany(x => x.Parts).Where(x => x.Name.Contains(searchString) || x.Oem_Code.StartsWith(searchString)).ToList();
 
             lbParts.DataSource = partQuery.Where(x => x.InStock == true && x.Quantity > 0).Select(x => x.Name).Distinct().ToList();
 
@@ -879,7 +879,9 @@ namespace AutoService
         
     }
 
-     
+       
+
+       
     }
 }
 

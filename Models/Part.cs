@@ -19,6 +19,7 @@ namespace AutoService.Models
         public string Color { get; set; }
 
         public bool InStock { get; set; }
+        public bool isAvailable { get; set; }
 
         public byte[] Content { get; set; }
 

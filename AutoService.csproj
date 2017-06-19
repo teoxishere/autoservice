@@ -153,6 +153,10 @@
     <Compile Include="Migrations\201705232015004_addedpictureonparts.Designer.cs">
       <DependentUpon>201705232015004_addedpictureonparts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706191801524_availabilityparameteraddedonpart.cs" />
+    <Compile Include="Migrations\201706191801524_availabilityparameteraddedonpart.Designer.cs">
+      <DependentUpon>201706191801524_availabilityparameteraddedonpart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
     <Compile Include="Models\LogEntry.cs" />
@@ -226,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705232015004_addedpictureonparts.resx">
       <DependentUpon>201705232015004_addedpictureonparts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706191801524_availabilityparameteraddedonpart.resx">
+      <DependentUpon>201706191801524_availabilityparameteraddedonpart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartInfoForm.resx">
       <DependentUpon>PartInfoForm.cs</DependentUpon>
