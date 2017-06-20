@@ -45,7 +45,12 @@ namespace AutoService
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mm.db.CartDetails.RemoveRange(CartService.Cart.CartDetails);
+            foreach (var cartItem in CartService.Cart.CartDetails)
+            {
+                var part = mm.db.Parts.Find(cartItem.PartId);
+                part.isAvailable = false;
+            }
+                mm.db.CartDetails.RemoveRange(CartService.Cart.CartDetails);
             mm.db.SaveChanges();
             CartService.RefreshCart(mm.db);
             dataListView1.DataSource = CartService.Cart.CartDetails
@@ -70,8 +75,9 @@ namespace AutoService
                 if (part != null)
                 {
                     part.Quantity -= cartItem.Quantity;
+                    part.SoldQuantity += cartItem.Quantity;
                     LoggingService.Log(Enums.ActionsEnum.Vanzare_Piesa, part.Price * cartItem.Quantity, "S-a vandut piesa- " + part.Name + " nr bucati vandute- " + cartItem.Quantity + " pret/buc" + part.Price);
-
+                    part.isAvailable = false;
                     if (part.Quantity==0)
                     {
                         part.InStock = false;

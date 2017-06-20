@@ -89,6 +89,7 @@ namespace AutoService
             db.CartDetails.Add(cartDetails);
             db.SaveChanges();
             CartService.RefreshCart(db);
+            _selectedPart.isAvailable = true;
             this.Close();
             mm.ReCheck("");
             MessageBox.Show(qty + " x " + _selectedPart.Name + " au fost adaugate in cos.");
@@ -99,53 +100,68 @@ namespace AutoService
             DialogResult dialogResult = MessageBox.Show("Sunteti sigur ca vreti sa casati piesa?", "Atentie!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                var partToRemove = db.Parts
-                                 .Where(p => p.Id == _selectedPart.Id)
-                                 .FirstOrDefault();
-                partToRemove.InStock = false;
-                partToRemove.Quantity = 0;
-                LoggingService.Log(Enums.ActionsEnum.Casare_Piesa, partToRemove.Price, "Casare piesa: " + partToRemove.Name + " de pe masina " + _selectedCar.Make + " " + _selectedCar.Model + " " + _selectedCar.Year);
-                db.SaveChanges();
-                MessageBox.Show("Piesa casata!");
-                this.Close();
-                mm.ReCheck("");
+                if (!_selectedPart.isAvailable)
+                {
+                    var partToRemove = db.Parts
+                                     .Where(p => p.Id == _selectedPart.Id)
+                                     .FirstOrDefault();
+                    partToRemove.InStock = false;
+                    partToRemove.Quantity = 0;
+                    LoggingService.Log(Enums.ActionsEnum.Casare_Piesa, partToRemove.Price, "Casare piesa: " + partToRemove.Name + " de pe masina " + _selectedCar.Make + " " + _selectedCar.Model + " " + _selectedCar.Year);
+                    db.SaveChanges();
+                    MessageBox.Show("Piesa casata!");
+                    this.Close();
+                    mm.ReCheck("");
+                }else
+                {
+                    MessageBox.Show("Piesa se afla in cos. Actiunea nu poate fi finalizata!");
+                }
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            bool okPrice=false, okQty=false;
-            double price;
-            int qty;
-            var partToEdit = db.Parts
-                                .Where(p => p.Id == _selectedPart.Id)
-                                .FirstOrDefault();
-            if(double.TryParse(infoTbPrice.Text,out price))
+            if (!_selectedPart.isAvailable)
             {
-                partToEdit.Price = double.Parse(infoTbPrice.Text);
-                if (partToEdit.Price < 0) { partToEdit.Price = 0; }
-                okPrice = true;
+                bool okPrice = false, okQty = false;
+                double price;
+                int qty;
+                var partToEdit = db.Parts
+                                    .Where(p => p.Id == _selectedPart.Id)
+                                    .FirstOrDefault();
+                if (double.TryParse(infoTbPrice.Text, out price))
+                {
+                    partToEdit.Price = double.Parse(infoTbPrice.Text);
+                    if (partToEdit.Price < 0) { partToEdit.Price = 0; }
+                    okPrice = true;
+                }
+                else
+                {
+                    MessageBox.Show("Format incorect al pretului!");
+                }
+                if (int.TryParse(infoTbQty.Text, out qty))
+                {
+                    partToEdit.Quantity = int.Parse(infoTbQty.Text);
+                    if (partToEdit.Quantity < 0) { partToEdit.Quantity = 0; partToEdit.InStock = false; }
+                    okQty = true;
+                }
+                else
+                {
+                    MessageBox.Show("Format incorect al cantitatii!");
+                }
+                if (okPrice && okQty)
+                {
+                    LoggingService.Log(Enums.ActionsEnum.Editare_Piesa, partToEdit.Price, "Editare piesa: " + partToEdit.Name + " de pe masina" + _selectedCar.Make + " " + _selectedCar.Model + " " + _selectedCar.Year);
+                    db.SaveChanges();
+                    MessageBox.Show("Piesa Editata cu succes!");
+                    this.Close();
+                    mm.ReCheck("");
+                }
+                else { MessageBox.Show("Ceva nu a mers bine la editarea piesei! Contacteaza suport!"); }
             }else
             {
-                MessageBox.Show("Format incorect al pretului!");
+                MessageBox.Show("Piesa se afla in cos. Actiunea nu poate fi finalizata!");
             }
-            if(int.TryParse(infoTbQty.Text,out qty))
-            {   
-                partToEdit.Quantity = int.Parse(infoTbQty.Text);
-                if (partToEdit.Quantity < 0) { partToEdit.Quantity = 0; partToEdit.InStock = false; }
-                okQty = true;
-            }else
-            {
-                MessageBox.Show("Format incorect al cantitatii!");
-            }
-            if (okPrice && okQty)
-            {
-                LoggingService.Log(Enums.ActionsEnum.Editare_Piesa, partToEdit.Price, "Editare piesa: " + partToEdit.Name + " de pe masina" +_selectedCar.Make +" "+ _selectedCar.Model + " " + _selectedCar.Year);
-                db.SaveChanges();
-                MessageBox.Show("Piesa Editata cu succes!");
-                this.Close();
-                mm.ReCheck("");
-            }else { MessageBox.Show("Ceva nu a mers bine la editarea piesei! Contacteaza suport!"); }
         }
     }
 }

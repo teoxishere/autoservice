@@ -335,7 +335,7 @@ namespace AutoService
                 var noOfPartsInSystem = db.Parts
                                          .Where(p =>p.InStock == true)
                                          .Select(p => p.Quantity)
-                                         .Count();
+                                         .Sum();
                 lbNrTotalPiese.Text = noOfPartsInSystem.ToString();
 
                 var valueOfCarsInSystem = db.Cars
@@ -359,11 +359,12 @@ namespace AutoService
                                                   Model = c.Model,
                                                   Cod = c.Internal_Code,
                                                   Pret = c.Price,
-                                                 // Valoare_Piese = c.Parts.Select(p =>new { value = p.Price * p.Quantity }).Sum(z=>z.value)
+                                                  Valoare_Piese = c.Parts.Sum(p=>(double?)(p.Price*p.Quantity))??0,
+                                                  Piese_Vandute =c.Parts.Sum(p=>(double?)(p.Price*p.SoldQuantity))??0
                                               }).ToList();
                 dataListView4.DataSource = detailsOfCarsInSystem;
-                dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-               // dataListView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                dataListView4.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                dataListView4.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
 
             }
