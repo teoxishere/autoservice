@@ -880,9 +880,21 @@ namespace AutoService
         
     }
 
-       
-
-       
+        private void dataListView4_DoubleClick(object sender, EventArgs e)
+        {
+            var selectedRow = dataListView4.SelectedItem;
+            if (selectedRow != null && selectedRow.RowObject != null)
+            {
+              /*  var rowData = selectedRow.RowObject as Car;
+                var clickedCar = db.Cars
+                    .Select(c => c)
+                    .Where(c => c.Make.Equals(rowData.Make) && c.Model.Equals(rowData.Model) && c.Price == rowData.Price)
+                    .ToList()
+                    .FirstOrDefault();
+                */
+                new CarReport(this).Show();
+            }
+        }
     }
 }
 
