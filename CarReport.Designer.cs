@@ -30,21 +30,21 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.carReportListView1 = new BrightIdeasSoftware.DataListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.carReportListView2 = new BrightIdeasSoftware.DataListView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dataListView1 = new BrightIdeasSoftware.DataListView();
-            this.dataListView2 = new BrightIdeasSoftware.DataListView();
-            this.dataListView3 = new BrightIdeasSoftware.DataListView();
+            this.carReportListView3 = new BrightIdeasSoftware.DataListView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tabControl1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.carReportListView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.carReportListView2)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carReportListView3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -65,20 +65,21 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
             // 
-            // tabControl1
+            // tabControl2
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(0, 111);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(627, 397);
-            this.tabControl1.TabIndex = 2;
+            this.tabControl2.Controls.Add(this.tabPage1);
+            this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Location = new System.Drawing.Point(0, 111);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(627, 397);
+            this.tabControl2.TabIndex = 2;
+            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dataListView3);
+            this.tabPage1.Controls.Add(this.carReportListView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -87,78 +88,78 @@
             this.tabPage1.Text = "Raport Piese Masina";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // carReportListView1
+            // 
+            this.carReportListView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.carReportListView1.DataSource = null;
+            this.carReportListView1.GridLines = true;
+            this.carReportListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.carReportListView1.Location = new System.Drawing.Point(2, 0);
+            this.carReportListView1.MultiSelect = false;
+            this.carReportListView1.Name = "carReportListView1";
+            this.carReportListView1.ShowGroups = false;
+            this.carReportListView1.ShowSortIndicators = false;
+            this.carReportListView1.Size = new System.Drawing.Size(614, 412);
+            this.carReportListView1.SortGroupItemsByPrimaryColumn = false;
+            this.carReportListView1.TabIndex = 6;
+            this.carReportListView1.UseCompatibleStateImageBehavior = false;
+            this.carReportListView1.View = System.Windows.Forms.View.Details;
+            // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataListView2);
+            this.tabPage2.Controls.Add(this.carReportListView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(619, 415);
+            this.tabPage2.Size = new System.Drawing.Size(619, 371);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Raport Piese Vandute";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // carReportListView2
+            // 
+            this.carReportListView2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.carReportListView2.DataSource = null;
+            this.carReportListView2.GridLines = true;
+            this.carReportListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.carReportListView2.Location = new System.Drawing.Point(2, 3);
+            this.carReportListView2.MultiSelect = false;
+            this.carReportListView2.Name = "carReportListView2";
+            this.carReportListView2.ShowGroups = false;
+            this.carReportListView2.ShowSortIndicators = false;
+            this.carReportListView2.Size = new System.Drawing.Size(614, 409);
+            this.carReportListView2.SortGroupItemsByPrimaryColumn = false;
+            this.carReportListView2.TabIndex = 6;
+            this.carReportListView2.UseCompatibleStateImageBehavior = false;
+            this.carReportListView2.View = System.Windows.Forms.View.Details;
+            // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.dataListView1);
+            this.tabPage3.Controls.Add(this.carReportListView3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(619, 415);
+            this.tabPage3.Size = new System.Drawing.Size(619, 371);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Raport Piese Stoc";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dataListView1
+            // carReportListView3
             // 
-            this.dataListView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dataListView1.DataSource = null;
-            this.dataListView1.GridLines = true;
-            this.dataListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.dataListView1.Location = new System.Drawing.Point(2, 0);
-            this.dataListView1.MultiSelect = false;
-            this.dataListView1.Name = "dataListView1";
-            this.dataListView1.ShowGroups = false;
-            this.dataListView1.ShowSortIndicators = false;
-            this.dataListView1.Size = new System.Drawing.Size(614, 409);
-            this.dataListView1.SortGroupItemsByPrimaryColumn = false;
-            this.dataListView1.TabIndex = 5;
-            this.dataListView1.UseCompatibleStateImageBehavior = false;
-            this.dataListView1.View = System.Windows.Forms.View.Details;
-            // 
-            // dataListView2
-            // 
-            this.dataListView2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dataListView2.DataSource = null;
-            this.dataListView2.GridLines = true;
-            this.dataListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.dataListView2.Location = new System.Drawing.Point(2, 3);
-            this.dataListView2.MultiSelect = false;
-            this.dataListView2.Name = "dataListView2";
-            this.dataListView2.ShowGroups = false;
-            this.dataListView2.ShowSortIndicators = false;
-            this.dataListView2.Size = new System.Drawing.Size(614, 409);
-            this.dataListView2.SortGroupItemsByPrimaryColumn = false;
-            this.dataListView2.TabIndex = 6;
-            this.dataListView2.UseCompatibleStateImageBehavior = false;
-            this.dataListView2.View = System.Windows.Forms.View.Details;
-            // 
-            // dataListView3
-            // 
-            this.dataListView3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dataListView3.DataSource = null;
-            this.dataListView3.GridLines = true;
-            this.dataListView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.dataListView3.Location = new System.Drawing.Point(2, 0);
-            this.dataListView3.MultiSelect = false;
-            this.dataListView3.Name = "dataListView3";
-            this.dataListView3.ShowGroups = false;
-            this.dataListView3.ShowSortIndicators = false;
-            this.dataListView3.Size = new System.Drawing.Size(614, 412);
-            this.dataListView3.SortGroupItemsByPrimaryColumn = false;
-            this.dataListView3.TabIndex = 6;
-            this.dataListView3.UseCompatibleStateImageBehavior = false;
-            this.dataListView3.View = System.Windows.Forms.View.Details;
+            this.carReportListView3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.carReportListView3.DataSource = null;
+            this.carReportListView3.GridLines = true;
+            this.carReportListView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.carReportListView3.Location = new System.Drawing.Point(2, 0);
+            this.carReportListView3.MultiSelect = false;
+            this.carReportListView3.Name = "carReportListView3";
+            this.carReportListView3.ShowGroups = false;
+            this.carReportListView3.ShowSortIndicators = false;
+            this.carReportListView3.Size = new System.Drawing.Size(614, 409);
+            this.carReportListView3.SortGroupItemsByPrimaryColumn = false;
+            this.carReportListView3.TabIndex = 5;
+            this.carReportListView3.UseCompatibleStateImageBehavior = false;
+            this.carReportListView3.View = System.Windows.Forms.View.Details;
             // 
             // comboBox1
             // 
@@ -174,18 +175,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 500);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "CarReport";
             this.Text = "CarReport";
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.carReportListView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.carReportListView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carReportListView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,13 +196,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private BrightIdeasSoftware.DataListView dataListView3;
-        private BrightIdeasSoftware.DataListView dataListView2;
-        private BrightIdeasSoftware.DataListView dataListView1;
+        private BrightIdeasSoftware.DataListView carReportListView1;
+        private BrightIdeasSoftware.DataListView carReportListView2;
+        private BrightIdeasSoftware.DataListView carReportListView3;
         private System.Windows.Forms.ComboBox comboBox1;
     }
 }
