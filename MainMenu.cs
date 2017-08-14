@@ -354,7 +354,7 @@ namespace AutoService
 
                 var detailsOfCarsInSystem = db.Cars.Include("Parts")
                                               .Select(c => new
-                                              {
+                                              {   Id= c.Id,
                                                   Marca = c.Make,
                                                   Model = c.Model,
                                                   Cod = c.Internal_Code,
@@ -885,14 +885,16 @@ namespace AutoService
             var selectedRow = dataListView4.SelectedItem;
             if (selectedRow != null && selectedRow.RowObject != null)
             {
-              /*  var rowData = selectedRow.RowObject as Car;
-                var clickedCar = db.Cars
+
+                dynamic rowData = selectedRow.RowObject;
+                int id = rowData.Id;
+              /*  var clickedCar = db.Cars
                     .Select(c => c)
                     .Where(c => c.Make.Equals(rowData.Make) && c.Model.Equals(rowData.Model) && c.Price == rowData.Price)
                     .ToList()
                     .FirstOrDefault();
                 */
-                new CarReport(this).Show();
+                new CarReport(this,id).Show();
             }
         }
     }
