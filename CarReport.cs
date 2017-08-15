@@ -61,7 +61,7 @@ namespace AutoService
             else if (tabControl2.SelectedTab.Text.ToLower() == "raport piese stoc")
             {
                 var stockPartsOfCar = mm.db.Parts.Include("Cars")
-                                            .Where(p => p.isAvailable == true)
+                                            .Where(p => p.InStock == true)
                                             .Select(p => new
                                             {
                                                 Nume = p.Name,

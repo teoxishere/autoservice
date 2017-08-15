@@ -295,7 +295,7 @@ namespace AutoService
             if (tabControl1.SelectedTab.Text.ToLower() == "adaugare piese")
             {
                 // Piese screen
-                pictureBox2.Image = Image.FromFile("../Pics/logo2.jpg");
+                pictureBox2.Image = Image.FromFile("./Pics/logo2.png");
                 pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
 
                 // Get all makes
@@ -365,6 +365,7 @@ namespace AutoService
                 dataListView4.DataSource = detailsOfCarsInSystem;
                 dataListView4.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 dataListView4.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                dataListView4.Columns.RemoveByKey("Id");
 
 
             }
@@ -394,7 +395,7 @@ namespace AutoService
            
             else if (tabControl1.SelectedTab.Text.ToLower() == "adaugare masini")
             {
-                pictureBox1.Image = Image.FromFile("../Pics/logo2.jpg");
+                pictureBox1.Image = Image.FromFile("./Pics/logo2.png");
                 pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
                 FillUpMyCarTable();
 
