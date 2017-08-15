@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -324,34 +325,45 @@ namespace AutoService
                 dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
 
                 dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-           //     dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                //     dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 GetReports();
 
                 var noOfCarsinSystem = db.Cars
                                         .Select(c => c.Make)
                                         .Count();
                 lbNrTotalMasini.Text = noOfCarsinSystem.ToString();
-
-                var noOfPartsInSystem = db.Parts
-                                         .Where(p =>p.InStock == true)
-                                         .Select(p => p.Quantity)
-                                         .Sum();
+                //Var instantiate
+                double noOfPartsInSystem = 0;
+              
+                if (db.Parts.Where(p => p.InStock == true).Any())
+                {
+                    noOfPartsInSystem = db.Parts
+                                            .Where(p => p.InStock == true)
+                                            .Select(p => p.Quantity)
+                                            .Sum();
+                }
                 lbNrTotalPiese.Text = noOfPartsInSystem.ToString();
-
-                var valueOfCarsInSystem = db.Cars
-                                           .Select(c => c.Price)
-                                           .Sum();
-                lbValoareMasini.Text = valueOfCarsInSystem.ToString()+" Lei";
-
-                var valueOfPartsInSystem = db.Parts
-                                            .Where(p => p.InStock==true)
-                                            .Select(p => new
-                                            {
-                                                value = p.Price * p.Quantity
-                                            })
-                                            .Sum(p=>p.value);
-                lblValoarePiese.Text = valueOfPartsInSystem.ToString() + " Lei";
-
+                double valueOfCarsInSystem = 0;
+                lbValoareMasini.Text = "0";
+                if (db.Cars.Select(c => c.Price).Any())
+                {
+                    valueOfCarsInSystem = db.Cars
+                                               .Select(c => c.Price)
+                                               .Sum();
+                    lbValoareMasini.Text = valueOfCarsInSystem.ToString() + " Lei";
+                }
+                double valueOfPartsInSystem = 0;
+                if (db.Parts.Where(p => p.InStock).Any())
+                {
+                    valueOfPartsInSystem = db.Parts
+                                               .Where(p => p.InStock == true)
+                                               .Select(p => new
+                                               {
+                                                   value = p.Price * p.Quantity
+                                               })
+                                               .Sum(p => p.value);
+                    lblValoarePiese.Text = valueOfPartsInSystem.ToString() + " Lei";
+                }
                 var detailsOfCarsInSystem = db.Cars.Include("Parts")
                                               .Select(c => new
                                               {   Id= c.Id,
@@ -368,6 +380,16 @@ namespace AutoService
                 dataListView4.Columns.RemoveByKey("Id");
 
 
+            }else if (tabControl1.SelectedTab.Text.ToLower() == "facturi")
+            {
+                if (Directory.Exists("./facturi"))
+                {
+                   var pdfFiles = Directory.GetFiles("./facturi").Select(x => new { Nume = x.Replace("./facturi\\","") }).ToList();
+
+                    dataListView5.DataSource = pdfFiles;
+                    dataListView5.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    dataListView5.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
             }
             else if (tabControl1.SelectedTab.Text.ToLower() == "cautare")
             {
@@ -897,6 +919,22 @@ namespace AutoService
                 */
                 new CarReport(this,id).Show();
             }
+        }
+
+        private void dataListView5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataListView5_Click(object sender, EventArgs e)
+        {
+            dynamic selectedItem = dataListView5.SelectedItem.RowObject;
+            if(selectedItem!=null && selectedItem.Nume != null)
+            {
+                new PDFWindow(selectedItem.Nume).Show();
+            }
+                
+            
         }
     }
 }

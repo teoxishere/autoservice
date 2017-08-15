@@ -19,7 +19,7 @@ namespace AutoService.Services
             // pedefe
             var html = GetHtmlFromTemplateAndReplace(cart);
             var pdfBytes = HtmlToByteArray(html);
-            File.WriteAllBytes("./facturi/" + cart.Id + ".pdf", pdfBytes);
+            File.WriteAllBytes("./facturi/" + cart.Id +" "+DateTime.Now.ToShortDateString()+ ".pdf", pdfBytes);
         }
 
         private static string GetHtmlFromTemplateAndReplace(Cart cart)

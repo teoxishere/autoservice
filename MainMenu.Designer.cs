@@ -125,6 +125,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dataListView5 = new BrightIdeasSoftware.DataListView();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListView2)).BeginInit();
             this.carPanel.SuspendLayout();
@@ -137,6 +139,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView5)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -147,7 +151,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 27);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1362, 695);
+            this.tabPage4.Size = new System.Drawing.Size(1354, 710);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Utilizatori";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -221,7 +225,7 @@
             this.carPanel.Location = new System.Drawing.Point(4, 27);
             this.carPanel.Name = "carPanel";
             this.carPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.carPanel.Size = new System.Drawing.Size(1362, 695);
+            this.carPanel.Size = new System.Drawing.Size(1354, 710);
             this.carPanel.TabIndex = 3;
             this.carPanel.Text = "Adaugare Masini";
             this.carPanel.UseVisualStyleBackColor = true;
@@ -463,7 +467,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 27);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1362, 719);
+            this.tabPage3.Size = new System.Drawing.Size(1354, 710);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Rapoarte";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -993,7 +997,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1362, 719);
+            this.tabPage1.Size = new System.Drawing.Size(1354, 710);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cautare";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1178,21 +1182,53 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.carPanel);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1370, 750);
+            this.tabControl1.Size = new System.Drawing.Size(1362, 741);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.dataListView5);
+            this.tabPage5.Location = new System.Drawing.Point(4, 27);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1354, 710);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "Facturi";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // dataListView5
+            // 
+            this.dataListView5.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
+            this.dataListView5.CellEditEnterChangesRows = true;
+            this.dataListView5.CellEditTabChangesRows = true;
+            this.dataListView5.DataSource = null;
+            this.dataListView5.FullRowSelect = true;
+            this.dataListView5.GridLines = true;
+            this.dataListView5.HasCollapsibleGroups = false;
+            this.dataListView5.Location = new System.Drawing.Point(3, 3);
+            this.dataListView5.MultiSelect = false;
+            this.dataListView5.Name = "dataListView5";
+            this.dataListView5.ShowGroups = false;
+            this.dataListView5.Size = new System.Drawing.Size(1062, 704);
+            this.dataListView5.TabIndex = 1;
+            this.dataListView5.UseCompatibleStateImageBehavior = false;
+            this.dataListView5.View = System.Windows.Forms.View.Details;
+            this.dataListView5.SelectedIndexChanged += new System.EventHandler(this.dataListView5_SelectedIndexChanged);
+            this.dataListView5.Click += new System.EventHandler(this.dataListView5_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 750);
+            this.ClientSize = new System.Drawing.Size(1362, 741);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "MainMenu";
@@ -1216,6 +1252,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataListView5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1318,5 +1356,7 @@
         private System.Windows.Forms.Label label40;
         private BrightIdeasSoftware.DataListView dataListView4;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TabPage tabPage5;
+        private BrightIdeasSoftware.DataListView dataListView5;
     }
 }
