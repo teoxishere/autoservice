@@ -418,7 +418,8 @@ namespace AutoService
             else if (tabControl1.SelectedTab.Text.ToLower() == "adaugare masini")
             {
                 pictureBox1.Image = Image.FromFile("./Pics/logo2.png");
-                pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+             //   pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
                 FillUpMyCarTable();
 
             }
@@ -522,7 +523,9 @@ namespace AutoService
                     Price = double.Parse(partTbPrice.Text),
                     Oem_Code = partTbOem.Text,
                     InStock = inStock,
-                    Color = partCbColor.Text
+                    Color = partCbColor.Text,
+                    Content = ImageServices.imageToByteArray(pictureBox2.Image)
+                    
 
                 };
                 //Check if the part is already in stock. If it is, add qty
@@ -719,7 +722,10 @@ namespace AutoService
             if (lbParts.SelectedValue != null)
             {
                 var _listPart = lbParts.SelectedValue.ToString();
-                resultCars = db.Parts.Include("Cars").Where(x => x.Name.Equals(_listPart) && x.InStock==true).SelectMany(x => x.Cars.ToList()).ToList();
+                resultCars = db.Parts.Include("Cars")
+                    .Where(x => x.Name.Equals(_listPart) && x.InStock==true)
+                    .SelectMany(x => x.Cars)
+                    .ToList();
                 lbResult.DataSource = resultCars;
             }
             else
@@ -849,24 +855,23 @@ namespace AutoService
         private void FillUpMyCarTable()
         {
             var allMyCars = db.Cars.Include("Parts")
-                            .Select(c => new
-                            {
-                                Marca = c.Make,
-                                Model = c.Model,
-                                Capacitate = c.Capacity,
-                                Putere = c.Power,
-                                Pret = c.Price,
-                                Cod = c.Internal_Code,
-                                An = c.Year,
-                                Parti = c.Parts.Select(p => new {
-                                    PretPiese = p.Price * p.Quantity,
-                                })
-                            })
-                            .ToList();
+                             .ToList();
+
+            var allMyCarsToBeDisplayed = allMyCars.Select(c => new
+            {
+                Marca = c.Make,
+                Model = c.Model,
+                Capacitate = c.Capacity,
+                Putere = c.Power,
+                Pret = c.Price,
+                Cod = c.Internal_Code,
+                An = c.Year,
+                Parti = string.Join(", ", c.Parts.Select(p => p.Name).ToList())
+            })
+            .ToList();
             /*                      
            */
-
-            dataListView3.DataSource = allMyCars;
+            dataListView3.DataSource = allMyCarsToBeDisplayed;
 
 
             //resize shit

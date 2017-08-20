@@ -25,12 +25,17 @@ namespace AutoService
         {
             InitializeComponent();
             _selectedCarId = id;
-
+           
             mm = _aMenu;
-            var allTheCars = mm.db.Cars
+            var selectedCar = mm.db.Cars
+                             .Where(c => c.Id.Equals(_selectedCarId))
+                             .FirstOrDefault();
+            label2.Text = selectedCar.Make + " " + selectedCar.Model;
+                                
+           /* var allTheCars = mm.db.Cars
                 .Select(c => new { c.Make, c.Model })
                 .ToList();
-
+                */
             //  label2.Text = comboBox1.SelectedText;
             tabControl2.SelectedIndex = 0;
         }
@@ -49,7 +54,7 @@ namespace AutoService
                                              Nume = p.Name,
                                              Cod = p.Oem_Code,
                                              Pret = p.Price,
-                                             Cantitate_Vanduta = p.SoldQuantity,
+                                             Cantitate_Vanduta =p.SoldQuantity,
                                              Castig_Piesa = (double?)(p.SoldQuantity * p.Price) ?? 0
                                          })
 
@@ -98,7 +103,7 @@ namespace AutoService
                     Nume = p.Name,
                     Cod = p.Oem_Code,
                     Pret = p.Price,
-                    Stoc = p.InStock
+                    Stoc = p.InStock?"In stoc":"Nu exista in stoc"
                 })
                                             .ToList();
             carReportListView1.DataSource = allPartsOfCar;
