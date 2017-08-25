@@ -93,6 +93,7 @@ namespace AutoService
                 Quantity = qty,
                 PriceOfPart = _selectedPart.Price
             };
+    //        _selectedPart.Quantity -= qty;
             db.CartDetails.Add(cartDetails);
             db.SaveChanges();
             CartService.RefreshCart(db);

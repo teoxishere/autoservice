@@ -48,7 +48,10 @@ namespace AutoService
             foreach (var cartItem in CartService.Cart.CartDetails)
             {
                 var part = mm.db.Parts.Find(cartItem.PartId);
-                part.isAvailable = false;
+                part.Quantity = 0;
+                part.InStock = false;
+                    part.isAvailable = false;
+              
             }
                 mm.db.CartDetails.RemoveRange(CartService.Cart.CartDetails);
             mm.db.SaveChanges();
