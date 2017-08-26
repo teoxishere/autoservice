@@ -848,7 +848,7 @@ namespace AutoService
 
         private void FillUpMyCarTable()
         {
-            var allMyCars = db.Cars.Include("Parts")
+            var allMyCars = db.Cars
                             .Select(c => new
                             {
                                 Marca = c.Make,
@@ -858,10 +858,11 @@ namespace AutoService
                                 Pret = c.Price,
                                 Cod = c.Internal_Code,
                                 An = c.Year,
-                                Parti = c.Parts.Select(p => new {
-                                    PretPiese = p.Price * p.Quantity,
-                                })
+                                Parti = c.Parts.Select(p=>p.Name)
+                                   
+                                
                             })
+                            
                             .ToList();
             /*                      
            */

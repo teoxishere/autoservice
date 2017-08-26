@@ -22,8 +22,8 @@ namespace AutoService.Models
 
         public byte[] Content { get; set; }
 
-        public virtual ICollection<Part> Parts { get; set; }
-
+        public virtual  ICollection<Part> Parts { get; set; }
+       
         public override string ToString()
         {
 
