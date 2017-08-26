@@ -38,7 +38,14 @@ namespace AutoService
             infoTbPrice.Text = string.Concat(_selectedPart.Price);
             infoTbQty.Text = string.Concat(_selectedPart.Quantity);
             label8.Text = _selectedPart.Oem_Code;
-          //  infoTbBarcode.Text = _selectedPart.BarCode;
+            label11.Text = _selectedPart.Color;
+            //  infoTbBarcode.Text = _selectedPart.BarCode;
+            if (_selectedPart.Content != null)
+            {
+                pictureBox1.Image = ImageServices.byteArrayToImage(_selectedPart.Content);
+                pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            }
+            else { pictureBox1.Image = Image.FromFile("./Pics/logo2.png"); }
 
         }
 
@@ -86,6 +93,7 @@ namespace AutoService
                 Quantity = qty,
                 PriceOfPart = _selectedPart.Price
             };
+    //        _selectedPart.Quantity -= qty;
             db.CartDetails.Add(cartDetails);
             db.SaveChanges();
             CartService.RefreshCart(db);

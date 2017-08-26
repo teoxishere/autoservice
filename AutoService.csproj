@@ -288,6 +288,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -306,6 +307,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\Pics\logo2.png" />
     <Content Include="invoice_template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
