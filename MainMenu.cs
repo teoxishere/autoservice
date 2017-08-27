@@ -40,8 +40,7 @@ namespace AutoService
         //Objects Sent to other frames
         private Part _selectedPart = new Part();
         private Car _selectedCar = new Car();
-
-        public Context db = new Context();
+         public Context db = new Context();
 
         /*
         private Make _selectedMake;
@@ -128,18 +127,8 @@ namespace AutoService
             FuelType.Add("Benzina-GPL");
             carCbFuel.DataSource = FuelType;
 
-            //Engine Capacity ComboBox;
-
-            EngineCapacity = db.Cars
-                               .Select(c => c.Capacity)
-                               .ToList();
-            /*     EngineCapacity = new List<Double>();
-                 for (double i = 0.8; i < 4.0; i += 0.1)
-                 {
-                     EngineCapacity.Add(Math.Round(i, 3));
-                 }
-             */
-            carCbCapacity.DataSource = EngineCapacity;
+            
+            carCbCapacity.Text ="";
 
             //Years ComboBox
             Years = new List<int>();
@@ -251,14 +240,14 @@ namespace AutoService
                 var _carToBe = new Car
                 {
                     Body = carCbBody.Text,
-                    Capacity = Math.Round(Convert.ToDouble(carCbCapacity.Text), 3),
+                    Capacity = double.Parse(carCbCapacity.Text),
                     Fuel = carCbFuel.Text,
                     Make = carTbMake.Text,
                     Model = carTbModel.Text,
                     Internal_Code = carTbOem.Text,
-                    Year = Convert.ToInt16(carCbYear.Text),
-                    Power = Math.Round(Convert.ToDouble(carTbPower.Text), 1),
-                    Price = Math.Round(Convert.ToDouble(carTbPret.Text), 3),
+                    Year = int.Parse(carCbYear.Text),
+                    Power = double.Parse(carTbPower.Text),
+                    Price = double.Parse(carTbPret.Text),
                     Content = ImageServices.imageToByteArray(pictureBox1.Image)
 
                 };
@@ -284,7 +273,7 @@ namespace AutoService
             carTbOem.Text = "";
             carTbPower.Text = "";
             carCbBody.SelectedIndex = 0;
-            carCbCapacity.SelectedIndex = 0;
+            carCbCapacity.Text = "";
             carCbFuel.SelectedIndex = 0;
             carCbYear.SelectedIndex = 0;
         }
@@ -941,7 +930,26 @@ namespace AutoService
                 
             
         }
+
+        private void carCbCapacity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allows 0-9, backspace, and decimal
+            if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // checks to make sure only 1 decimal is allowed
+            if (e.KeyChar == 46)
+            {
+                if ((sender as TextBox).Text.IndexOf(e.KeyChar) != -1)
+                    e.Handled = true;
+            }
+                 base.OnKeyPress(e);
+            }
+        }
     }
-}
+
 
 

@@ -18,6 +18,7 @@ namespace AutoService
         private Car _selectedCar;
         private Part _selectedPart;
         private Context db;
+        private List<Part> _cartParts;
 
         public PartInfoForm()
         {
@@ -31,6 +32,7 @@ namespace AutoService
             this.mm = mm;
             this._selectedCar = _selectedCar;
             this._selectedPart = _selectedPart;
+            
         //    infoTbCar.Text = _selectedCar.Make + " " + _selectedCar.Model + " an " + _selectedCar.Year + " motor "
         //        + _selectedCar.Capacity + " pret: " + _selectedCar.Price;
             label6.Text = _selectedPart.Name;
@@ -72,11 +74,14 @@ namespace AutoService
                 MessageBox.Show("Cantitate invalida");
                 return;
             }
-            if (qty > _selectedPart.Quantity)
+
+      /*      if (qty > _selectedPart.Quantity)
             {
                 MessageBox.Show("Stoc insuficient.");
                 return;
+         
             }
+      */
             if (CartService.Cart.Id == 0)
             {
                 // save the cart first
@@ -93,14 +98,25 @@ namespace AutoService
                 Quantity = qty,
                 PriceOfPart = _selectedPart.Price
             };
-    //        _selectedPart.Quantity -= qty;
-            db.CartDetails.Add(cartDetails);
-            db.SaveChanges();
-            CartService.RefreshCart(db);
-            _selectedPart.isAvailable = true;
-            this.Close();
-            mm.ReCheck("");
-            MessageBox.Show(qty + " x " + _selectedPart.Name + " au fost adaugate in cos.");
+
+            if (qty <= _selectedPart.Quantity)
+            {
+                
+                db.CartDetails.Add(cartDetails);
+                db.SaveChanges();
+                CartService.RefreshCart(db);
+                _selectedPart.isAvailable = true;
+                this.Close();
+                mm.ReCheck("");
+                MessageBox.Show(qty + " x " + _selectedPart.Name + " au fost adaugate in cos.");
+                
+            }
+            else
+            {
+                MessageBox.Show("Stoc insuficient.");
+                return;
+            }
+            _selectedPart.Quantity -= qty;
         }
 
         private void button2_Click(object sender, EventArgs e)

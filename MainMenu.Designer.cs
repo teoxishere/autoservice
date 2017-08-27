@@ -33,6 +33,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataListView2 = new BrightIdeasSoftware.DataListView();
             this.carPanel = new System.Windows.Forms.TabPage();
+            this.carCbCapacity = new System.Windows.Forms.TextBox();
             this.dataListView3 = new BrightIdeasSoftware.DataListView();
             this.carTbPret = new System.Windows.Forms.TextBox();
             this.carTbOem = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@
             this.carBtnAdd = new System.Windows.Forms.Button();
             this.carCbBody = new System.Windows.Forms.ComboBox();
             this.carCbFuel = new System.Windows.Forms.ComboBox();
-            this.carCbCapacity = new System.Windows.Forms.ComboBox();
             this.carCbYear = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -198,6 +198,7 @@
             // 
             // carPanel
             // 
+            this.carPanel.Controls.Add(this.carCbCapacity);
             this.carPanel.Controls.Add(this.dataListView3);
             this.carPanel.Controls.Add(this.carTbPret);
             this.carPanel.Controls.Add(this.carTbOem);
@@ -212,7 +213,6 @@
             this.carPanel.Controls.Add(this.carBtnAdd);
             this.carPanel.Controls.Add(this.carCbBody);
             this.carPanel.Controls.Add(this.carCbFuel);
-            this.carPanel.Controls.Add(this.carCbCapacity);
             this.carPanel.Controls.Add(this.carCbYear);
             this.carPanel.Controls.Add(this.label16);
             this.carPanel.Controls.Add(this.label15);
@@ -229,6 +229,14 @@
             this.carPanel.TabIndex = 3;
             this.carPanel.Text = "Adaugare Masini";
             this.carPanel.UseVisualStyleBackColor = true;
+            // 
+            // carCbCapacity
+            // 
+            this.carCbCapacity.Location = new System.Drawing.Point(245, 40);
+            this.carCbCapacity.Name = "carCbCapacity";
+            this.carCbCapacity.Size = new System.Drawing.Size(145, 21);
+            this.carCbCapacity.TabIndex = 14;
+            this.carCbCapacity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.carCbCapacity_KeyPress);
             // 
             // dataListView3
             // 
@@ -357,14 +365,6 @@
             this.carCbFuel.Name = "carCbFuel";
             this.carCbFuel.Size = new System.Drawing.Size(146, 23);
             this.carCbFuel.TabIndex = 15;
-            // 
-            // carCbCapacity
-            // 
-            this.carCbCapacity.FormattingEnabled = true;
-            this.carCbCapacity.Location = new System.Drawing.Point(245, 40);
-            this.carCbCapacity.Name = "carCbCapacity";
-            this.carCbCapacity.Size = new System.Drawing.Size(146, 23);
-            this.carCbCapacity.TabIndex = 14;
             // 
             // carCbYear
             // 
@@ -682,7 +682,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1362, 719);
+            this.tabPage2.Size = new System.Drawing.Size(1354, 710);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Adaugare Piese";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1278,7 +1278,6 @@
         private System.Windows.Forms.Button carBtnAdd;
         private System.Windows.Forms.ComboBox carCbBody;
         private System.Windows.Forms.ComboBox carCbFuel;
-        private System.Windows.Forms.ComboBox carCbCapacity;
         private System.Windows.Forms.ComboBox carCbYear;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
@@ -1358,5 +1357,6 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.TabPage tabPage5;
         private BrightIdeasSoftware.DataListView dataListView5;
+        private System.Windows.Forms.TextBox carCbCapacity;
     }
 }

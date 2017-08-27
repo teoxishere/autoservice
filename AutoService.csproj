@@ -176,8 +176,13 @@
     <Compile Include="Migrations\201706201617322_soldqty param added to part.Designer.cs">
       <DependentUpon>201706201617322_soldqty param added to part.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708261047323_ClientsAddedToDB.cs" />
+    <Compile Include="Migrations\201708261047323_ClientsAddedToDB.Designer.cs">
+      <DependentUpon>201708261047323_ClientsAddedToDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
+    <Compile Include="Models\ClientOfPark.cs" />
     <Compile Include="Models\LogEntry.cs" />
     <Compile Include="PartInfoForm.cs">
       <SubType>Form</SubType>
@@ -264,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706201617322_soldqty param added to part.resx">
       <DependentUpon>201706201617322_soldqty param added to part.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708261047323_ClientsAddedToDB.resx">
+      <DependentUpon>201708261047323_ClientsAddedToDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartInfoForm.resx">
       <DependentUpon>PartInfoForm.cs</DependentUpon>
