@@ -1,5 +1,6 @@
 ﻿using AutoService.Models;
 using AutoService.Services;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -284,7 +285,7 @@ namespace AutoService
 
             if (tabControl1.SelectedTab.Text.ToLower() == "adaugare piese")
             {
-                // Piese screen
+               // Piese screen
                 pictureBox2.Image = Image.FromFile("./Pics/logo2.png");
                 pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
 
@@ -757,6 +758,19 @@ namespace AutoService
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
+/*#if !DEBUG       
+            try
+            {
+                if (Program.mysql != null)
+                {
+                    Program.mysql.Kill();
+                }
+            }catch(Exception exx)
+            {
+                Program.Log.Error(exx, "Erroare fatala");
+            }
+#endif*/
+            Log.CloseAndFlush();
             Application.Exit();
         }
 
