@@ -41,9 +41,9 @@ namespace AutoService
             
             mysql.Start();
             Thread.Sleep(1000);
-#endif 
+#endif */
 
-#if !DEBUG
+//#if !DEBUG
             try
             {
                 var configuration = new Migrations.Configuration();
@@ -54,7 +54,7 @@ namespace AutoService
                 MessageBox.Show("Eroare fatala. Contactati suport.");
                 return;
             }
-#endif */
+//#endif
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Thread.CurrentThread.CurrentCulture = new CultureInfo("ro-RO");

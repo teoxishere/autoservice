@@ -75,13 +75,14 @@ namespace AutoService
                 return;
             }
 
-      /*      if (qty > _selectedPart.Quantity)
-            {
-                MessageBox.Show("Stoc insuficient.");
-                return;
-         
-            }
-      */
+            /*      if (qty > _selectedPart.Quantity)
+                  {
+                      MessageBox.Show("Stoc insuficient.");
+                      return;
+
+                  }
+            */
+           
             if (CartService.Cart.Id == 0)
             {
                 // save the cart first
@@ -90,6 +91,7 @@ namespace AutoService
                 db.Carts.Add(CartService.Cart);
                 db.SaveChanges();
             }
+
             // the cart is in the db, add a detail
             var cartDetails = new CartDetail
             {
@@ -99,24 +101,21 @@ namespace AutoService
                 PriceOfPart = _selectedPart.Price
             };
 
-            if (qty <= _selectedPart.Quantity)
+            if (qty>_selectedPart.Quantity)
             {
-                
-                db.CartDetails.Add(cartDetails);
-                db.SaveChanges();
-                CartService.RefreshCart(db);
-                _selectedPart.isAvailable = true;
-                this.Close();
-                mm.ReCheck("");
-                MessageBox.Show(qty + " x " + _selectedPart.Name + " au fost adaugate in cos.");
-                
-            }
-            else
-            {
-                MessageBox.Show("Stoc insuficient.");
+                MessageBox.Show("Stoc insuficient. Verifica produsele din cos!");
                 return;
             }
-            _selectedPart.Quantity -= qty;
+            db.CartDetails.Add(cartDetails);
+            db.SaveChanges();
+            CartService.RefreshCart(db);
+            _selectedPart.isAvailable = true;
+            this.Close();
+            mm.ReCheck("");
+            MessageBox.Show(qty + " x " + _selectedPart.Name + " au fost adaugate in cos.");
+
+           
+              
         }
 
         private void button2_Click(object sender, EventArgs e)

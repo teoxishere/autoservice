@@ -15,6 +15,7 @@ namespace AutoService
     public partial class CartForm : Form
     {
         private MainMenu mm;
+        private ClientOfPark client;
 
         public CartForm(MainMenu mm)
         {
@@ -24,6 +25,7 @@ namespace AutoService
 
         private void CartForm_Load(object sender, EventArgs e)
         {
+           
             if (CartService.Cart.Id > 0)
             {
                 CartService.RefreshCart(mm.db);
@@ -41,8 +43,27 @@ namespace AutoService
                     dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
             }
+            else if(mm.db.Carts.Where(c=>c.IsSold==false).Any())
+            {
+                var lastCart = mm.db.Carts
+                                 .Where(cart => cart.IsSold == false)
+                                 .ToList()
+                                 .FirstOrDefault();
+                dataListView1.DataSource = lastCart.CartDetails
+                    .Select(c => new
+                    {
+                        NumePiesa = c.Part.Name,
+                        Cantitate = c.Quantity,
+                        PretperPiesa = c.PriceOfPart
+                    }
+                    ).ToList();
+                CartService.Cart.CartDetails = lastCart.CartDetails;
+                CartService.Cart = lastCart;
+                dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                dataListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
         }
-
+        //delete cart
         private void button1_Click(object sender, EventArgs e)
         {
             foreach (var cartItem in CartService.Cart.CartDetails)
@@ -64,13 +85,15 @@ namespace AutoService
                 })
                 .ToList();
         }
-
+       
         private void button2_Click(object sender, EventArgs e)
         {
+           
             if (CartService.Cart.CartDetails == null || !CartService.Cart.CartDetails.Any())
             {
-                MessageBox.Show("Nu aveti nimic in cos.");
-                return;
+                    MessageBox.Show("Nu aveti nimic in cos.");
+                    return;
+                
             }
             foreach (var cartItem in CartService.Cart.CartDetails)
             {
@@ -86,16 +109,38 @@ namespace AutoService
                         part.InStock = false;
                     }
                 }
-                
+                DialogResult result = MessageBox.Show("Adaugare date cumparator? ", "Confirmare", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    new ClientAddForm().ShowDialog();
+                    client = new ClientOfPark();
+                    client = mm.db.ClientOfParks
+                        .Where(c => c.IsActive == true)
+                        .Select(c => c)
+                        .FirstOrDefault();
+                                                
+                }
+                else if (result == DialogResult.No)
+                {
+                    client = new ClientOfPark()
+                    {
+                        Name = "_______________",
+                        RegNo = "________________",
+                        Address = "_________________",
+                        PhoneNumber = "__________________"
+                    };
+                }
+
             }
             var dbCart = mm.db.Carts.Find(CartService.Cart.Id);
             dbCart.IsSold = true;
+            client.IsActive = false;
             mm.db.SaveChanges();
 
             
            
             // Trigger PDF gen
-            PdfService.GeneratePdf(CartService.Cart);
+            PdfService.GeneratePdf(CartService.Cart,client);
 
             CartService.Cart = new Cart();
             dataListView1.DataSource = new List<object>();

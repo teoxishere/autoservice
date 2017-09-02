@@ -135,6 +135,12 @@
     <Compile Include="CartForm.Designer.cs">
       <DependentUpon>CartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientAddForm.Designer.cs">
+      <DependentUpon>ClientAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums\ActionsEnum.cs" />
     <Compile Include="Enums\RolesEnum.cs" />
     <Compile Include="LoginForm.cs">
@@ -201,6 +207,14 @@
     <Compile Include="Migrations\201708261047323_ClientsAddedToDB.Designer.cs">
       <DependentUpon>201708261047323_ClientsAddedToDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708300647451_removedissoldfromdetails.cs" />
+    <Compile Include="Migrations\201708300647451_removedissoldfromdetails.Designer.cs">
+      <DependentUpon>201708300647451_removedissoldfromdetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709021233089_flagonclient.cs" />
+    <Compile Include="Migrations\201709021233089_flagonclient.Designer.cs">
+      <DependentUpon>201709021233089_flagonclient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
     <Compile Include="Models\ClientOfPark.cs" />
@@ -249,6 +263,9 @@
     <EmbeddedResource Include="CartForm.resx">
       <DependentUpon>CartForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientAddForm.resx">
+      <DependentUpon>ClientAddForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +310,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708261047323_ClientsAddedToDB.resx">
       <DependentUpon>201708261047323_ClientsAddedToDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708300647451_removedissoldfromdetails.resx">
+      <DependentUpon>201708300647451_removedissoldfromdetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709021233089_flagonclient.resx">
+      <DependentUpon>201709021233089_flagonclient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartInfoForm.resx">
       <DependentUpon>PartInfoForm.cs</DependentUpon>

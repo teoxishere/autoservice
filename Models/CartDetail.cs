@@ -15,5 +15,7 @@ namespace AutoService.Models
         public int PartId { get; set; }
         public virtual Part Part { get; set; }
         public double PriceOfPart { get; set; }
+
+      
     }
 }

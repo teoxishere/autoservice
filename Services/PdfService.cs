@@ -10,19 +10,22 @@ namespace AutoService.Services
 {
     public class PdfService
     {
-        public static void GeneratePdf(Cart cart)
+        
+        public static void GeneratePdf(Cart cart,ClientOfPark client)
         {
+            
             if (!Directory.Exists("./facturi"))
             {
                 Directory.CreateDirectory("./facturi");
             }
             // pedefe
-            var html = GetHtmlFromTemplateAndReplace(cart);
+            var html = GetHtmlFromTemplateAndReplace(cart,client);
+           
             var pdfBytes = HtmlToByteArray(html);
-            File.WriteAllBytes("./facturi/" + cart.Id +" "+DateTime.Now.ToShortDateString()+ ".pdf", pdfBytes);
+            File.WriteAllBytes("./facturi/" + cart.Id +" "+client.Name+" "+DateTime.Now.ToShortDateString()+ ".pdf", pdfBytes);
         }
 
-        private static string GetHtmlFromTemplateAndReplace(Cart cart)
+        private static string GetHtmlFromTemplateAndReplace(Cart cart,ClientOfPark client)
         {
             var templatePath = "./invoice_template.html";
             var templateAsString = File.ReadAllText(templatePath);
@@ -30,7 +33,11 @@ namespace AutoService.Services
             templateAsString = templateAsString
                 .Replace("{{cart_id}}", cart.Id + "")
                 .Replace("{{cart_username}}", cart.Username)
-                .Replace("{{cart_date}}", cart.CreatedDate.ToShortDateString());
+                .Replace("{{cart_date}}", cart.CreatedDate.ToShortDateString())
+                .Replace("{{client_name}}", client.Name)
+                .Replace("{{client_address}}", client.Address)
+                .Replace("{{client_regno}}", client.RegNo)
+                .Replace("{{client_phone}}", client.PhoneNumber);
 
             var listOfItems = "";
             double total = 0;
