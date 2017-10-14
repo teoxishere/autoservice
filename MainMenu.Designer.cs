@@ -178,7 +178,7 @@
             // 
             // dataListView2
             // 
-            this.dataListView2.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
+            this.dataListView2.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.dataListView2.CellEditEnterChangesRows = true;
             this.dataListView2.CellEditTabChangesRows = true;
             this.dataListView2.DataSource = null;
@@ -193,6 +193,7 @@
             this.dataListView2.TabIndex = 0;
             this.dataListView2.UseCompatibleStateImageBehavior = false;
             this.dataListView2.View = System.Windows.Forms.View.Details;
+            this.dataListView2.Click += new System.EventHandler(this.dataListView2_Click);
             this.dataListView2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataListView2_KeyDown);
             this.dataListView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataListView2_KeyPress);
             // 
@@ -1005,9 +1006,9 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(1009, 38);
+            this.button5.Location = new System.Drawing.Point(1115, 38);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(87, 27);
+            this.button5.Size = new System.Drawing.Size(140, 41);
             this.button5.TabIndex = 20;
             this.button5.Text = "Cos";
             this.button5.UseVisualStyleBackColor = true;
@@ -1017,7 +1018,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(1015, 0);
+            this.label35.Location = new System.Drawing.Point(1153, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(102, 20);
             this.label35.TabIndex = 19;

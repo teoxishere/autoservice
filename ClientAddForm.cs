@@ -36,9 +36,12 @@ namespace AutoService
             myClient = new ClientOfPark()
             {
                 Name = clientNameCB.Text,
-                Address = clientAdressTb.Text,
-                RegNo = clientJCb.Text,
-                PhoneNumber = clientPhoneTb.Text,
+                RegNo = clientBankTB.Text,
+                J = clientJTB.Text,
+                Address = clientJTB.Text,
+                BankAccount = clientBankAccountTB.Text,
+                BankName=clientBankTB.Text,
+                Phone=clientPhoneTB.Text,
                 IsActive = true
             };
             db.ClientOfParks.Add(myClient);

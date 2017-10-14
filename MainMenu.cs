@@ -962,7 +962,12 @@ namespace AutoService
             }
                  base.OnKeyPress(e);
             }
+
+        private void dataListView2_Click(object sender, EventArgs e)
+        {
+            dataListView2.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
         }
+    }
     }
 
 

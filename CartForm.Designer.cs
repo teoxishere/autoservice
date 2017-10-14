@@ -47,6 +47,7 @@
             this.dataListView1.TabIndex = 0;
             this.dataListView1.UseCompatibleStateImageBehavior = false;
             this.dataListView1.View = System.Windows.Forms.View.Details;
+            this.dataListView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataListView1_KeyDown);
             // 
             // button1
             // 

@@ -1,0 +1,127 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <style type="text/css">
+        . .tg {
+            width: 1000px;
+            margin: auto;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 0px;
+            overflow: hidden;
+            word-break: normal;
+        }
+
+        .tg th {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 0px;
+            overflow: hidden;
+            word-break: normal;
+        }
+
+        .tg .tg-1d7g {
+            font-weight: bold;
+            font-size: 16px;
+            vertical-align: top;
+        }
+
+        .tg .tg-2ktp {
+            font-size: 16px;
+            vertical-align: top;
+        }
+
+        .tg .tg-p7ly {
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .tg .tg-yw4l {
+            vertical-align: top;
+        }
+
+        .tg .tg-9hbo {
+            font-weight: bold;
+            vertical-align: top;
+        }
+
+        .tg .tg-l2oz {
+            font-weight: bold;
+            text-align: right;
+            vertical-align: top;
+        }
+
+        .tg .tg-y5sk {
+            font-weight: bold;
+            background-color: #c0c0c0;
+            color: #000000;
+            vertical-align: top;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table class="tg" style="width: 80%; margin: auto;">
+        <tr>
+          <!--  <th class="tg-yw4l" colspan="3">LOGO</th> -->
+        </tr>
+        <tr>
+            <td class="tg-p7ly" colspan="3">Factura</td>
+        </tr>
+        <tr>
+            <td class="tg-9hbo">SC GSF AUTO CONCEPT SRL.</td>
+            <td class="tg-l2oz" colspan="2">{{client_name}}</td>
+        </tr>
+        <tr>
+            <td class="tg-9hbo">CUI 38012606</td>
+            <td class="tg-l2oz" colspan="2">{{client_regno}}</td>
+        </tr>
+        <tr>
+            <td class="tg-9hbo">J23/3940/2017</td>
+            <td class="tg-l2oz" colspan="2">{{client_jno}}</td>
+        </tr>
+        <tr>
+            <td class="tg-9hbo">Data: {{cart_date}}</td>
+            <td class="tg-l2oz" colspan="2">{{client_phone}}</td>
+        </tr>
+        <tr>
+            <td class="tg-yw4l">Str. Aluniş nr. 34 Oraş Măgurele, Jud. Ilfov</td>
+            <td class="tg-l2oz" colspan="2">{{client_address}}</td>
+        </tr>
+        <tr>
+            <td class="tg-y5sk">Produs</td>
+            <td class="tg-y5sk">Cantitate</td>
+            <td class="tg-y5sk">Pret</td>
+        </tr>
+
+        {{cart_items}}
+
+        <tr>
+            <td class="tg-yw4l"></td>
+            <td class="tg-1d7g">Total</td>
+            <td class="tg-2ktp">{{cart_total}}</td>
+        </tr>
+        <tr>
+            <td class="tg-yw4l">Semnatura si stampila</td>
+            <td class="tg-yw4l" colspan="2" rowspan="2"></td>
+        </tr>
+        <tr>
+            <td class="tg-yw4l"></td>
+        </tr>
+    </table>
+</body>
+</html>

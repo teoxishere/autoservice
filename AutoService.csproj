@@ -215,6 +215,14 @@
     <Compile Include="Migrations\201709021233089_flagonclient.Designer.cs">
       <DependentUpon>201709021233089_flagonclient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709021829314_addedbankfieldsinclient.cs" />
+    <Compile Include="Migrations\201709021829314_addedbankfieldsinclient.Designer.cs">
+      <DependentUpon>201709021829314_addedbankfieldsinclient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710142015062_clientphoneadded.cs" />
+    <Compile Include="Migrations\201710142015062_clientphoneadded.Designer.cs">
+      <DependentUpon>201710142015062_clientphoneadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
     <Compile Include="Models\ClientOfPark.cs" />
@@ -317,6 +325,12 @@
     <EmbeddedResource Include="Migrations\201709021233089_flagonclient.resx">
       <DependentUpon>201709021233089_flagonclient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709021829314_addedbankfieldsinclient.resx">
+      <DependentUpon>201709021829314_addedbankfieldsinclient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142015062_clientphoneadded.resx">
+      <DependentUpon>201710142015062_clientphoneadded.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PartInfoForm.resx">
       <DependentUpon>PartInfoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -365,6 +379,9 @@
     <Content Include="invoice_template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="invoice_template.html.old">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Pics\logo2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

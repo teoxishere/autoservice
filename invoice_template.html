@@ -1,162 +1,111 @@
 ﻿
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>A simple, clean, and responsive HTML invoice template</title>
+<!--########################
+sectiune header-->
 
-    <style>
-        .invoice-box {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-            font-size: 16px;
-            line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            color: #555;
-        }
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-baqh" rowspan="2">
+      Date furnizor<br/>
+        SC GSF AUTO CONCEPT SRL.<br/>
+        CUI 38012606<br/>
+        J23/3940/2017<br/>
+        Str. Aluniş nr. 34 Oraş Măgurele, Jud. Ilfov<br/>
+        +40 723 397 765<br/>
+        Cont Bancar - de completat-<br/>
+        Banca - de completat - <br/>
 
-            .invoice-box table {
-                width: 100%;
-                line-height: inherit;
-                text-align: left;
-            }
+    </th>
+    <th class="tg-baqh"><img src="data:image/jpeg;base64,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"/></th>
+    <th class="tg-baqh" rowspan="2">
+      Date cumparator<br/>
+        {{client_name}}<br />
+        {{client_regno}}<br />
+        {{client_jno}}<br />
+        {{client_address}}<br />
+        {{client_phone}}<br />
+        {{client_bankaccount}}<br />
+        {{client_bankname}}
+    </th>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Date factura</td>
+  </tr>
+</table>
 
-                .invoice-box table td {
-                    padding: 5px;
-                    vertical-align: top;
-                }
 
-                .invoice-box table tr td:nth-child(2) {
-                    text-align: right;
-                }
+<!--########################
+sectiune produse-->
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+.products-row {height: 600px;}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-baqh">Nr. Crt.</th>
+    <th class="tg-baqh">Denumirea produselor sau a serviciilor</th>
+    <th class="tg-baqh">U.M.</th>
+    <th class="tg-baqh">Cant.</th>
+    <th class="tg-baqh">Pret unitar<br>(fara TVA)</th>
+    <th class="tg-baqh">Valoarea</th>
+    <th class="tg-baqh">Valoarea TVA</th>
+  </tr>
+  <tr>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">2</td>
+    <td class="tg-baqh">3</td>
+    <td class="tg-baqh">4</td>
+    <td class="tg-baqh">5 (3X4)</td>
+    <td class="tg-baqh">6</td>
+  </tr>
+    {{cart_items}}
+  <tr>
+    <td class="tg-yw4l" colspan="7"></td>
+  </tr>
+</table>
 
-                .invoice-box table tr.top table td {
-                    padding-bottom: 20px;
-                }
 
-                    .invoice-box table tr.top table td.title {
-                        font-size: 45px;
-                        line-height: 45px;
-                        color: #333;
-                    }
+<!--########################
+sectiune footer-->
 
-                .invoice-box table tr.information table td {
-                    padding-bottom: 40px;
-                }
-
-                .invoice-box table tr.heading td {
-                    background: #eee;
-                    border-bottom: 1px solid #ddd;
-                    font-weight: bold;
-                }
-
-                .invoice-box table tr.details td {
-                    padding-bottom: 20px;
-                }
-
-                .invoice-box table tr.item td {
-                    border-bottom: 1px solid #eee;
-                }
-
-                .invoice-box table tr.item.last td {
-                    border-bottom: none;
-                }
-
-                .invoice-box table tr.total td:nth-child(2) {
-                    border-top: 2px solid #eee;
-                    font-weight: bold;
-                }
-
-        @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-
-            .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div class="invoice-box">
-        <table cellpadding="0" cellspacing="0">
-            <tr class="top">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                           <!-- <td class="title">
-                                <img src="http://nextstepwebs.com/images/logo.png" style="width:100%; max-width:300px;">
-                            </td>-->
-
-                            <td>
-                                Factura <!-- pentru cosul cu ID: {{cart_id}}<br>
-                                Created: {{cart_date}}<br>-->
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-
-            <tr class="information">
-                <td >
-                    <table>
-                        <tr>
-                            <td>
-                                SC GSF AUTO CONCEPT SRL.<br>
-                                CUI 38012606
-                                Data: {{cart_date}}
-                            </td>
-
-                            <td>
-                                {{client_name}}<br>
-                                {{client_regno}}<br>
-                                {{client_phone}}<br>
-                                {{client_address}}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-
-            
-
-            <tr class="heading">
-                <td>
-                    Produs
-                </td>
-
-                <td>
-                    Cantitate
-                </td>
-                 <td>
-                    Pret
-                </td>
-            </tr>
-
-            <!--<tr class="item">
-                <td>-->
-                    {{cart_items}}
-               <!-- </td>
-            </tr>-->
-
-            
-            <tr class="total">
-                <td></td>
-
-                <td>
-                    Total: {{cart_total}}
-                </td>
-            </tr>
-        </table>
-    </div>
-</body>
-</html>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0; width: 100%;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-s6z2{text-align:center}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-s6z2" rowspan="4">Factura circula fara <br>semnatura si stampila conform<br>art.319 alin.(29) din<br> Legea nr. 227/2015 <br>privind Codul Fiscal.</th>
+    <th class="tg-yw4l" rowspan="4">
+        Date delegat<br />
+        <!-- DELEGAT TODO -->
+    </th>
+    <th class="tg-yw4l" rowspan="2">Total, din care accize</th>
+    <th class="tg-yw4l"></th>
+    <th class="tg-yw4l"></th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">Semnatura de primire</td>
+    <td class="tg-yw4l" colspan="2">Total de plata (col.5+col.6)<br />{{cart_total}}</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l" colspan="2"></td>
+  </tr>
+</table>

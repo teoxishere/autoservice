@@ -1,6 +1,7 @@
 ﻿using AutoService.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,14 +38,23 @@ namespace AutoService.Services
                 .Replace("{{client_name}}", client.Name)
                 .Replace("{{client_address}}", client.Address)
                 .Replace("{{client_regno}}", client.RegNo)
-                .Replace("{{client_phone}}", client.PhoneNumber);
+                .Replace("{{client_jno}}", client.J)
+                .Replace("{{client_phone}}",client.Phone)
+                .Replace("{{client_bankaccount}}", client.Phone)
+                .Replace("{{client_bankname}}", client.Phone);
 
             var listOfItems = "";
             double total = 0;
+            var nrCrt = 1;
+            var tvaPercentage = double.Parse(ConfigurationManager.AppSettings["tva"]);
+            var utMas = ConfigurationManager.AppSettings["utmas"];
             foreach (var detail in cart.CartDetails)
             {
-                total += detail.Quantity * detail.PriceOfPart;
-                listOfItems += "<tr><td>"+ detail.Part.Name +"</td><td>"+detail.Quantity+"</td><td>"+detail.PriceOfPart+" RON</td></tr>";
+                double p = detail.PriceOfPart * detail.Quantity;
+                total += p;
+                double x = 100 * p / (100 + tvaPercentage);
+                var tva = Math.Round(p - x, 2);
+                listOfItems += "<tr class='products-row'><td align='center' class='tg-yw4l'>" + ((nrCrt++).ToString()) + "</td><td class='tg-yw4l'>" + detail.Part.Name + "</td><td class='tg-yw4l'>" + utMas + "</td><td class='tg-yw4l'>" + detail.Quantity+ "</td><td class='tg-yw4l'>" + detail.PriceOfPart+ " RON</td><td class='tg-yw4l'>" + p + " RON</td><td class='tg-yw4l'>" + tva + " RON</td></tr>";
             }
             templateAsString = templateAsString.Replace("{{cart_items}}", listOfItems)
                 .Replace("{{cart_total}}", total + " RON");
