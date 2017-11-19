@@ -42,8 +42,8 @@ namespace AutoService
                 BankAccount = clientBankAccountTB.Text,
                 BankName=clientBankTB.Text,
                 Phone=clientPhoneTB.Text,
-                IsActive = true
-            };
+             };
+            //To be put on main page
             db.ClientOfParks.Add(myClient);
             db.SaveChanges();
             Close();

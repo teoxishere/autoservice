@@ -128,11 +128,12 @@ namespace AutoService
                 client = new ClientOfPark()
                 {
                     Name = "_______________",
-                    RegNo = "________________",
+                    RegNo = "_______________",
                     J = "_______________",
-                    Address = "_________________",
-                    BankAccount = "__________________",
-                    BankName = "__________________"
+                    Address = "_______________",
+                    BankAccount = "_______________",
+                    BankName = "_______________",
+                    Phone= "_______________"
                 };
             }
 
