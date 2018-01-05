@@ -14,10 +14,10 @@ namespace AutoService
     public partial class ClientAddForm : Form
     {
         public Context db = new Context();
-        public ClientOfPark myClient;
-        public ClientAddForm()
+        private readonly CartForm parent;
+        public ClientAddForm(CartForm cf)
         {
-         //   myClient = client;
+            parent = cf;
             InitializeComponent();
             var _selectedClients = db.ClientOfParks.Select(c => c.Name)
                                      .ToList();
@@ -33,7 +33,7 @@ namespace AutoService
 
         private void button1_Click(object sender, EventArgs e)
         {
-            myClient = new ClientOfPark()
+            var myClient = new ClientOfPark()
             {
                 Name = clientNameCB.Text,
                 RegNo = clientBankTB.Text,
@@ -46,6 +46,8 @@ namespace AutoService
             //To be put on main page
             db.ClientOfParks.Add(myClient);
             db.SaveChanges();
+            // send the client to the parent form
+            parent.PopulateClientObject(myClient);
             Close();
         }
         private void FillUpClientField()

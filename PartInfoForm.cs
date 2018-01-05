@@ -98,7 +98,7 @@ namespace AutoService
                 CartId = CartService.Cart.Id,
                 PartId = _selectedPart.Id,
                 Quantity = qty,
-                PriceOfPart = _selectedPart.Price
+                Price = _selectedPart.Price
             };
 
             if (qty>_selectedPart.Quantity)

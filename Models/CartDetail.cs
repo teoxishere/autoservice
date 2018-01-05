@@ -12,10 +12,10 @@ namespace AutoService.Models
         public int CartId { get; set; }
         public virtual Cart Cart { get; set; }
         public int Quantity { get; set; }
-        public int PartId { get; set; }
+        public int? PartId { get; set; }
         public virtual Part Part { get; set; }
-        public double PriceOfPart { get; set; }
-
+        public double Price { get; set; }
+        public string ServiceDescription { get; set; }
       
     }
 }

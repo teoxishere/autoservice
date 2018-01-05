@@ -17,3 +17,10 @@ On Cars & Parts
 
 Image Layout for parts & cars on pannel
 Link them somewhat to the db
+
+
+CREATE USER 'root'@'%' IDENTIFIED BY 'Hoodlumb_12';
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+
+FLUSH PRIVILEGES;

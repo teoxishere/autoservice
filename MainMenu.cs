@@ -659,8 +659,12 @@ namespace AutoService
         {
             ReCheck(tbSearch.Text);
         }
-        public void ReCheck(string searchString)
+        public void ReCheck(string searchString = null)
         {
+            if (searchString == null)
+            {
+                searchString = tbSearch.Text;
+            }
             string make = null, model = null;
             double engine = double.MinValue;
             bool engineSelected = false;

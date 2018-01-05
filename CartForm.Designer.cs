@@ -79,6 +79,7 @@
             this.Controls.Add(this.dataListView1);
             this.Name = "CartForm";
             this.Text = "Cos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CartForm_FormClosed);
             this.Load += new System.EventHandler(this.CartForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataListView1)).EndInit();
             this.ResumeLayout(false);

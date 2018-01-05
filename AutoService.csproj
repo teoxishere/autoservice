@@ -34,6 +34,26 @@
   <PropertyGroup>
     <StartupObject>AutoService.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ceTe.DynamicPDF.Viewer.40.x86, Version=2.0.0.32858, Culture=neutral, PublicKeyToken=09b5ce0d5c0a9d8b, processorArchitecture=x86">
       <HintPath>packages\ceTe.DynamicPDF.Viewer.NET.x86.2.0.0.32858\lib\net40\ceTe.DynamicPDF.Viewer.40.x86.dll</HintPath>
@@ -155,74 +175,11 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704081544575_AddedLogEntryTable.cs" />
-    <Compile Include="Migrations\201704081544575_AddedLogEntryTable.Designer.cs">
-      <DependentUpon>201704081544575_AddedLogEntryTable.cs</DependentUpon>
+    <Compile Include="Migrations\201801051837575_initial.cs" />
+    <Compile Include="Migrations\201801051837575_initial.Designer.cs">
+      <DependentUpon>201801051837575_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704172013194_addedPrice.cs" />
-    <Compile Include="Migrations\201704172013194_addedPrice.Designer.cs">
-      <DependentUpon>201704172013194_addedPrice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704221310072_AddedInStockDP.cs" />
-    <Compile Include="Migrations\201704221310072_AddedInStockDP.Designer.cs">
-      <DependentUpon>201704221310072_AddedInStockDP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705011002353_RemovedIsAdminFromUser.cs" />
-    <Compile Include="Migrations\201705011002353_RemovedIsAdminFromUser.Designer.cs">
-      <DependentUpon>201705011002353_RemovedIsAdminFromUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705011055366_AddedRequiredToUser.cs" />
-    <Compile Include="Migrations\201705011055366_AddedRequiredToUser.Designer.cs">
-      <DependentUpon>201705011055366_AddedRequiredToUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705011234209_AddedCart.cs" />
-    <Compile Include="Migrations\201705011234209_AddedCart.Designer.cs">
-      <DependentUpon>201705011234209_AddedCart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705011311408_AddedIsSoldToCart.cs" />
-    <Compile Include="Migrations\201705011311408_AddedIsSoldToCart.Designer.cs">
-      <DependentUpon>201705011311408_AddedIsSoldToCart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705142102536_AddedImagesOnCarTable.cs" />
-    <Compile Include="Migrations\201705142102536_AddedImagesOnCarTable.Designer.cs">
-      <DependentUpon>201705142102536_AddedImagesOnCarTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705222112482_coloraddedtopart.cs" />
-    <Compile Include="Migrations\201705222112482_coloraddedtopart.Designer.cs">
-      <DependentUpon>201705222112482_coloraddedtopart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705232015004_addedpictureonparts.cs" />
-    <Compile Include="Migrations\201705232015004_addedpictureonparts.Designer.cs">
-      <DependentUpon>201705232015004_addedpictureonparts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706191801524_availabilityparameteraddedonpart.cs" />
-    <Compile Include="Migrations\201706191801524_availabilityparameteraddedonpart.Designer.cs">
-      <DependentUpon>201706191801524_availabilityparameteraddedonpart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706201617322_soldqty param added to part.cs" />
-    <Compile Include="Migrations\201706201617322_soldqty param added to part.Designer.cs">
-      <DependentUpon>201706201617322_soldqty param added to part.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708261047323_ClientsAddedToDB.cs" />
-    <Compile Include="Migrations\201708261047323_ClientsAddedToDB.Designer.cs">
-      <DependentUpon>201708261047323_ClientsAddedToDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708300647451_removedissoldfromdetails.cs" />
-    <Compile Include="Migrations\201708300647451_removedissoldfromdetails.Designer.cs">
-      <DependentUpon>201708300647451_removedissoldfromdetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709021233089_flagonclient.cs" />
-    <Compile Include="Migrations\201709021233089_flagonclient.Designer.cs">
-      <DependentUpon>201709021233089_flagonclient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709021829314_addedbankfieldsinclient.cs" />
-    <Compile Include="Migrations\201709021829314_addedbankfieldsinclient.Designer.cs">
-      <DependentUpon>201709021829314_addedbankfieldsinclient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710142015062_clientphoneadded.cs" />
-    <Compile Include="Migrations\201710142015062_clientphoneadded.Designer.cs">
-      <DependentUpon>201710142015062_clientphoneadded.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartDetail.cs" />
     <Compile Include="Models\ClientOfPark.cs" />
@@ -250,15 +207,6 @@
     <Compile Include="Teste.Designer.cs">
       <DependentUpon>Teste.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704071603386_1.cs" />
-    <Compile Include="Migrations\201704071603386_1.Designer.cs">
-      <DependentUpon>201704071603386_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704081356359_ReplacedRoleIntWithEnum.cs" />
-    <Compile Include="Migrations\201704081356359_ReplacedRoleIntWithEnum.Designer.cs">
-      <DependentUpon>201704081356359_ReplacedRoleIntWithEnum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Part.cs" />
@@ -280,56 +228,8 @@
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704081544575_AddedLogEntryTable.resx">
-      <DependentUpon>201704081544575_AddedLogEntryTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704172013194_addedPrice.resx">
-      <DependentUpon>201704172013194_addedPrice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704221310072_AddedInStockDP.resx">
-      <DependentUpon>201704221310072_AddedInStockDP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705011002353_RemovedIsAdminFromUser.resx">
-      <DependentUpon>201705011002353_RemovedIsAdminFromUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705011055366_AddedRequiredToUser.resx">
-      <DependentUpon>201705011055366_AddedRequiredToUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705011234209_AddedCart.resx">
-      <DependentUpon>201705011234209_AddedCart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705011311408_AddedIsSoldToCart.resx">
-      <DependentUpon>201705011311408_AddedIsSoldToCart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705142102536_AddedImagesOnCarTable.resx">
-      <DependentUpon>201705142102536_AddedImagesOnCarTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705222112482_coloraddedtopart.resx">
-      <DependentUpon>201705222112482_coloraddedtopart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705232015004_addedpictureonparts.resx">
-      <DependentUpon>201705232015004_addedpictureonparts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706191801524_availabilityparameteraddedonpart.resx">
-      <DependentUpon>201706191801524_availabilityparameteraddedonpart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706201617322_soldqty param added to part.resx">
-      <DependentUpon>201706201617322_soldqty param added to part.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708261047323_ClientsAddedToDB.resx">
-      <DependentUpon>201708261047323_ClientsAddedToDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708300647451_removedissoldfromdetails.resx">
-      <DependentUpon>201708300647451_removedissoldfromdetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709021233089_flagonclient.resx">
-      <DependentUpon>201709021233089_flagonclient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709021829314_addedbankfieldsinclient.resx">
-      <DependentUpon>201709021829314_addedbankfieldsinclient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710142015062_clientphoneadded.resx">
-      <DependentUpon>201710142015062_clientphoneadded.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801051837575_initial.resx">
+      <DependentUpon>201801051837575_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartInfoForm.resx">
       <DependentUpon>PartInfoForm.cs</DependentUpon>
@@ -339,12 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Teste.resx">
       <DependentUpon>Teste.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704071603386_1.resx">
-      <DependentUpon>201704071603386_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704081356359_ReplacedRoleIntWithEnum.resx">
-      <DependentUpon>201704081356359_ReplacedRoleIntWithEnum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -375,7 +269,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\Pics\logo2.png" />
     <Content Include="invoice_template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -386,6 +279,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

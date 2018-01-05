@@ -50,11 +50,11 @@ namespace AutoService.Services
             var utMas = ConfigurationManager.AppSettings["utmas"];
             foreach (var detail in cart.CartDetails)
             {
-                double p = detail.PriceOfPart * detail.Quantity;
+                double p = detail.Price * detail.Quantity;
                 total += p;
                 double x = 100 * p / (100 + tvaPercentage);
                 var tva = Math.Round(p - x, 2);
-                listOfItems += "<tr class='products-row'><td align='center' class='tg-yw4l'>" + ((nrCrt++).ToString()) + "</td><td class='tg-yw4l'>" + detail.Part.Name + "</td><td class='tg-yw4l'>" + utMas + "</td><td class='tg-yw4l'>" + detail.Quantity+ "</td><td class='tg-yw4l'>" + detail.PriceOfPart+ " RON</td><td class='tg-yw4l'>" + p + " RON</td><td class='tg-yw4l'>" + tva + " RON</td></tr>";
+                listOfItems += "<tr class='products-row'><td align='center' class='tg-yw4l'>" + ((nrCrt++).ToString()) + "</td><td class='tg-yw4l'>" + detail.Part.Name + "</td><td class='tg-yw4l'>" + utMas + "</td><td class='tg-yw4l'>" + detail.Quantity+ "</td><td class='tg-yw4l'>" + detail.Price+ " RON</td><td class='tg-yw4l'>" + p + " RON</td><td class='tg-yw4l'>" + tva + " RON</td></tr>";
             }
             templateAsString = templateAsString.Replace("{{cart_items}}", listOfItems)
                 .Replace("{{cart_total}}", total + " RON");
